@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Logo CACA - Centro Académico Clínico dos Açores -->
+  
+  <!-- Background circle with gradient (representing ocean/health) -->
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="healthGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43A047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="100" cy="100" r="95" fill="url(#oceanGrad)"/>
+  
+  <!-- Medical cross (saúde) -->
+  <rect x="85" y="50" width="30" height="100" fill="white" rx="3"/>
+  <rect x="65" y="70" width="70" height="30" fill="white" rx="3"/>
+  
+  <!-- Book/academic element (academia) -->
+  <path d="M 60 135 L 60 165 L 100 155 L 140 165 L 140 135 Z" fill="url(#healthGrad)" stroke="white" stroke-width="2"/>
+  <line x1="100" y1="135" x2="100" y2="155" stroke="white" stroke-width="2"/>
+  <line x1="75" y1="140" x2="75" y2="160" stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="125" y1="140" x2="125" y2="160" stroke="white" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Waves representing Azores ocean -->
+  <path d="M 20 170 Q 35 175 50 170 Q 65 165 80 170 Q 95 175 110 170 Q 125 165 140 170 Q 155 175 170 170 Q 180 168 180 168" 
+        fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+  <path d="M 20 180 Q 35 185 50 180 Q 65 175 80 180 Q 95 185 110 180 Q 125 175 140 180 Q 155 185 170 180 Q 180 178 180 178" 
+        fill="none" stroke="white" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Text CACA around the circle -->
+  <text x="100" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">
+    CACA
+  </text>
+</svg>
