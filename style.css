@@ -143,7 +143,8 @@ button {
     border-radius: 6px;
 }
 
-.main-nav a:hover {
+.main-nav a:hover,
+.main-nav a:focus-visible {
     color: var(--color-primary);
     background-color: rgba(25, 118, 210, 0.08);
 }
@@ -204,7 +205,8 @@ button {
     transition: var(--transition);
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.cta-button:focus-visible {
     background-color: var(--color-secondary-dark);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(67, 160, 71, 0.4);
@@ -262,7 +264,8 @@ section {
     border: 2px solid transparent;
 }
 
-.research-card:hover {
+.research-card:hover,
+.research-card:focus-visible {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
@@ -279,11 +282,11 @@ section {
 .card-purple .card-header { background-color: var(--color-accent-purple); }
 .card-red .card-header { background-color: var(--color-accent-red); }
 
-.card-blue:hover { border-color: var(--color-primary); }
-.card-green:hover { border-color: var(--color-secondary); }
-.card-orange:hover { border-color: var(--color-accent-orange); }
-.card-purple:hover { border-color: var(--color-accent-purple); }
-.card-red:hover { border-color: var(--color-accent-red); }
+.card-blue:hover, .card-blue:focus-visible { border-color: var(--color-primary); }
+.card-green:hover, .card-green:focus-visible { border-color: var(--color-secondary); }
+.card-orange:hover, .card-orange:focus-visible { border-color: var(--color-accent-orange); }
+.card-purple:hover, .card-purple:focus-visible { border-color: var(--color-accent-purple); }
+.card-red:hover, .card-red:focus-visible { border-color: var(--color-accent-red); }
 
 .card-title {
     font-size: 1.375rem;
@@ -318,7 +321,8 @@ section {
     transition: var(--transition);
 }
 
-.partner-box:hover {
+.partner-box:hover,
+.partner-box:focus-visible {
     background-color: var(--color-white);
     border-color: var(--color-primary);
     transform: translateY(-4px);
@@ -364,7 +368,8 @@ section {
     border: 2px solid transparent;
 }
 
-.opportunity-card:hover {
+.opportunity-card:hover,
+.opportunity-card:focus-visible {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
     border-color: var(--color-secondary);
@@ -444,7 +449,8 @@ section {
     color: var(--color-primary);
 }
 
-.contact-value a:hover {
+.contact-value a:hover,
+.contact-value a:focus-visible {
     text-decoration: underline;
 }
 
@@ -511,7 +517,8 @@ section {
     transition: var(--transition);
 }
 
-.submit-button:hover {
+.submit-button:hover,
+.submit-button:focus-visible {
     background-color: var(--color-secondary-dark);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(67, 160, 71, 0.4);
@@ -557,7 +564,8 @@ section {
     transition: var(--transition);
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus-visible {
     color: var(--color-white);
     text-decoration: underline;
 }
@@ -578,7 +586,8 @@ section {
     transition: var(--transition);
 }
 
-.social-link:hover {
+.social-link:hover,
+.social-link:focus-visible {
     background-color: var(--color-primary);
     transform: translateY(-3px);
 }
