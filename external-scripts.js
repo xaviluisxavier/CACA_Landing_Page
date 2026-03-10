@@ -1,21 +1,34 @@
-//import * as d3 from "d3";
-
 const form = document.querySelector('.contact-form');
 const saberMaisButton = document.getElementById('SaberMais');
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+
+
+if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+        });
+    });
+}
 
 
 saberMaisButton.addEventListener('click', (e) => {
     const areasDeInvestigacao = document.getElementById('investigacao');
     e.preventDefault();
     
-    // Alterna a classe que criámos no CSS
     areasDeInvestigacao.classList.toggle('visible');
 
-    // Opcional: Faz scroll suave até à secção quando ela abre
     if (areasDeInvestigacao.classList.contains('visible')) {
         setTimeout(() => {
             areasDeInvestigacao.scrollIntoView({ behavior: 'smooth' });
-        }, 100); // Pequeno delay para a animação começar primeiro
+        }, 100);
     }
 });
 
@@ -50,41 +63,57 @@ form.addEventListener('submit', (e) => {
     }
 });
 
+
 function mostrarGrafico() {
     const container = document.querySelector('.grafico-placeholder');
     const grafico = d3.select('#opportunityChart');
     
-    const larguraSvg = container.clientWidth;
-    const alturaSvg = container.clientHeight || 300; 
+    grafico.selectAll("*").remove();
+
     let valores = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
     
-    grafico.selectAll("*").remove(); 
-    grafico.attr("width", larguraSvg).attr("height", alturaSvg);
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight || 300; 
 
-    const espacoPorBarra = larguraSvg / valores.length;
-    const valorMaximo = Math.max(...valores);
+    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+    const innerWidth = containerWidth - margin.left - margin.right;
+    const innerHeight = containerHeight - margin.top - margin.bottom;
 
-    grafico.selectAll("rect")
+    grafico.attr("width", containerWidth).attr("height", containerHeight);
+
+    const svg = grafico.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const xScale = d3.scaleBand()
+        .domain(valores.map((d, i) => i))
+        .range([0, innerWidth])
+        .padding(0.2); 
+
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(valores)])
+        .range([innerHeight, 0]);
+
+    svg.selectAll("rect")
         .data(valores)
         .enter()
         .append("rect")
-        // Eixo X e Largura
-        .attr("x", (d, i) => i * espacoPorBarra + 5) 
-        .attr("width", espacoPorBarra - 10)          
-        .attr("fill", "var(--color-primary)")
+        .attr("x", (d, i) => xScale(i))
+        .attr("width", xScale.bandwidth())
+        .attr("fill", "var(--color-primary)") 
+        .attr("rx", 4) 
         
-        //ESTADO INICIAL DA ANIMAÇÃO
-        .attr("y", alturaSvg) 
-        .attr("height", 0)  
+        //ESTADO INICIAL
+        .attr("y", innerHeight)
+        .attr("height", 0)
         
-        //FAZER A ANIMAÇÃO
+        //ANIMAÇÃO
         .transition()
         .duration(800)
-        .delay((d, i) => i * 100)
+        .delay((d, i) => i * 80) 
         
         //ESTADO FINAL
-        .attr("y", d => alturaSvg - (d / valorMaximo * alturaSvg)) 
-        .attr("height", d => d / valorMaximo * alturaSvg);
+        .attr("y", d => yScale(d))
+        .attr("height", d => innerHeight - yScale(d));
 }
 
 window.addEventListener('DOMContentLoaded', mostrarGrafico);
