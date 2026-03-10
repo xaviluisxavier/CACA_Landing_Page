@@ -2,12 +2,10 @@
 
 const form = document.querySelector('.contact-form');
 const saberMaisButton = document.getElementById('SaberMais');
-var areasDeInvestigacao = document.getElementById('investigacao');
-var grafico = d3.select('#opportunityChart');
 
-const campos = ['name', 'email','phone', 'address', 'subject', 'message']
 
 saberMaisButton.addEventListener('click', (e) => {
+    const areasDeInvestigacao = document.getElementById('investigacao');
     e.preventDefault();
     
     // Alterna a classe que criámos no CSS
@@ -24,6 +22,7 @@ saberMaisButton.addEventListener('click', (e) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    const campos = ['name', 'email','phone', 'address', 'subject', 'message']
     const email = document.getElementById('email').value;
     const nome = document.getElementById('name').value;
     const telemovel = document.getElementById('phone').value;
