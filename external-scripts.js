@@ -55,34 +55,37 @@ function mostrarGrafico() {
     const grafico = d3.select('#opportunityChart');
     
     const larguraSvg = container.clientWidth;
-    const alturaSvg = 300; 
+    const alturaSvg = container.clientHeight || 300; 
     let valores = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+    
     grafico.selectAll("*").remove(); 
     grafico.attr("width", larguraSvg).attr("height", alturaSvg);
-    const espacoPorBarra = larguraSvg / valores.length;
 
-    //Criar e Animar as barras
+    const espacoPorBarra = larguraSvg / valores.length;
+    const valorMaximo = Math.max(...valores);
+
     grafico.selectAll("rect")
         .data(valores)
         .enter()
         .append("rect")
-        // multiplica o índice pelo espaço disponível
-        .attr("x", (d, i) => i * espacoPorBarra + 5) // +5 para dar uma margem
-        .attr("width", espacoPorBarra - 10)          // -10 para não ficarem coladas
+        // Eixo X e Largura
+        .attr("x", (d, i) => i * espacoPorBarra + 5) 
+        .attr("width", espacoPorBarra - 10)          
         .attr("fill", "var(--color-primary)")
         
-        //INÍCIO DA ANIMAÇÃO
-        .attr("y", alturaSvg)
-        .attr("height", 0)
+        //ESTADO INICIAL DA ANIMAÇÃO
+        .attr("y", alturaSvg) 
+        .attr("height", 0)  
         
         //FAZER A ANIMAÇÃO
         .transition()
-        .duration(800) // demora quase 1 segundo a subir
-        .delay((d, i) => i * 100) // cada barra sobe 100ms depois da anterior
+        .duration(800)
+        .delay((d, i) => i * 100)
         
-        //FIM DA ANIMAÇÃ
-        .attr("y", d => alturaSvg - d)
-        .attr("height", d => d);
+        //ESTADO FINAL
+        .attr("y", d => alturaSvg - (d / valorMaximo * alturaSvg)) 
+        .attr("height", d => d / valorMaximo * alturaSvg);
 }
+
 window.addEventListener('DOMContentLoaded', mostrarGrafico);
 window.addEventListener('resize', mostrarGrafico);
