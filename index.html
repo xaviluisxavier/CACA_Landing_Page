@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -49,7 +50,7 @@
                         de saúde regionais, dedicada à investigação clínica de excelência,
                         ao ensino de qualidade e à melhoria dos cuidados de saúde nas ilhas.
                     </p>
-                    <button type="click" class="cta-button" id="SaberMais">Conheça as Nossas Áreas</button>
+                    <button type="button" class="cta-button" id="SaberMais">Conheça as Nossas Áreas</button>
                 </div>
                 <div class="hero-image">
                     <div class="image-placeholder">
@@ -59,7 +60,7 @@
             </div>
         </section>
 
-        <section id="investigacao" class="hidden research-areas">
+        <section id="investigacao" class="research-areas">
             <div class="container">
                 <header class="section-header">
                     <h2 class="section-title">Áreas de Investigação</h2>
@@ -274,7 +275,7 @@
 
                 <div class="grafico-placeholder">
                     <p>Gráfico de oportunidades em desenvolvimento...</p>
-                    <canvas id="opportunityChart"></canvas>
+                    <svg id="opportunityChart" width="1000" height="300"></svg>
                 </div>
             </div>
         </section>

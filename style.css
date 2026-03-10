@@ -76,14 +76,6 @@ button {
     font-family: inherit;
 }
 
-.visible {
-    display: block;
-}
-
-.hidden {
-    display: none;
-}
-
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -251,8 +243,23 @@ section {
     font-style: italic;
 }
 
+/* Estado inicial: Escondido e encolhido */
 .research-areas {
-    background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-off-white) 100%);
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 
+        max-height 0.8s ease-in-out, 
+        padding 0.8s ease-in-out, 
+        opacity 0.4s ease;
+}
+
+/* Estado ativo: Visível e expandido */
+.research-areas.visible {
+    max-height: 2000px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .research-grid {

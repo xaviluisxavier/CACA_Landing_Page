@@ -9,11 +9,15 @@ const campos = ['name', 'email','phone', 'address', 'subject', 'message']
 
 saberMaisButton.addEventListener('click', (e) => {
     e.preventDefault();
-    let isHidden = areasDeInvestigacao.classList.contains('hidden');
-    if (isHidden) {
-    areasDeInvestigacao.classList.add('visible');
-    } else {
-        areasDeInvestigacao.classList.remove('visible');
+    
+    // Alterna a classe que criámos no CSS
+    areasDeInvestigacao.classList.toggle('visible');
+
+    // Opcional: Faz scroll suave até à secção quando ela abre
+    if (areasDeInvestigacao.classList.contains('visible')) {
+        setTimeout(() => {
+            areasDeInvestigacao.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Pequeno delay para a animação começar primeiro
     }
 });
 
@@ -44,13 +48,11 @@ form.addEventListener('submit', (e) => {
     alert('Mensagem enviada com sucesso!')
     for(let campo of campos) {
         document.getElementById(campo).value = '';}
-    } else {
-        alert('Mensagem não enviada.')
     }
 });
 
 function mostrarGrafico() {
-    const alturaSvg = 150; // Altura total do teu container SVG
+    const alturaSvg = 300; // Altura total do teu container SVG
     let valores = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
     
     grafico.selectAll("*").remove(); // Limpa o gráfico anterior antes de desenhar
@@ -59,10 +61,11 @@ function mostrarGrafico() {
         .data(valores)
         .enter()
         .append("rect")
-        .attr("x", (d, i) => i * 25)
+        .attr("x", (d, i) => i * 100)
         .attr("y", d => alturaSvg - d) // Empurra a barra para a base
-        .attr("width", 20)
+        .attr("width", 50)
         .attr("height", d => d)
         .attr("fill", "steelblue");
 }
 
+window.addEventListener('DOMContentLoaded', mostrarGrafico);
