@@ -15,6 +15,7 @@
 <body>
     <header id="header" class="header">
         <div class="container header-content">
+            
             <div class="logo-section">
                 <div class="logo">
                     <img src="./assets/logo-caca.svg" alt="Logótipo CACA" width="60" height="60">
@@ -23,8 +24,11 @@
                     <h1 class="title-main">Centro Académico Clínico dos Açores</h1>
                     <p class="title-sub">Inovação e Excelência em Saúde</p>
                 </div>
-            </div>
-            <nav class="main-nav" aria-label="Navegação principal">
+            </div> <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                ☰
+            </button>
+
+            <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
                 <ul>
                     <li><a href="#missao">Missão</a></li>
                     <li><a href="#investigacao">Investigação</a></li>
@@ -33,7 +37,8 @@
                     <li><a href="#contactos">Contactos</a></li>
                 </ul>
             </nav>
-        </div>
+
+        </div> 
     </header>
 
     <main>
@@ -193,6 +198,18 @@
             </div>
         </section>
 
+        <section id="grafico" class="grafico">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Gráfico de Oportunidades</h2>
+                </header>
+
+                <div class="grafico-placeholder">
+                   <svg id="opportunityChart" tabindex="0"></svg>
+                </div>
+            </div>
+        </section>
+
         <section id="contactos" class="contacts">
             <div class="container">
                 <header class="section-header">
@@ -241,7 +258,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone">Telemovel</label>
+                                <label for="phone">Telemóvel</label>
                                 <input type="text" id="phone" name="phone" required>
                             </div>
 
@@ -267,17 +284,6 @@
             </div>
         </section>
 
-        <section id="grafico" class="grafico">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title">Gráfico de Oportunidades</h2>
-                </header>
-
-                <div class="grafico-placeholder">
-                   <svg id="opportunityChart"></svg>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
