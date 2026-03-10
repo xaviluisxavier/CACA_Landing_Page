@@ -49,7 +49,7 @@
                         de saúde regionais, dedicada à investigação clínica de excelência,
                         ao ensino de qualidade e à melhoria dos cuidados de saúde nas ilhas.
                     </p>
-                    <a href="#investigacao" class="cta-button">Conheça as Nossas Áreas</a>
+                    <button type="click" class="cta-button" id="SaberMais">Conheça as Nossas Áreas</button>
                 </div>
                 <div class="hero-image">
                     <div class="image-placeholder">
@@ -59,7 +59,7 @@
             </div>
         </section>
 
-        <section id="investigacao" class="research-areas">
+        <section id="investigacao" class="hidden research-areas">
             <div class="container">
                 <header class="section-header">
                     <h2 class="section-title">Áreas de Investigação</h2>
@@ -240,8 +240,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="phone">Telemovel</label>
+                                <input type="text" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Morada</label>
+                                <input type="text" id="address" name="address">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="subject">Assunto</label>
-                                <input type="text" id="subject" name="subject" required>
+                                <input id="subject" name="subject" required>
                             </div>
 
                             <div class="form-group">
@@ -252,6 +262,19 @@
                             <button type="submit" class="submit-button">Enviar Mensagem</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="grafico" class="grafico">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Gráfico de Oportunidades</h2>
+                </header>
+
+                <div class="grafico-placeholder">
+                    <p>Gráfico de oportunidades em desenvolvimento...</p>
+                    <canvas id="opportunityChart"></canvas>
                 </div>
             </div>
         </section>
