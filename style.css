@@ -612,6 +612,12 @@ section {
     font-size: 0.875rem;
 }
 
+#opportunityChart {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 /* Tablets (≤1024px) */
 @media (max-width: 1024px) {
     .hero-content {
