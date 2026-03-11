@@ -2,6 +2,7 @@ const form = document.querySelector('.contact-form');
 const saberMaisButton = document.getElementById('SaberMais');
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
+const btnTopo = document.getElementById("btn-topo");
 
 
 
@@ -18,6 +19,9 @@ if (menuToggle && mainNav) {
     });
 }
 
+btnTopo.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
 saberMaisButton.addEventListener('click', (e) => {
     const areasDeInvestigacao = document.getElementById('investigacao');
@@ -118,3 +122,11 @@ function mostrarGrafico() {
 
 window.addEventListener('DOMContentLoaded', mostrarGrafico);
 window.addEventListener('resize', mostrarGrafico);
+window.addEventListener("scroll", () => {
+    // Se a página descer mais de 300 pixeis, mostra o botão
+    if (window.scrollY > 300) {
+        btnTopo.style.display = "block";
+    } else {
+        btnTopo.style.display = "none";
+    }
+});
