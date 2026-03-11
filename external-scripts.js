@@ -4,8 +4,6 @@ const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 const btnTopo = document.getElementById("btn-topo");
 
-
-
 if (menuToggle && mainNav) {
     menuToggle.addEventListener('click', () => {
         mainNav.classList.toggle('active');
@@ -20,8 +18,8 @@ if (menuToggle && mainNav) {
 }
 
 btnTopo.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 saberMaisButton.addEventListener('click', (e) => {
     const areasDeInvestigacao = document.getElementById('investigacao');
@@ -61,12 +59,12 @@ form.addEventListener('submit', (e) => {
 
     let confirmacao = confirm('Mandar mensagem?');
     if (confirmacao){
-    alert('Mensagem enviada com sucesso!')
-    for(let campo of campos) {
-        document.getElementById(campo).value = '';}
+        alert('Mensagem enviada com sucesso!')
+        for(let campo of campos) {
+            document.getElementById(campo).value = '';
+        }
     }
 });
-
 
 function mostrarGrafico() {
     const container = document.querySelector('.grafico-placeholder');
@@ -123,10 +121,23 @@ function mostrarGrafico() {
 window.addEventListener('DOMContentLoaded', mostrarGrafico);
 window.addEventListener('resize', mostrarGrafico);
 window.addEventListener("scroll", () => {
-    // Se a página descer mais de 300 pixeis, mostra o botão
     if (window.scrollY > 300) {
         btnTopo.style.display = "block";
     } else {
         btnTopo.style.display = "none";
     }
 });
+
+const carouselItems = document.querySelectorAll('.carousel-item');
+const btnPrev = document.querySelector('.carousel-control.prev');
+const btnNext = document.querySelector('.carousel-control.next');
+let currentSlide = 0;
+
+if (carouselItems.length > 0) {
+    function showSlide(index) {
+        carouselItems[currentSlide].classList.remove('active');
+        currentSlide = (index + carouselItems.length) % carouselItems.length;
+        carouselItems[currentSlide].classList.add('active');
+    }
+    setInterval(() => showSlide(currentSlide + 1), 5000);
+}
