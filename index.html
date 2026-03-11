@@ -11,6 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+</script>
+<script src="external-scripts.js" type="module"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -18,26 +26,24 @@
             
             <div class="logo-section">
                 <div class="logo">
-                    <img src="./assets/logo-caca.svg" alt="Logótipo CACA" width="60" height="60">
+                    <div id="logo-3d-container" class="logo-3d-container"></div>
                 </div>
                 <div class="site-title">
                     <h1 class="title-main">Centro Académico Clínico dos Açores</h1>
                     <p class="title-sub">Inovação e Excelência em Saúde</p>
                 </div>
-            </div> <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menu">
-                ☰
-            </button>
+            </div> 
 
             <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
                 <ul>
                     <li><a href="#missao">Missão</a></li>
-                    <li><a href="#investigacao">Investigação</a></li>
                     <li><a href="#parceiros">Parceiros</a></li>
                     <li><a href="#oportunidades">Oportunidades</a></li>
                     <li><a href="#contactos">Contactos</a></li>
                 </ul>
             </nav>
 
+            <button class="mobile-menu-toggle" id="menuToggle">☰</button>
         </div> 
     </header>
 

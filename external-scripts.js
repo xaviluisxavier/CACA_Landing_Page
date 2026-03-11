@@ -1,25 +1,20 @@
-const form = document.querySelector('.contact-form');
-const saberMaisButton = document.getElementById('SaberMais');
+import * as THREE from 'three';
+
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
-const btnTopo = document.getElementById("btn-topo");
 
-if (menuToggle && mainNav) {
-    menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-    });
-
+menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('active');
+    
     const navLinks = mainNav.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('active');
-        });
-    });
-}
+    const isOpened = mainNav.classList.contains('active');
 
-btnTopo.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    for (let link of navLinks) {
+        link.style.display = isOpened ? "block" : "none";
+    }
 });
+
+const saberMaisButton = document.getElementById('SaberMais');
 
 saberMaisButton.addEventListener('click', (e) => {
     const areasDeInvestigacao = document.getElementById('investigacao');
@@ -33,6 +28,9 @@ saberMaisButton.addEventListener('click', (e) => {
         }, 100);
     }
 });
+
+
+const form = document.querySelector('.contact-form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -120,6 +118,14 @@ function mostrarGrafico() {
 
 window.addEventListener('DOMContentLoaded', mostrarGrafico);
 window.addEventListener('resize', mostrarGrafico);
+
+
+const btnTopo = document.getElementById("btn-topo");
+
+btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
         btnTopo.style.display = "block";
@@ -141,3 +147,58 @@ if (carouselItems.length > 0) {
     }
     setInterval(() => showSlide(currentSlide + 1), 5000);
 }
+
+
+
+// No final do seu external-scripts.js, onde começa o código do Three.js:
+window.addEventListener('load', () => {
+    const container = document.getElementById('logo-3d-container');
+    if (!container) return;
+
+    const width = 60;
+    const height = 60;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio); // Melhora a nitidez em ecrãs Retina/4K
+    container.appendChild(renderer.domElement);
+
+    const loader = new THREE.TextureLoader();
+    
+    // CARREGAMENTO DA TEXTURA COM CONFIGURAÇÕES DE CENTRAGEM
+    const texture = loader.load('./assets/logo-caca.svg', (tex) => {
+        // Isso garante que a imagem não fique esticada e use o centro como eixo
+        tex.center.set(0.5, 0.5); 
+        tex.minFilter = THREE.LinearFilter; // Evita que o ícone fique "pixelizado"
+    }, undefined, (err) => {
+        console.warn("Erro ao carregar textura. Verifique o caminho ou use Live Server.");
+        logoMesh.material.color.setHex(0x1976D2); 
+    });
+
+    // Usamos CircleGeometry (um disco plano) para o logo não ficar distorcido como numa esfera
+    const geometry = new THREE.CircleGeometry(2, 64);
+    
+    // IMPORTANTE: MeshBasicMaterial é melhor para ícones 2D pois não precisa de luzes complexas
+    const material = new THREE.MeshBasicMaterial({ 
+        map: texture,
+        transparent: true,
+        side: THREE.DoubleSide // Permite ver o verso do logo quando ele gira
+    });
+
+    const logoMesh = new THREE.Mesh(geometry, material);
+    scene.add(logoMesh);
+
+    // Posicionamento da câmara
+    camera.position.z = 4.5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        // Rotação tipo "moeda a girar"
+        logoMesh.rotation.y += 0.005; 
+        renderer.render(scene, camera);
+    }
+    animate();
+});
