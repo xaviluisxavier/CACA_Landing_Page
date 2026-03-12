@@ -1,7 +1,6 @@
-
 const form = document.querySelector('.contact-form');
 
-form.addEventListener('submit', (e) => {
+function validar_formulario(e) {
     e.preventDefault(); // Evita o recarregamento da página na submissão
     
     const campos = ['name', 'email','phone', 'address', 'subject', 'message'];
@@ -39,4 +38,6 @@ form.addEventListener('submit', (e) => {
             document.getElementById(campo).value = '';
         }
     }
-});
+}
+
+form.addEventListener('submit', validar_formulario);
