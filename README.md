@@ -26,7 +26,7 @@ Integrámos animações visualmente impactantes e contextualmente relevantes par
 ### Gestão de Eventos DOM
 A página monitoriza ativamente as interações do utilizador para melhorar a usabilidade geral, respondendo a múltiplos eventos distintos:
 * **Botão "Conheça as Nossas Áreas" (Saber Mais):** Revela a secção de investigação (previamente oculta) com uma transição suave de *scroll*.
-* **Carrossel Interativo:** Implementámos um carrossel dinâmico na secção de destaque que alterna automaticamente as imagens, permitindo uma navegação visual fluida.
+* **Carrossel de Imagens:** Implementámos um carrossel dinâmico na secção de destaque que alterna automaticamente as imagens, permitindo uma navegação visual fluida.
 * **Botão "Voltar ao Topo" (Scroll-to-top):** Um botão que aparece dinamicamente apenas quando o utilizador faz *scroll* para baixo na página.
 * **Menu Mobile:** Gestão de eventos para abrir e fechar o menu de navegação em ecrãs menores, reforçando a responsividade.
 
