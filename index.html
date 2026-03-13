@@ -358,26 +358,21 @@
 
             // Inicializar os objetos da classe Scene, PerspectiveCamera e WebGLRenderer
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10);
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
             // Configurar o renderer
             renderer.setSize(width, height);
-            renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
             // Carregar a imagem
             const loader = new THREE.TextureLoader();
-            const texture = loader.load(logoBase64, tex => {
-                tex.center.set(0.5, 0.5); 
-                tex.minFilter = THREE.LinearFilter;
-            });
+            const texture = loader.load(logoBase64, tex => tex.center.set(0.5, 0.5));
 
             
             const geometry = new THREE.CircleGeometry(2, 64);
             const material = new THREE.MeshBasicMaterial({ 
                 map: texture,
-                transparent: true,
                 side: THREE.DoubleSide
             });
             const logoMesh = new THREE.Mesh(geometry, material);
