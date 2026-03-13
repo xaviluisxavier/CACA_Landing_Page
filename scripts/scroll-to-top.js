@@ -1,11 +1,16 @@
+// Seleção das áreas afetadas
 const btnTopo = document.getElementById("btn-topo");
 
-// Evento de clique para regressar ao topo da página suavemente
-function scroll_to_top(e) {
+/**
+ * Função para regressar ao topo da página suavemente
+ * @param {Event} e Objeto de evento injetado pelo browser
+ */function scroll_to_top(e) {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Mostra o botão apenas se o utilizador fizer scroll para baixo (> 300px)
+/**
+ * Função para mostrar o botão apenas se o utilizador fizer scroll para baixo (> 300px)
+ */ 
 function show_btn() {
     if (window.scrollY > 300) {
         btnTopo.style.display = "block";

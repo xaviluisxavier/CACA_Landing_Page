@@ -1,13 +1,17 @@
-// Seleção do botão "Saber Mais" 
+// Seleção das áreas afetadas
 const saberMaisButton = document.getElementById('SaberMais');
-
-// Adiciona evento para revelar a secção de investigação
+const areasDeInvestigacao = document.getElementById('investigacao');
+   
+/**
+* Função para revelar a secção de investigação
+* @param {Event} e Objeto de evento injetado pelo browser
+*/
 function saber_mais(e) {
-    const areasDeInvestigacao = document.getElementById('investigacao');
-    e.preventDefault(); // Previne o comportamento padrão do botão
+    e.preventDefault(); // Evita o recarregamento da página na submissão
     
-    // Alterna a classe 'visible' que aciona a transição CSS de expansão
+    // Alterna a classe 'visible'
     areasDeInvestigacao.classList.toggle('visible');
+
 
     function show () {
         areasDeInvestigacao.scrollIntoView({ behavior: 'smooth' });

@@ -1,28 +1,33 @@
+// Seleção das áreas afetadas
 const form = document.querySelector('.contact-form');
 
+/**
+ * Função para validar mensagem e simular mensagem enviada 
+ * @param {Event} e Objeto de evento injetado pelo browser
+ */ 
 function validar_formulario(e) {
     e.preventDefault(); // Evita o recarregamento da página na submissão
     
     const campos = ['name', 'email','phone', 'address', 'subject', 'message'];
     
-    // Obtenção dos valores introduzidos pelo utilizador
+    // Obtem os valores introduzidos pelo utilizador
     const email = document.getElementById('email').value;
     const nome = document.getElementById('name').value;
     const telemovel = document.getElementById('phone').value;
 
-    // 1. Validação de Email: Apenas aceita domínios específicos
+    // Valida Email: Apenas aceita domínios específicos
     if (!email.endsWith('@uac.pt') && !email.endsWith('@gmail.com') && !email.endsWith('@outlook.com')) {
         alert("Por favor, use um email válido (@uac.pt, @gmail.com ou @outlook.com)."); 
-        return; // Interrompe a submissão
+        return;
     }
 
-    // 2. Validação de Nome: Verifica se o campo não está vazio
+    // Valida Nome: Verifica se o campo não está vazio
     if (!nome) {
         alert('Preencha o campo nome.');
         return;
     }
 
-    // 3. Validação de Telemóvel: Verifica se é número, tem 9 dígitos e começa por '9'
+    // Valida Telemóvel: Verifica se é número, tem 9 dígitos e começa por '9'
     if (telemovel && (isNaN(telemovel) || telemovel.length != 9 || !telemovel.startsWith('9'))) {
         alert('Insira um telemóvel válido (9 dígitos, a começar por 9).');
         return;
@@ -33,7 +38,7 @@ function validar_formulario(e) {
     if (confirmacao){
         alert('Mensagem enviada com sucesso!'); // Feedback visual de sucesso
         
-        // Limpa todos os campos do formulário iterando sobre a array 'campos'
+        // Limpa todos os campos do formulário
         for(let campo of campos) {
             document.getElementById(campo).value = '';
         }
