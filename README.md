@@ -10,7 +10,7 @@
 ---
 
 ## Novas Funcionalidades e Interatividade (Entrega 2)
-Nesta segunda fase do projeto, integrámos JavaScript para adicionar interatividade e dinamismo à landing page, melhorando a experiência do utilizador. O código foi estruturado de forma modular e incluído num ficheiro externo (`external-scripts.js`), garantindo a sua clareza e legibilidade.
+Nesta segunda fase do projeto, integrámos JavaScript para adicionar interatividade e dinamismo à landing page, melhorando a experiência do utilizador. O código foi estruturado de forma modular e incluído em varios ficheiros externos, garantindo a sua clareza e legibilidade.
 
 ### Formulário de Contacto
 Adicionámos um formulário funcional focado no contacto direto com o CACA.
@@ -38,8 +38,8 @@ Garantimos que as novas funcionalidades em JavaScript continuam a respeitar as r
 A identidade visual do **CACA** foi concebida para transmitir profissionalismo académico e confiança na área da saúde, integrando elementos regionais dos Açores.
 
 ### Paleta de Cores
-* **Azul primário (#1976D2 / #0D47A1):** Representa confiança, saúde e o oceano Atlântico que rodeia as ilhas.
-* **Verde secundário (#43A047 / #2E7D32):** Simboliza saúde, vitalidade e esperança.
+* **Azul primário (#1976D2 / #003882):** Representa confiança, saúde e o oceano Atlântico que rodeia as ilhas.
+* **Verde secundário (#43A047 / #FFD100):** Simboliza a area da saúde.
 * **Cores de destaque (laranja, roxo, vermelho):** Utilizadas para diferenciar áreas de investigação.
 
 ### Tipografia
