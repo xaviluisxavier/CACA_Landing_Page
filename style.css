@@ -635,6 +635,7 @@ section {
     align-items: center;
     justify-content: center;
     width: 50px;
+    flex-shrink: 0;
     background-color: #f0f4f8;
     color: var(--color-primary);
     font-size: 1.3rem;
@@ -654,16 +655,10 @@ section {
     padding: 0.75rem 1rem;
     border: none;
     background-color: transparent;
-    font-family: var(--font-body) !important;
-    letter-spacing: normal !important;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--color-dark-gray);
     box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
     outline: none;
     box-shadow: none;
 }
@@ -679,24 +674,25 @@ section {
     border-right: 4px solid var(--color-accent-red);
 }
 
-.country-select {
-    font-family: 'Noto Color Emoji', var(--font-body) !important;
-    width: auto !important;
-    max-width: 110px;
-    height: 100%;
-    border: none !important;
+.form-group .country-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: max-content;
+    min-width: 115px;
+    margin: 0;
     border-right: 1px solid var(--color-light-gray) !important;
-    background-color: #fafafa !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 0.5rem !important;
-    font-size: 0.9rem !important;
-    outline: none !important;
-    box-shadow: none !important;
+    background-color: #fafafa;
+    border-radius: 0;
+    
+    font-family: 'Noto Color Emoji', var(--font-body);
     cursor: pointer;
+    
+   
 }
 
-.country-select option {
-    font-family: 'Noto Color Emoji', var(--font-body) !important;
+.form-group .country-select option {
+    font-family: 'Noto Color Emoji', var(--font-body);
 }
 
 .form-group textarea {
@@ -983,18 +979,19 @@ section {
         font-size: 1.1rem;
     }
 
-    .country-select {
-        max-width: 85px !important;
-        padding-left: 0.3rem !important;
-        padding-right: 0.3rem !important;
-        font-size: 0.85rem !important;
-    }
-
     .form-group input,
     .form-group select,
     .form-group textarea {
         padding: 0.75rem 0.5rem;
         font-size: 0.9rem;
+    }
+
+    .form-group .country-select {
+        min-width: 85px;
+        padding-left: 0.3rem;
+        padding-right: 1.2rem;
+        font-size: 0.85rem;
+        background-position: right 0.3rem center;
     }
 
     .submit-button {
