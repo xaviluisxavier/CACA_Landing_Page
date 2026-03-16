@@ -16,8 +16,11 @@ function validar_formulario(e) {
     const telemovel = document.getElementById('phone').value;
 
     // Valida Email: Apenas aceita domínios específicos
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@(uac\.pt|gmail\.com|outlook\.com)$/;
-    if (!emailRegex.test(email)) {
+    const dominiosPermitidos = ['uac.pt', 'gmail.com', 'outlook.com'];
+    const partesDoEmail = email.split('@'); // Corta o email no '@'
+
+    // Verifica se tem texto antes do @ (partesDoEmail[0]) e se o domínio está na lista
+    if (partesDoEmail.length !== 2 || !partesDoEmail[0] || !dominiosPermitidos.includes(partesDoEmail[1])) {
         alert("Por favor, introduza um email válido (apenas domínios @uac.pt, @gmail.com ou @outlook.com são permitidos).");
         return;
     }
