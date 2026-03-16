@@ -16,8 +16,9 @@ function validar_formulario(e) {
     const telemovel = document.getElementById('phone').value;
 
     // Valida Email: Apenas aceita domínios específicos
-    if (!email.endsWith('@uac.pt') && !email.endsWith('@gmail.com') && !email.endsWith('@outlook.com')) {
-        alert("Por favor, use um email válido (@uac.pt, @gmail.com ou @outlook.com)."); 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(uac\.pt|gmail\.com|outlook\.com)$/;
+    if (!emailRegex.test(email)) {
+        alert("Por favor, introduza um email válido (apenas domínios @uac.pt, @gmail.com ou @outlook.com são permitidos).");
         return;
     }
 
