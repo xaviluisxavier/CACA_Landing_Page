@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="importmap">
       {
@@ -219,7 +220,7 @@
                 </header>
 
                 <div class="grafico-placeholder">
-                   <svg id="opportunityChart" tabindex="0">
+                   <svg id="opportunityChart" tabindex="0" aria-label="Gráfico de Barras de Oportunidades">
                     <g class="eixo-x"></g>
                     <g class="corpo-grafico"></g>   
                    </svg>
@@ -263,35 +264,70 @@
 
                     <div class="contact-form-wrapper">
                         <h3 class="contact-form-title">Envie uma Mensagem</h3>
+                        <p class="form-mandatory-note">Os campos com <span class="mandatory-star">*</span> são obrigatórios.</p>
+                        
                         <form class="contact-form" aria-label="Formulário de contacto">
+                            
                             <div class="form-group">
-                                <label for="name">Nome completo</label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name" class="sr-only">Nome completo</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Nome Completo">👤</span>
+                                    <input type="text" id="name" name="name" placeholder="Nome completo *" required>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Endereço de email</label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email" class="sr-only">Endereço de email</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Email">📧</span>
+                                    <input type="email" id="email" name="email" placeholder="Endereço de email *" required>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="phone">Telemóvel</label>
-                                <input type="text" id="phone" name="phone" required>
+                                <label for="phone" class="sr-only">Telemóvel</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Telefone">📱</span>
+                                    <select id="country-code" name="country-code" class="country-select" aria-label="Indicativo">
+                                        <option value="+351" selected>🇵🇹 +351</option>
+                                        <option value="+55">🇧🇷 +55</option>
+                                        <option value="+34">🇪🇸 +34</option>
+                                        <option value="+44">🇬🇧 +44</option>
+                                        <option value="+33">🇫🇷 +33</option>
+                                        <option value="+1">🇺🇸 +1</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="Número de telemóvel *" required pattern="[0-9]{9,15}" title="Apenas números, entre 9 a 15 dígitos">
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="address">Morada</label>
-                                <input type="text" id="address" name="address">
+                                <label for="address" class="sr-only">Morada</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Morada">📍</span>
+                                    <input type="text" id="address" name="address" placeholder="Morada (Opcional)">
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="subject">Assunto</label>
-                                <input id="subject" name="subject" required>
+                                <label for="subject" class="sr-only">Assunto</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Assunto">📝</span>
+                                    <select id="subject" name="subject" required>
+                                        <option value="" disabled selected>Selecione o Assunto da mensagem *</option>
+                                        <option value="Informações Gerais">Informações Gerais</option>
+                                        <option value="Estágios e Oportunidades">Estágios e Oportunidades</option>
+                                        <option value="Parcerias">Parcerias Institucionais</option>
+                                        <option value="Apoio">Apoio / Outros</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="message">Mensagem</label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
+                                <label for="message" class="sr-only">Mensagem</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon align-top" title="Mensagem">💬</span>
+                                    <textarea id="message" name="message" rows="5" placeholder="Escreva aqui a sua mensagem *" required></textarea>
+                                </div>
                             </div>
 
                             <button type="submit" class="submit-button">Enviar Mensagem</button>
@@ -333,15 +369,10 @@
     <button type="button" class= "btn-top" id="btn-topo">⬆</button>
 
     <script src="./scripts/carrossel.js" defer></script>
-    
     <script src="./scripts/formulario.js" defer></script>
-    
     <script src="./scripts/grafico.js" defer></script>
-
     <script src="./scripts/menu-nav.js" defer></script>
-
     <script src="./scripts/saber-mais.js" defer></script>
-    
     <script src="./scripts/scroll-to-top.js" defer></script>
 
     <script type="module">
@@ -351,25 +382,22 @@
             const container = document.getElementById('logo-3d-container');
             if (!container) return;
 
-            // Definição do tamanho e imagem do logo
             const width = 60;
             const height = 60;
-            const logoBase64 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8IS0tIExvZ28gQ0FDQSAtIENlbnRybyBBY2Fkw6ltaWNvIENsw61uaWNvIGRvcyBBw6dvcmVzIC0tPgogIAogIDwhLS0gQmFja2dyb3VuZCBjaXJjbGUgd2l0aCBncmFkaWVudCAocmVwcmVzZW50aW5nIG9jZWFuL2hlYWx0aCkgLS0+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im9jZWFuR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxOTc2RDI7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBENDdBMTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhlYWx0aEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNDNBMDQ3O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyRTdEMzI7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICAKICA8IS0tIE1haW4gY2lyY2xlIGJhY2tncm91bmQgLS0+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5NSIgZmlsbD0idXJsKCNvY2VhbkdyYWQpIi8+CiAgCiAgPCEtLSBNZWRpY2FsIGNyb3NzIChzYcO6ZGUpIC0tPgogIDxyZWN0IHg9Ijg1IiB5PSI1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwMCIgZmlsbD0id2hpdGUiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjcwIiB3aWR0aD0iNzAiIGhlaWdodD0iMzAiIGZpbGw9IndoaXRlIiByeD0iMyIvPgogIAogIDwhLS0gQm9vay9hY2FkZW1pYyBlbGVtZW50IChhY2FkZW1pYSkgLS0+CiAgPHBhdGggZD0iTSA2MCAxMzUgTCA2MCAxNjUgTCAxMDAgMTU1IEwgMTQwIDE2NSBMIDE0MCAxMzUgWiIgZmlsbD0idXJsKCNoZWFsdGhHcmFkKSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjEzNSIgeDI9IjEwMCIgeTI9IjE1NSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9Ijc1IiB5MT0iMTQwIiB4Mj0iNzUiIHkyPSIxNjAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC43Ii8+CiAgPGxpbmUgeDE9IjEyNSIgeTE9IjE0MCIgeDI9IjEyNSIgeTI9IjE2MCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjciLz4KICAKICA8IS0tIFdhdmVzIHJlcHJlc2VudGluZyBBem9yZXMgb2NlYW4gLS0+CiAgPHBhdGggZD0iTSAyMCAxNzAgUSAzNSAxNzUgNTAgMTcwIFEgNjUgMTY1IDgwIDE3MCBRIDk1IDE3NSAxMTAgMTcwIFEgMTI1IDE2NSAxNDAgMTcwIFEgMTU1IDE3NSAxNzAgMTcwIFEgMTgwIDE2OCAxODAgMTY4IiAKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogIDxwYXRoIGQ9Ik0gMjAgMTgwIFEgMzUgMTg1IDUwIDE4MCBRIDY1IDE3NSA4MCAxODAgUSA5NSAxODUgMTEwIDE4MCBRIDEyNSAxNzUgMTQwIDE4MCBRIDE1NSAxODUgMTcwIDE4MCBRIDE4MCAxNzggMTgwIDE3OCIgCiAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KICAKICA8IS0tIFRleHQgQ0FDQSBhcm91bmQgdGhlIGNpcmNsZSAtLT4KICA8dGV4dCB4PSIxMDAiIHk9IjMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSI+CiAgICBDQUNBCiAgPC90ZXh0Pgo8L3N2Zz4=';
+            const logoBase64 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8IS0tIExvZ28gQ0FDQSAtIENlbnRybyBBY2Fkw6ltaWNvIENsw61uaWNvIGRvcyBBw6dvcmVzIC0tPgogIAogIDwhLS0gQmFja2dyb3VuZCBjaXJjbGUgd2l0aCBncmFkaWVudCAocmVwcmVzZW50aW5nIG9jZWFuL2hlYWx0aCkgLS0+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im9jZWFuR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDM4ODI7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMjI1NTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhlYWx0aEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZEMTAwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFNUJDMDA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICAKICA8IS0tIE1haW4gY2lyY2xlIGJhY2tncm91bmQgLS0+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5NSIgZmlsbD0idXJsKCNvY2VhbkdyYWQpIi8+CiAgCiAgPCEtLSBNZWRpY2FsIGNyb3NzIChzYcO6ZGUpIC0tPgogIDxyZWN0IHg9Ijg1IiB5PSI1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwMCIgZmlsbD0id2hpdGUiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjcwIiB3aWR0aD0iNzAiIGhlaWdodD0iMzAiIGZpbGw9IndoaXRlIiByeD0iMyIvPgogIAogIDwhLS0gQm9vay9hY2FkZW1pYyBlbGVtZW50IChhY2FkZW1pYSkgLS0+CiAgPHBhdGggZD0iTSA2MCAxMzUgTCA2MCAxNjUgTCAxMDAgMTU1IEwgMTQwIDE2NSBMIDE0MCAxMzUgWiIgZmlsbD0idXJsKCNoZWFsdGhHcmFkKSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjEzNSIgeDI9IjEwMCIgeTI9IjE1NSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9Ijc1IiB5MT0iMTQwIiB4Mj0iNzUiIHkyPSIxNjAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC43Ii8+CiAgPGxpbmUgeDE9IjEyNSIgeTE9IjE0MCIgeDI9IjEyNSIgeTI9IjE2MCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjciLz4KICAKICA8IS0tIFdhdmVzIHJlcHJlc2VudGluZyBBem9yZXMgb2NlYW4gLS0+CiAgPHBhdGggZD0iTSAyMCAxNzAgUSAzNSAxNzUgNTAgMTcwIFEgNjUgMTY1IDgwIDE3MCBRIDk1IDE3NSAxMTAgMTcwIFEgMTI1IDE2NSAxNDAgMTcwIFEgMTU1IDE3NSAxNzAgMTcwIFEgMTgwIDE2OCAxODAgMTY4IiAKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogIDxwYXRoIGQ9Ik0gMjAgMTgwIFEgMzUgMTg1IDUwIDE4MCBRIDY1IDE3NSA4MCAxODAgUSA5NSAxODUgMTEwIDE4MCBRIDEyNSAxNzUgMTQwIDE4MCBRIDE1NSAxODUgMTcwIDE4MCBRIDE4MCAxNzggMTgwIDE3OCIgCiAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQuIi8+CiAgCiAgPCEtLSBUZXh0IENBQ0EgYXJvdW5kIHRoZSBjaXJjbGUgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPgogICAgQ0FDQQogIDwvdGV4dD4KPC9zdmc+';
 
-            // Inicializar os objetos da classe Scene, PerspectiveCamera e WebGLRenderer
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10);
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-            // Configurar o renderer
             renderer.setSize(width, height);
             container.appendChild(renderer.domElement);
 
-            // Carregar a imagem
             const loader = new THREE.TextureLoader();
-            const texture = loader.load(logoBase64, tex => tex.center.set(0.5, 0.5));
+            const texture = loader.load(logoBase64, function(loadedTexture) {
+                loadedTexture.center.set(0.5, 0.5); 
+            });
 
-            
             const geometry = new THREE.CircleGeometry(2, 64);
             const material = new THREE.MeshBasicMaterial({ 
                 map: texture,
@@ -378,12 +406,8 @@
             const logoMesh = new THREE.Mesh(geometry, material);
             scene.add(logoMesh);
 
-            // Configurar a posição da camera
             camera.position.z = 4.5;
 
-            /**
-             * Função para animar o logo 
-             */
             function animate() {
                 requestAnimationFrame(animate);
                 logoMesh.rotation.y += 0.005; 
