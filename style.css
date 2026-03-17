@@ -634,16 +634,7 @@ section {
     outline: none;
 }
 
-.form-group input:not(:placeholder-shown):valid,
-.form-group textarea:not(:placeholder-shown):valid,
-.form-group select:not(.country-select):valid {
-    border-right: 4px solid #4CAF50;
-}
 
-.form-group input:not(:placeholder-shown):invalid,
-.form-group textarea:not(:placeholder-shown):invalid {
-    border-right: 4px solid var(--color-accent-red);
-}
 
 .form-group .country-select {
     appearance: none;
