@@ -25,7 +25,6 @@
     --transition: all 0.3s ease;
 }
 
-/* Reset Base */
 * {
     margin: 0;
     padding: 0;
@@ -76,7 +75,6 @@ button {
     outline-offset: 2px;
 }
 
-/* Utilitários */
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -101,7 +99,6 @@ button {
     text-align: center;
 }
 
-/* Header & Navegação */
 .header {
     background-color: var(--color-white);
     border-bottom: 1px solid var(--color-light-gray);
@@ -178,7 +175,6 @@ button {
     top: 1.2rem;
 }
 
-/* Botões Partilhados */
 .btn {
     display: inline-block;
     background-color: var(--color-secondary);
@@ -207,7 +203,6 @@ button {
     align-self: center;
 }
 
-/* Secções Comuns */
 section {
     padding: var(--spacing-2xl) 0;
 }
@@ -233,7 +228,6 @@ section {
     font-style: italic;
 }
 
-/* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
@@ -277,7 +271,6 @@ section {
     color: #E3F2FD;
 }
 
-/* Carousel */
 .carousel {
     position: relative;
     border-radius: var(--border-radius);
@@ -309,7 +302,6 @@ section {
     z-index: 1;
 }
 
-/* Áreas de Investigação */
 .research-areas {
     overflow: hidden;
     max-height: 0;
@@ -381,7 +373,6 @@ section {
     color: var(--color-dark-gray);
 }
 
-/* Parceiros */
 .partners {
     background-color: var(--color-white);
 }
@@ -428,7 +419,6 @@ section {
     font-style: italic;
 }
 
-/* Oportunidades */
 .opportunities {
     background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-off-white) 100%);
 }
@@ -480,7 +470,6 @@ section {
     color: var(--color-gray);
 }
 
-/* Gráfico D3 */
 .grafico-placeholder {
     display: flex;
     width: 100%;
@@ -518,7 +507,6 @@ section {
     stroke: #ddd;
 }
 
-/* Contactos */
 .contacts {
     background-color: var(--color-white);
 }
@@ -577,7 +565,6 @@ section {
     margin-top: var(--spacing-md);
 }
 
-/* Formulário */
 .form-mandatory-note {
     font-size: 0.85rem;
     color: var(--color-gray);
@@ -647,7 +634,6 @@ section {
     outline: none;
 }
 
-/* Validação Corrigida */
 .form-group input:not(:placeholder-shown):valid,
 .form-group textarea:not(:placeholder-shown):valid,
 .form-group select:not(.country-select):valid {
@@ -674,7 +660,6 @@ section {
     min-height: 120px;
 }
 
-/* Botão Topo */
 .btn-top {
     display: none;
     position: fixed;
@@ -694,7 +679,6 @@ section {
     background: var(--color-primary-dark);
 }
 
-/* Footer */
 .footer {
     background-color: var(--color-navy);
     color: var(--color-white);
@@ -766,7 +750,6 @@ section {
     font-size: 0.875rem;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
     .mobile-menu-toggle { display: block; }
     
