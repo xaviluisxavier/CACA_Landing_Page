@@ -167,6 +167,7 @@
                 <header class="section-header">
                     <h2 class="section-title">Gráfico de Oportunidades</h2>
                 </header>
+                <div id="estatisticas-grafico"></div>
                 <div class="grafico-placeholder">
                    <svg id="opportunityChart" tabindex="0" aria-label="Gráfico de Barras de Oportunidades">
                     <g class="eixo-x"></g>
@@ -206,7 +207,7 @@
 
                     <div class="contact-form-wrapper">
                         <h3 class="contact-form-title">Envie uma Mensagem</h3>
-                        <p class="form-mandatory-note">Os campos com <span class="mandatory-star">*</span> são obrigatórios.</p>
+                        <p class="form-mandatory-note">Os campos com * são obrigatórios.</p>
                         <form class="contact-form" aria-label="Formulário de contacto">
                             <div class="form-group">
                                 <label for="name" class="sr-only">Nome completo</label>
@@ -290,54 +291,7 @@
             </div>
         </div>
     </footer>
-
     <button type="button" class="btn-top" id="btn-topo" aria-label="Voltar ao topo">⬆</button>
-
-    <script src="./scripts/carrossel.js" defer></script>
-    <script src="./scripts/formulario.js" defer></script>
-    <script src="./scripts/grafico.js" defer></script>
-    <script src="./scripts/menu-nav.js" defer></script>
-    <script src="./scripts/saber-mais.js" defer></script>
-    <script src="./scripts/scroll-to-top.js" defer></script>
-
-    <script type="module">
-        import * as THREE from 'three';
-
-        function animacao3d() {
-            const container = document.getElementById('logo-3d-container');
-            if (!container) return;
-
-            const width = 60, height = 60;
-            const logoBase64 = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8IS0tIExvZ28gQ0FDQSAtIENlbnRybyBBY2Fkw6ltaWNvIENsw61uaWNvIGRvcyBBw6dvcmVzIC0tPgogIAogIDwhLS0gQmFja2dyb3VuZCBjaXJjbGUgd2l0aCBncmFkaWVudCAocmVwcmVzZW50aW5nIG9jZWFuL2hlYWx0aCkgLS0+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im9jZWFuR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDM4ODI7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMjI1NTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhlYWx0aEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZEMTAwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFNUJDMDA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICAKICA8IS0tIE1haW4gY2lyY2xlIGJhY2tncm91bmQgLS0+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5NSIgZmlsbD0idXJsKCNvY2VhbkdyYWQpIi8+CiAgCiAgPCEtLSBNZWRpY2FsIGNyb3NzIChzYcO6ZGUpIC0tPgogIDxyZWN0IHg9Ijg1IiB5PSI1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwMCIgZmlsbD0id2hpdGUiIHJ4PSIzIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjcwIiB3aWR0aD0iNzAiIGhlaWdodD0iMzAiIGZpbGw9IndoaXRlIiByeD0iMyIvPgogIAogIDwhLS0gQm9vay9hY2FkZW1pYyBlbGVtZW50IChhY2FkZW1pYSkgLS0+CiAgPHBhdGggZD0iTSA2MCAxMzUgTCA2MCAxNjUgTCAxMDAgMTU1IEwgMTQwIDE2NSBMIDE0MCAxMzUgWiIgZmlsbD0idXJsKCNoZWFsdGhHcmFkKSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjEzNSIgeDI9IjEwMCIgeTI9IjE1NSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9Ijc1IiB5MT0iMTQwIiB4Mj0iNzUiIHkyPSIxNjAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC43Ii8+CiAgPGxpbmUgeDE9IjEyNSIgeTE9IjE0MCIgeDI9IjEyNSIgeTI9IjE2MCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjciLz4KICAKICA8IS0tIFdhdmVzIHJlcHJlc2VudGluZyBBem9yZXMgb2NlYW4gLS0+CiAgPHBhdGggZD0iTSAyMCAxNzAgUSAzNSAxNzUgNTAgMTcwIFEgNjUgMTY1IDgwIDE3MCBRIDk1IDE3NSAxMTAgMTcwIFEgMTI1IDE2NSAxNDAgMTcwIFEgMTU1IDE3NSAxNzAgMTcwIFEgMTgwIDE2OCAxODAgMTY4IiAKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNiIvPgogIDxwYXRoIGQ9Ik0gMjAgMTgwIFEgMzUgMTg1IDUwIDE4MCBRIDY1IDE3NSA4MCAxODAgUSA5NSAxODUgMTEwIDE4MCBRIDEyNSAxNzUgMTQwIDE4MCBRIDE1NSAxODUgMTcwIDE4MCBRIDE4MCAxNzggMTgwIDE3OCIgCiAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQuIi8+CiAgCiAgPCEtLSBUZXh0IENBQ0EgYXJvdW5kIHRoZSBjaXJjbGUgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPgogICAgQ0FDQQogIDwvdGV4dD4KPC9zdmc+';
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10);
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-
-            renderer.setSize(width, height);
-            container.appendChild(renderer.domElement);
-
-            const loader = new THREE.TextureLoader();
-            const texture = loader.load('data:image/svg+xml;base64,' + logoBase64, function(loadedTexture) {
-                loadedTexture.center.set(0.5, 0.5); 
-                loadedTexture.colorSpace = THREE.SRGBColorSpace;
-            });
-
-            const geometry = new THREE.CircleGeometry(2, 64);
-            const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-            const logoMesh = new THREE.Mesh(geometry, material);
-            
-            scene.add(logoMesh);
-            camera.position.z = 4.5;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                logoMesh.rotation.y += 0.005; 
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-
-        window.addEventListener('load', animacao3d);
-    </script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
