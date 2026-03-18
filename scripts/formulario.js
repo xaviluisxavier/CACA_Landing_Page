@@ -43,10 +43,24 @@ export class ValidacaoFormulario {
         }
 
         if (elemento.id === 'phone') {
-            if (!isNaN(valor) && valor.startsWith('9') && valor.length === 9) {
-                return true;
+            const indicativo = document.getElementById('country-code').value;
+
+            if (isNaN(valor)) {
+                return false;
             }
-            return false;
+
+            if (indicativo === '+351') {
+                if (valor.startsWith('9') && valor.length === 9) {
+                    return true;
+                }
+                return false;
+            } 
+            else {
+                if (valor.length >= 8 && valor.length <= 15) {
+                    return true;
+                }
+                return false;
+            }
         }
 
         return elemento.checkValidity();
@@ -73,6 +87,7 @@ export class ValidacaoFormulario {
         const phoneEl = document.getElementById('phone');
         const subjectEl = document.getElementById('subject');
         const messageEl = document.getElementById('message');
+        const indicativoEl = document.getElementById('country-code');
 
         if (!this.validarCampo(nomeEl)) {
             alert("Por favor, introduza um nome válido.");
@@ -85,7 +100,11 @@ export class ValidacaoFormulario {
             return;
         }
         if (!this.validarCampo(phoneEl)) {
-            alert("Telemóvel inválido. Deve ter 9 dígitos e começar por 9.");
+            if (indicativoEl.value === '+351') {
+                alert("Telemóvel inválido. Em Portugal, deve ter 9 dígitos e começar por 9.");
+            } else {
+                alert("Número de telefone internacional inválido. Verifique se tem entre 8 a 15 dígitos.");
+            }
             phoneEl.focus(); 
             return;
         }
@@ -94,7 +113,7 @@ export class ValidacaoFormulario {
             return;
         }
 
-        if (confirm('Deseja enviar a mensagem?')) {
+        if (confirm(`Deseja enviar a mensagem?`)) {
             alert('Mensagem enviada com sucesso!');
             this.form.reset(); 
             this.campos.forEach(campo => campo.style.borderRight = "none");
