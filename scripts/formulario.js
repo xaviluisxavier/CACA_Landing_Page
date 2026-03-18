@@ -22,17 +22,31 @@ export class ValidacaoFormulario {
 
     validarCampo(elemento) {
         const valor = elemento.value.trim();
-        if (valor === "") return false;
+        
+        if (valor === "") {
+            return false;
+        }
 
-        if (elemento.id === 'name') return valor.length >= 3;
+        if (elemento.id === 'name') {
+            if (valor.length >= 3) {
+                return true;
+            }
+            return false;
+        }
 
         if (elemento.id === 'email') {
             const partes = valor.split('@');
-            return partes.length === 2 && partes[0] !== "" && this.config.dominiosPermitidos.includes(partes[1]);
+            if (partes.length === 2 && partes[0] !== "" && this.config.dominiosPermitidos.includes(partes[1])) {
+                return true;
+            }
+            return false;
         }
 
         if (elemento.id === 'phone') {
-            return !isNaN(valor) && valor.startsWith('9') && valor.length === 9;
+            if (!isNaN(valor) && valor.startsWith('9') && valor.length === 9) {
+                return true;
+            }
+            return false;
         }
 
         return elemento.checkValidity();
@@ -43,7 +57,12 @@ export class ValidacaoFormulario {
             elemento.style.borderRight = "none";
             return;
         }
-        elemento.style.borderRight = this.validarCampo(elemento) ? this.config.corValido : this.config.corInvalido;
+        
+        if (this.validarCampo(elemento) === true) {
+            elemento.style.borderRight = this.config.corValido;
+        } else {
+            elemento.style.borderRight = this.config.corInvalido;
+        }
     }
 
     validarSubmissao(e) {
@@ -57,18 +76,22 @@ export class ValidacaoFormulario {
 
         if (!this.validarCampo(nomeEl)) {
             alert("Por favor, introduza um nome válido.");
-            nomeEl.focus(); return;
+            nomeEl.focus(); 
+            return;
         }
         if (!this.validarCampo(emailEl)) {
             alert("Email inválido. Apenas domínios @uac.pt, @gmail.com ou @outlook.com.");
-            emailEl.focus(); return;
+            emailEl.focus(); 
+            return;
         }
         if (!this.validarCampo(phoneEl)) {
             alert("Telemóvel inválido. Deve ter 9 dígitos e começar por 9.");
-            phoneEl.focus(); return;
+            phoneEl.focus(); 
+            return;
         }
         if (!this.validarCampo(subjectEl) || !this.validarCampo(messageEl)) {
-            alert("Por favor, preencha o assunto e a mensagem."); return;
+            alert("Por favor, preencha o assunto e a mensagem."); 
+            return;
         }
 
         if (confirm('Deseja enviar a mensagem?')) {
