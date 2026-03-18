@@ -572,11 +572,6 @@ section {
     text-align: right;
 }
 
-.mandatory-star {
-    color: var(--color-accent-red);
-    font-weight: bold;
-}
-
 .contact-form {
     display: flex;
     flex-direction: column;
