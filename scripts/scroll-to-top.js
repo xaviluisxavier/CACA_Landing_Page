@@ -3,9 +3,13 @@ export function initScrollToTop() {
 
     if (btnTopo) {
         window.addEventListener("scroll", () => {
-            btnTopo.style.display = window.scrollY > 300 ? "block" : "none";
+            
+            if (window.scrollY > 300) {
+                btnTopo.style.display = "block";
+            } else {
+                btnTopo.style.display = "none";
+            }
         });
-
         btnTopo.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
