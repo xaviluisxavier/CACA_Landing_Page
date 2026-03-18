@@ -1,12 +1,10 @@
-// Seleção de elementos do DOM para o menu mobile
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
+export function initMenuNav() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
 
-/**
- * Função para alternar a visibilidade do menu em dispositivos móveis
- */ 
-function toggle_menu() {
-    mainNav.classList.toggle('active');
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    }
 }
-
-menuToggle.addEventListener('click', toggle_menu);
