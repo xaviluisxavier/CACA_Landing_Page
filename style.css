@@ -99,6 +99,7 @@ button {
     text-align: center;
 }
 
+/*  CABEÇALHO E NAVEGAÇÃO  */
 .header {
     background-color: var(--color-white);
     border-bottom: 1px solid var(--color-light-gray);
@@ -175,6 +176,7 @@ button {
     top: 1.2rem;
 }
 
+/*  BOTÕES  */
 .btn {
     display: inline-block;
     background-color: var(--color-secondary);
@@ -228,6 +230,7 @@ section {
     font-style: italic;
 }
 
+/* --- HERO SECTION --- */
 .hero {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
@@ -271,6 +274,7 @@ section {
     color: #E3F2FD;
 }
 
+/*  CARROSSEL  */
 .carousel {
     position: relative;
     border-radius: var(--border-radius);
@@ -302,6 +306,7 @@ section {
     z-index: 1;
 }
 
+/*  INVESTIGAÇÃO  */
 .research-areas {
     overflow: hidden;
     max-height: 0;
@@ -373,6 +378,7 @@ section {
     color: var(--color-dark-gray);
 }
 
+/*  PARCEIROS  */
 .partners {
     background-color: var(--color-white);
 }
@@ -419,6 +425,7 @@ section {
     font-style: italic;
 }
 
+/*  OPORTUNIDADES  */
 .opportunities {
     background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-off-white) 100%);
 }
@@ -470,6 +477,7 @@ section {
     color: var(--color-gray);
 }
 
+/*  GRÁFICO DE OPORTUNIDADES  */
 .grafico-placeholder {
     display: flex;
     width: 100%;
@@ -507,6 +515,7 @@ section {
     stroke: #ddd;
 }
 
+/*  CONTACTOS  */
 .contacts {
     background-color: var(--color-white);
 }
@@ -525,12 +534,22 @@ section {
     padding: var(--spacing-lg);
 }
 
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
 .contact-info-title,
 .contact-form-title {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: var(--spacing-md);
 }
+
+.contact-info-title {
+    margin-bottom: 3.5rem; 
+}
+
 
 .contact-item {
     margin-bottom: 1.5rem;
@@ -541,13 +560,14 @@ section {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-primary);
-    margin-bottom: 0.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .contact-value {
     display: block;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-style: normal;
+    margin-bottom: 1rem;
 }
 
 .contact-value a:hover,
@@ -556,15 +576,18 @@ section {
     text-decoration: underline;
 }
 
+
 .location-note {
     background-color: #E3F2FD;
     padding: var(--spacing-sm);
     border-radius: 6px;
     font-size: 0.8125rem;
     font-style: italic;
-    margin-top: var(--spacing-md);
+    margin-top: auto; 
+    display: block;
 }
 
+/*  FORMULÁRIO  */
 .form-mandatory-note {
     font-size: 0.85rem;
     color: var(--color-gray);
@@ -629,8 +652,6 @@ section {
     outline: none;
 }
 
-
-
 .form-group .country-select {
     appearance: none;
     width: max-content;
@@ -646,6 +667,7 @@ section {
     min-height: 120px;
 }
 
+/*  BOTÃO DE VOLTAR AO TOPO  */
 .btn-top {
     display: none;
     position: fixed;
@@ -665,6 +687,7 @@ section {
     background: var(--color-primary-dark);
 }
 
+/*  FOOTER  */
 .footer {
     background-color: var(--color-navy);
     color: var(--color-white);
