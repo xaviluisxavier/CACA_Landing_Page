@@ -1,3 +1,8 @@
+/**
+ * Inicializa o carrossel de imagens na secção principal.
+ * Configura o temporizador para alternar automaticamente a classe 'active' entre as imagens.
+ * @returns {void}
+ */
 export function initCarrossel() {
     const carouselItems = document.querySelectorAll('.carousel-item');
     let currentSlide = 0;
