@@ -1,4 +1,10 @@
+/**
+ * Classe responsável por desenhar e animar o gráfico de barras de oportunidades utilizando D3.js.
+ */
 export class GraficoOportunidades {
+    /**
+     * @param {Array<Object>} dados - Lista de objetos com "ano" e "valor" das oportunidades.
+     */
     constructor(dados) {
         this.config = {
             margin: { top: 20, right: 20, bottom: 40, left: 30 },
@@ -8,17 +14,15 @@ export class GraficoOportunidades {
         this.dados = dados;
     }
 
+    /**
+     * Processa os dados de oportunidades e injeta um texto de resumo no HTML.
+     * @returns {void}
+     */
     analisarDados() {
-        // Encontra os anos com mais de 50 oportunidades
-        const anosAltaProcura = this.dados
-            .filter(d => d.valor > 50)
-            .map(d => d.ano);
-            
-        //Calcula o total de todas as oportunidades
+        const anosAltaProcura = this.dados.filter(d => d.valor > 50).map(d => d.ano);
         const total = this.dados.reduce((acc, atual) => acc + atual.valor, 0);
-
-        // Insere o texto no HTML
         const statsContainer = document.getElementById('estatisticas-grafico');
+        
         if (statsContainer) {
             statsContainer.innerHTML = `
                 <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
@@ -28,7 +32,10 @@ export class GraficoOportunidades {
             `;
         }
     }
-
+    /**
+     * Limpa a área e renderiza as barras animadas do gráfico usando D3.js baseando-se nas dimensões do ecrã.
+     * @returns {void}
+     */
     mostrarGrafico() {
         //Seleciona a área do gráfico e limpa
         const container = document.querySelector('.grafico-placeholder');
