@@ -1,0 +1,28 @@
+/* CONTACTOS E FORMULÁRIO */
+.contacts { background-color: var(--color-white); }
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); }
+.contact-info, .contact-form-wrapper { background-color: var(--color-off-white); border: 1px solid var(--color-light-gray); border-radius: var(--border-radius); padding: var(--spacing-lg); }
+.contact-info { display: flex; flex-direction: column; }
+.contact-info-title, .contact-form-title { font-size: 1.2rem; font-weight: 700; margin-bottom: var(--spacing-md); }
+.contact-info-title { margin-bottom: 3.5rem; }
+
+.contact-item { margin-bottom: 1.5rem; }
+.contact-label { display: block; font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin-bottom: 1.5rem; }
+.contact-value { display: block; font-size: 1rem; font-style: normal; margin-bottom: 1rem; }
+.contact-value a:hover, .contact-value a:focus-visible { color: var(--color-primary); text-decoration: underline; }
+
+.location-note { background-color: #E3F2FD; padding: var(--spacing-sm); border-radius: 6px; font-size: 0.8125rem; font-style: italic; margin-top: auto; display: block; }
+
+.form-mandatory-note { font-size: 0.85rem; color: var(--color-gray); margin-bottom: 1rem; text-align: right; }
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; }
+
+.input-with-icon { display: flex; align-items: stretch; background-color: var(--color-white); border: 1px solid var(--color-light-gray); border-radius: 6px; overflow: hidden; transition: var(--transition); }
+.input-with-icon:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0, 56, 130, 0.1); }
+
+.input-icon { display: flex; align-items: center; justify-content: center; width: 50px; flex-shrink: 0; background-color: #f0f4f8; color: var(--color-primary); font-size: 1.3rem; border-right: 1px solid var(--color-light-gray); }
+.input-icon.align-top { align-items: flex-start; padding-top: 0.8rem; }
+
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: none; background-color: transparent; font-family: var(--font-body); font-size: 0.95rem; color: var(--color-dark-gray); outline: none; }
+.form-group .country-select{ appearance: none; width: max-content; min-width: 115px; border-right: 1px solid var(--color-light-gray); background-color: #fafafa; border-radius: 0;}
+.form-group textarea { resize: vertical; min-height: 120px; }

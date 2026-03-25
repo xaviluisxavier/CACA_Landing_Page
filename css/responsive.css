@@ -1,0 +1,44 @@
+@media (max-width: 1024px) {
+    .mobile-menu-toggle { display: block; }
+    .header-content { flex-wrap: wrap; padding: 1rem 1.5rem; position: relative; }
+    .logo-section { max-width: calc(100% - 60px); }
+    .title-main { font-size: 1.3rem; white-space: normal; }
+
+    .main-nav { display: none; width: 100%; position: absolute; margin-top: 20rem; border-bottom: 2px solid var(--color-primary); z-index: 1000; left: 0; }
+    .main-nav.active { display: block; }
+    .main-nav ul { flex-direction: column; align-items: center; gap: 0; }
+    .main-nav a { width: 100vw; text-align: center; background: var(--color-white); padding: 1rem; }
+
+    .hero-content { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+    .hero-title, .hero-description { text-align: center; }
+    .hero-text { display: flex; flex-direction: column; align-items: center; }
+
+    .research-grid { grid-template-columns: repeat(2, 1fr); }
+    .partners-grid { grid-template-columns: repeat(3, 1fr); }
+    .opportunities-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    :root { --spacing-xl: 3rem; --spacing-2xl: 4rem; }
+    .hero { padding: var(--spacing-lg) 0; }
+    .hero-title { font-size: 2.2rem; }
+    .cta-button { width: 100%; max-width: 280px; }
+    .section-title { font-size: 2rem; }
+    .research-grid, .partners-grid, .opportunities-grid, .contact-wrapper { grid-template-columns: 1fr; }
+    .contact-info, .contact-form-wrapper { padding: 1.5rem; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-links { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 var(--spacing-sm); }
+    .hero-title { font-size: 1.8rem; }
+    .section-title { font-size: 1.75rem; }
+    .contact-info, .contact-form-wrapper { padding: 1rem; }
+    .contact-label, .contact-value { font-size: 1rem; }
+    
+    .input-icon { width: 40px; font-size: 1.1rem; }
+    .form-group input, .form-group select, .form-group textarea { padding: 0.75rem 0.5rem; font-size: 0.9rem; }
+    .form-group .country-select { min-width: 85px; padding-left: 0.3rem; padding-right: 1.2rem; font-size: 0.85rem; }
+    .submit-button { width: 100%; font-size: 1rem; padding: 0.875rem 1rem; }
+}

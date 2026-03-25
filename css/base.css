@@ -1,0 +1,58 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; max-width: 100vw; overflow-x: hidden; }
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-dark-gray);
+    background-color: var(--color-off-white);
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { cursor: pointer; border: none; font-family: inherit; background: transparent; }
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.java-disabled { background-color: var(--color-primary); color: var(--color-white); padding: 20px; text-align: center; }
+
+/* BOTÕES GLOBAIS */
+.btn {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: #000000;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 209, 0, 0.3);
+    transition: var(--transition);
+}
+
+.btn:hover, .btn:focus-visible {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 209, 0, 0.4);
+}
+
+.cta-button { padding: 1rem 2rem; font-size: 1.125rem; }
+.submit-button { padding: 0.875rem 2rem; font-size: 1.0625rem; align-self: center; }
+
+.btn-top {
+    display: none; position: fixed; bottom: 30px; right: 30px;
+    background: var(--color-primary); color: var(--color-white);
+    border-radius: 50%; width: 50px; height: 50px; font-size: 1.5em;
+    z-index: 1000; transition: var(--transition);
+}
+.btn-top:hover { background: var(--color-primary-dark); }
+
+section { padding: var(--spacing-2xl) 0; }
+.section-header { text-align: center; margin-bottom: var(--spacing-xl); }
+.section-title { font-family: var(--font-display); font-size: 2.625rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-sm); }
+.section-subtitle { font-size: 1.125rem; color: var(--color-gray); max-width: 700px; margin: 0 auto; font-style: italic; }
