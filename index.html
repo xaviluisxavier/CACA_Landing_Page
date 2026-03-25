@@ -6,10 +6,10 @@
     <meta name="description" content="Centro Académico Clínico dos Açores - Parceria entre a Universidade dos Açores e instituições de saúde regionais.">
     <meta name="keywords" content="CACA, saúde, Açores, investigação clínica, telemedicina, e-saúde, universidade">
     <title>CACA | Centro Académico Clínico dos Açores</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="importmap">
       {
@@ -120,11 +120,11 @@
                 </header>
 
                 <div class="partners-grid">
-                    <div class="partner-box" tabindex="0"><div class="partner-icon">🎓</div><h3 class="partner-name">Universidade dos Açores</h3></div>
-                    <div class="partner-box" tabindex="0"><div class="partner-icon">🏥</div><h3 class="partner-name">Hospital Regional dos Açores</h3></div>
-                    <div class="partner-box" tabindex="0"><div class="partner-icon">🏛️</div><h3 class="partner-name">Governo Regional dos Açores</h3></div>
-                    <div class="partner-box" tabindex="0"><div class="partner-icon">🔬</div><h3 class="partner-name">Centros de Investigação</h3></div>
-                    <div class="partner-box" tabindex="0"><div class="partner-icon">🌍</div><h3 class="partner-name">Parceiros Internacionais</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-graduation-cap"></i></div><h3 class="partner-name">Universidade dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-hospital"></i></div><h3 class="partner-name">Hospital Regional dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-building"></i></div><h3 class="partner-name">Governo Regional dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-microscope"></i></div><h3 class="partner-name">Centros de Investigação</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-globe"></i></div><h3 class="partner-name">Parceiros Internacionais</h3></div>
                 </div>
                 <p class="partners-note">+ várias outras instituições colaboradoras</p>
             </div>
@@ -139,22 +139,22 @@
 
                 <div class="opportunities-grid">
                     <article class="opportunity-card" tabindex="0">
-                        <div class="opportunity-icon">🎓</div>
+                        <div class="opportunity-icon"><i class="fi fi-rr-graduation-cap"></i></div>
                         <h3 class="opportunity-title">Estágios</h3>
                         <p class="opportunity-description">Programas de estágio em investigação clínica e áreas tecnológicas de saúde.</p>
                     </article>
                     <article class="opportunity-card" tabindex="0">
-                        <div class="opportunity-icon">🔬</div>
+                        <div class="opportunity-icon"><i class="fi fi-rr-microscope"></i></div>
                         <h3 class="opportunity-title">Projetos de Investigação</h3>
                         <p class="opportunity-description">Oportunidades de participação em projetos inovadores financiados por programas de saúde.</p>
                     </article>
                     <article class="opportunity-card" tabindex="0">
-                        <div class="opportunity-icon">📚</div>
+                        <div class="opportunity-icon"><i class="fi fi-rr-book"></i></div>
                         <h3 class="opportunity-title">Teses e Dissertações</h3>
                         <p class="opportunity-description">Temas de investigação para mestrados e doutoramentos nas áreas da saúde.</p>
                     </article>
                     <article class="opportunity-card" tabindex="0">
-                        <div class="opportunity-icon">💰</div>
+                        <div class="opportunity-icon"><i class="fi fi-rr-coins"></i></div>
                         <h3 class="opportunity-title">Bolsas de Investigação</h3>
                         <p class="opportunity-description">Bolsas de investigação apoiando projetos de excelência em saúde e inovação biomédica.</p>
                     </article>
@@ -212,21 +212,21 @@
                             <div class="form-group">
                                 <label for="name" class="sr-only">Nome completo</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon" title="Nome Completo">👤</span>
+                                    <span class="input-icon" title="Nome Completo"><i class="fi fi-rr-user"></i></span>
                                     <input type="text" id="name" name="name" placeholder="Nome completo *" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="sr-only">Endereço de email</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon" title="Email">📧</span>
+                                    <span class="input-icon" title="Email"><i class="fi fi-rr-envelope"></i></span>
                                     <input type="email" id="email" name="email" placeholder="Endereço de email *" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone" class="sr-only">Telemóvel</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon" title="Telefone">📱</span>
+                                    <span class="input-icon" title="Telefone"><i class="fi fi-rr-smartphone"></i></span>
                                     <select id="country-code" name="country-code" class="country-select" aria-label="Indicativo">
                                         <option value="+351" selected>🇵🇹 +351</option>
                                         <option value="+55">🇧🇷 +55</option>
@@ -241,14 +241,14 @@
                             <div class="form-group">
                                 <label for="address" class="sr-only">Morada</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon" title="Morada">📍</span>
+                                    <span class="input-icon" title="Morada"><i class="fi fi-rr-marker"></i></span>
                                     <input type="text" id="address" name="address" placeholder="Morada (Opcional)">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="subject" class="sr-only">Assunto</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon" title="Assunto">📝</span>
+                                    <span class="input-icon" title="Assunto"><i class="fi fi-rr-document"></i></span>
                                     <select id="subject" name="subject" required>
                                         <option value="" disabled selected>Selecione o Assunto da mensagem *</option>
                                         <option value="Informações Gerais">Informações Gerais</option>
@@ -261,7 +261,7 @@
                             <div class="form-group">
                                 <label for="message" class="sr-only">Mensagem</label>
                                 <div class="input-with-icon">
-                                    <span class="input-icon align-top" title="Mensagem">💬</span>
+                                    <span class="input-icon align-top" title="Mensagem"><i class="fi fi-rr-comment"></i></span>
                                     <textarea id="message" name="message" rows="5" placeholder="Escreva aqui a sua mensagem *" required></textarea>
                                 </div>
                             </div>
