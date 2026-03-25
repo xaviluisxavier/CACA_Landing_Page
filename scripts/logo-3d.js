@@ -1,5 +1,10 @@
 import * as THREE from 'three';
 
+/**
+ * Inicializa a animação 3D da logo utilizando a biblioteca Three.js.
+ * Configura a câmara, cena, carregamento da textura SVG e loop de animação.
+ * @returns {void}
+ */
 export function initAnimacao3D() {
     const container = document.getElementById('logo-3d-container');
     if (!container) return;
