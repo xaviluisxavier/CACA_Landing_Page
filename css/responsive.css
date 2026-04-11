@@ -28,17 +28,7 @@
     .contact-info, .contact-form-wrapper { padding: 1.5rem; }
     .footer-content { flex-direction: column; text-align: center; }
     .footer-links { flex-direction: column; align-items: center; }
-
-    .weather-input-group { flex-direction: column; }
-    .weather-input-group .btn {  align-items: center;}
 }
-
-@media (max-width: 600px) {
-   
-    .weather-input-group { flex-direction: column; }
-    .weather-input-group .btn {  align-items: center;}
-}
-
 
 @media (max-width: 480px) {
     .container { padding: 0 var(--spacing-sm); }
@@ -51,7 +41,4 @@
     .form-group input, .form-group select, .form-group textarea { padding: 0.75rem 0.5rem; font-size: 0.9rem; }
     .form-group .country-select { min-width: 85px; padding-left: 0.3rem; padding-right: 1.2rem; font-size: 0.85rem; }
     .submit-button { width: 100%; font-size: 1rem; padding: 0.875rem 1rem; }
-
-    .weather-input-group { flex-direction: column; }
-    .weather-input-group .btn {  align-items: center;}
 }
