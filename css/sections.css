@@ -60,3 +60,14 @@
 .corpo-grafico rect:hover { fill: var(--color-primary-dark); }
 .eixo-x text { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; fill: #666; }
 .eixo-x .domain { stroke: #ddd; }
+
+/* WIDGET DE METEOROLOGIA */
+.eventos { background-color: var(--color-off-white); }
+.weather-widget { max-width: 600px; margin: 0 auto; background: var(--color-white); padding: var(--spacing-md); border-radius: var(--border-radius); box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--color-light-gray); }
+.weather-input-group { display: flex; gap: 10px; margin-bottom: var(--spacing-md);flex-direction: row; align-items: center; }
+.weather-input-group input { width: 100%; border: none; padding: 0.75rem; outline: none; }
+.resultado-tempo { text-align: center; padding: var(--spacing-md); background: #E3F2FD; border-radius: 8px; color: var(--color-primary-dark); animation: fadeIn 0.5s ease; }
+.tempo-icone { width: 80px; height: 80px; margin: 0 auto; }
+.tempo-temperatura { font-size: 2.5rem; font-weight: bold; margin: 10px 0; font-family: var(--font-display); }
+.tempo-descricao { font-size: 1.1rem; text-transform: capitalize; }
+.tempo-erro { color: var(--color-accent-red); font-weight: bold; padding: 1rem; background: #ffebee; border-radius: 8px; }
