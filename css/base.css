@@ -24,6 +24,12 @@ button { cursor: pointer; border: none; font-family: inherit; background: transp
 
 .java-disabled { background-color: var(--color-primary); color: var(--color-white); padding: 20px; text-align: center; }
 
+/* ANIMAÇÕES */
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(-10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
 /* BOTÕES GLOBAIS */
 .btn {
     display: inline-block;
