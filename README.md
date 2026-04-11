@@ -1,11 +1,11 @@
 # Landing Page - Centro Académico Clínico dos Açores (CACA)
 
 ## Identificação do Grupo
-**Projeto de Equipa 2 (PE2) - Tecnologias Web 2025/2026 | Grupo 3**
+**Projeto de Equipa 3 (PE3) - Tecnologias Web 2025/2026 | Grupo 13**
 
 * **Aluno 1:** Luis Xavier da Silva Pacheco - 2024114400
-* **Aluno 2:** António Rui Serpa Reis - 2022113330
-* **Aluno 3:** Rafael Miguel Dias - 2024110297
+* **Aluno 2:** David Jorge Repolho Cardoso - 2024108757
+* **Aluno 3:** Tomás Raposo Pacheco - 2024111792
 
 ---
 
