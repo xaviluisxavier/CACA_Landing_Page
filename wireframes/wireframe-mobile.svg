@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 4200" style="background: white;">
+  <!-- Mobile Wireframe -->
+  
+  <!-- HEADER -->
+  <rect x="20" y="60" width="360" height="140" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="85" font-size="12" font-weight="bold">CABEÇALHO MOBILE</text>
+  
+  <!-- Hamburger menu icon -->
+  <rect x="320" y="100" width="40" height="30" fill="#e0e0e0" stroke="#999"/>
+  <line x1="325" y1="110" x2="355" y2="110" stroke="#333" stroke-width="2"/>
+  <line x1="325" y1="118" x2="355" y2="118" stroke="#333" stroke-width="2"/>
+  <line x1="325" y1="126" x2="355" y2="126" stroke="#333" stroke-width="2"/>
+  
+  <!-- Logo and title -->
+  <rect x="30" y="100" width="50" height="40" fill="#e0e0e0" stroke="#999"/>
+  <text x="55" y="125" text-anchor="middle" font-size="8">LOGO</text>
+  
+  <text x="90" y="115" font-size="11" font-weight="bold">Centro Académico Clínico</text>
+  <text x="90" y="130" font-size="11" font-weight="bold">dos Açores (CACA)</text>
+  
+  <!-- Mobile menu -->
+  <rect x="30" y="150" width="340" height="35" fill="#f5f5f5" stroke="#999"/>
+  <text x="40" y="172" font-size="9">☰ Missão | Investigação | Parceiros | Oportunidades | Contactos</text>
+  
+  <!-- HERO/APRESENTAÇÃO -->
+  <rect x="20" y="220" width="360" height="500" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="245" font-size="12" font-weight="bold">HERO / APRESENTAÇÃO</text>
+  
+  <rect x="30" y="260" width="340" height="200" fill="#d0e8ff" stroke="#999"/>
+  <text x="200" y="365" text-anchor="middle" font-size="9">Imagem dos Açores</text>
+  
+  <rect x="30" y="470" width="340" height="230" fill="#e8f4f8" stroke="#999"/>
+  <text x="200" y="495" text-anchor="middle" font-size="10" font-weight="bold">Missão e Visão</text>
+  <line x1="45" y1="515" x2="355" y2="515" stroke="#999"/>
+  <line x1="45" y1="535" x2="355" y2="535" stroke="#999"/>
+  <line x1="45" y1="555" x2="355" y2="555" stroke="#999"/>
+  <line x1="45" y1="575" x2="330" y2="575" stroke="#999"/>
+  <line x1="45" y1="595" x2="355" y2="595" stroke="#999"/>
+  <line x1="45" y1="615" x2="355" y2="615" stroke="#999"/>
+  <line x1="45" y1="635" x2="350" y2="635" stroke="#999"/>
+  <line x1="45" y1="655" x2="320" y2="655" stroke="#999"/>
+  
+  <!-- ÁREAS DE INVESTIGAÇÃO -->
+  <rect x="20" y="740" width="360" height="1100" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="765" font-size="12" font-weight="bold">ÁREAS DE INVESTIGAÇÃO</text>
+  
+  <text x="200" y="795" text-anchor="middle" font-size="11" font-weight="bold">Áreas Principais</text>
+  
+  <!-- Card 1 - e-Saúde -->
+  <rect x="40" y="815" width="320" height="160" fill="#f0f8ff" stroke="#666"/>
+  <text x="200" y="840" text-anchor="middle" font-size="10" font-weight="bold">e-Saúde</text>
+  <line x1="60" y1="855" x2="340" y2="855" stroke="#999"/>
+  <line x1="60" y1="875" x2="340" y2="875" stroke="#999"/>
+  <line x1="60" y1="895" x2="340" y2="895" stroke="#999"/>
+  <line x1="60" y1="915" x2="310" y2="915" stroke="#999"/>
+  <line x1="60" y1="935" x2="340" y2="935" stroke="#999"/>
+  
+  <!-- Card 2 - IA em Saúde -->
+  <rect x="40" y="990" width="320" height="160" fill="#f0f8ff" stroke="#666"/>
+  <text x="200" y="1015" text-anchor="middle" font-size="10" font-weight="bold">Inteligência Artificial em Saúde</text>
+  <line x1="60" y1="1030" x2="340" y2="1030" stroke="#999"/>
+  <line x1="60" y1="1050" x2="340" y2="1050" stroke="#999"/>
+  <line x1="60" y1="1070" x2="340" y2="1070" stroke="#999"/>
+  <line x1="60" y1="1090" x2="310" y2="1090" stroke="#999"/>
+  <line x1="60" y1="1110" x2="340" y2="1110" stroke="#999"/>
+  
+  <!-- Card 3 - Telemedicina -->
+  <rect x="40" y="1165" width="320" height="160" fill="#f0f8ff" stroke="#666"/>
+  <text x="200" y="1190" text-anchor="middle" font-size="10" font-weight="bold">Telemedicina</text>
+  <line x1="60" y1="1205" x2="340" y2="1205" stroke="#999"/>
+  <line x1="60" y1="1225" x2="340" y2="1225" stroke="#999"/>
+  <line x1="60" y1="1245" x2="340" y2="1245" stroke="#999"/>
+  <line x1="60" y1="1265" x2="310" y2="1265" stroke="#999"/>
+  <line x1="60" y1="1285" x2="340" y2="1285" stroke="#999"/>
+  
+  <!-- Card 4 - Epidemiologia -->
+  <rect x="40" y="1340" width="320" height="160" fill="#f0f8ff" stroke="#666"/>
+  <text x="200" y="1365" text-anchor="middle" font-size="10" font-weight="bold">Epidemiologia Regional</text>
+  <line x1="60" y1="1380" x2="340" y2="1380" stroke="#999"/>
+  <line x1="60" y1="1400" x2="340" y2="1400" stroke="#999"/>
+  <line x1="60" y1="1420" x2="340" y2="1420" stroke="#999"/>
+  <line x1="60" y1="1440" x2="310" y2="1440" stroke="#999"/>
+  <line x1="60" y1="1460" x2="340" y2="1460" stroke="#999"/>
+  
+  <!-- Card 5 - Saúde Pública -->
+  <rect x="40" y="1515" width="320" height="160" fill="#f0f8ff" stroke="#666"/>
+  <text x="200" y="1540" text-anchor="middle" font-size="10" font-weight="bold">Saúde Pública</text>
+  <line x1="60" y1="1555" x2="340" y2="1555" stroke="#999"/>
+  <line x1="60" y1="1575" x2="340" y2="1575" stroke="#999"/>
+  <line x1="60" y1="1595" x2="340" y2="1595" stroke="#999"/>
+  <line x1="60" y1="1615" x2="310" y2="1615" stroke="#999"/>
+  <line x1="60" y1="1635" x2="340" y2="1635" stroke="#999"/>
+  
+  <!-- PARCEIROS -->
+  <rect x="20" y="1860" width="360" height="420" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="1885" font-size="12" font-weight="bold">PARCEIROS</text>
+  
+  <text x="200" y="1915" text-anchor="middle" font-size="11" font-weight="bold">Instituições Parceiras</text>
+  
+  <!-- Partner logos - stacked vertically -->
+  <rect x="50" y="1935" width="300" height="60" fill="#f5f5f5" stroke="#999"/>
+  <text x="200" y="1970" text-anchor="middle" font-size="9">Universidade dos Açores</text>
+  
+  <rect x="50" y="2005" width="300" height="60" fill="#f5f5f5" stroke="#999"/>
+  <text x="200" y="2040" text-anchor="middle" font-size="9">Hospital Regional</text>
+  
+  <rect x="50" y="2075" width="300" height="60" fill="#f5f5f5" stroke="#999"/>
+  <text x="200" y="2110" text-anchor="middle" font-size="9">Centro de Investigação</text>
+  
+  <rect x="50" y="2145" width="300" height="60" fill="#f5f5f5" stroke="#999"/>
+  <text x="200" y="2180" text-anchor="middle" font-size="9">Governo Regional dos Açores</text>
+  
+  <text x="200" y="2240" text-anchor="middle" font-size="9" fill="#666">+ outras instituições</text>
+  
+  <!-- OPORTUNIDADES -->
+  <rect x="20" y="2300" width="360" height="740" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="2325" font-size="12" font-weight="bold">OPORTUNIDADES</text>
+  
+  <text x="200" y="2355" text-anchor="middle" font-size="11" font-weight="bold">Participe Connosco</text>
+  
+  <!-- Opportunity cards - stacked -->
+  <rect x="40" y="2375" width="320" height="140" fill="#fff8e1" stroke="#666"/>
+  <text x="200" y="2400" text-anchor="middle" font-size="10" font-weight="bold">Estágios</text>
+  <line x1="60" y1="2415" x2="340" y2="2415" stroke="#999"/>
+  <line x1="60" y1="2435" x2="340" y2="2435" stroke="#999"/>
+  <line x1="60" y1="2455" x2="320" y2="2455" stroke="#999"/>
+  <line x1="60" y1="2475" x2="340" y2="2475" stroke="#999"/>
+  
+  <rect x="40" y="2525" width="320" height="140" fill="#fff8e1" stroke="#666"/>
+  <text x="200" y="2550" text-anchor="middle" font-size="10" font-weight="bold">Projetos de Investigação</text>
+  <line x1="60" y1="2565" x2="340" y2="2565" stroke="#999"/>
+  <line x1="60" y1="2585" x2="340" y2="2585" stroke="#999"/>
+  <line x1="60" y1="2605" x2="320" y2="2605" stroke="#999"/>
+  <line x1="60" y1="2625" x2="340" y2="2625" stroke="#999"/>
+  
+  <rect x="40" y="2675" width="320" height="140" fill="#fff8e1" stroke="#666"/>
+  <text x="200" y="2700" text-anchor="middle" font-size="10" font-weight="bold">Teses e Bolsas</text>
+  <line x1="60" y1="2715" x2="340" y2="2715" stroke="#999"/>
+  <line x1="60" y1="2735" x2="340" y2="2735" stroke="#999"/>
+  <line x1="60" y1="2755" x2="320" y2="2755" stroke="#999"/>
+  <line x1="60" y1="2775" x2="340" y2="2775" stroke="#999"/>
+  
+  <!-- CONTACTOS -->
+  <rect x="20" y="3060" width="360" height="820" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="3085" font-size="12" font-weight="bold">CONTACTOS</text>
+  
+  <text x="200" y="3115" text-anchor="middle" font-size="11" font-weight="bold">Entre em Contacto</text>
+  
+  <!-- Contact info -->
+  <rect x="40" y="3135" width="320" height="260" fill="#f0f0f0" stroke="#666"/>
+  <text x="200" y="3160" text-anchor="middle" font-size="10" font-weight="bold">Informações</text>
+  
+  <text x="60" y="3190" font-size="9" font-weight="bold">Email:</text>
+  <line x1="60" y1="3200" x2="340" y2="3200" stroke="#999"/>
+  
+  <text x="60" y="3230" font-size="9" font-weight="bold">Telefone:</text>
+  <line x1="60" y1="3240" x2="340" y2="3240" stroke="#999"/>
+  
+  <text x="60" y="3270" font-size="9" font-weight="bold">Morada:</text>
+  <line x1="60" y1="3280" x2="340" y2="3280" stroke="#999"/>
+  <line x1="60" y1="3300" x2="340" y2="3300" stroke="#999"/>
+  
+  <rect x="60" y="3320" width="280" height="60" fill="#e0e8f0" stroke="#999"/>
+  <text x="200" y="3355" text-anchor="middle" font-size="8">Mapa/Localização</text>
+  
+  <!-- Contact form -->
+  <rect x="40" y="3410" width="320" height="440" fill="#f9f9f9" stroke="#666"/>
+  <text x="200" y="3435" text-anchor="middle" font-size="10" font-weight="bold">Envie Mensagem</text>
+  
+  <rect x="60" y="3455" width="280" height="35" fill="white" stroke="#999"/>
+  <text x="70" y="3476" font-size="8" fill="#666">Nome</text>
+  
+  <rect x="60" y="3500" width="280" height="35" fill="white" stroke="#999"/>
+  <text x="70" y="3521" font-size="8" fill="#666">Email</text>
+  
+  <rect x="60" y="3545" width="280" height="35" fill="white" stroke="#999"/>
+  <text x="70" y="3566" font-size="8" fill="#666">Assunto</text>
+  
+  <rect x="60" y="3590" width="280" height="120" fill="white" stroke="#999"/>
+  <text x="70" y="3611" font-size="8" fill="#666">Mensagem</text>
+  
+  <rect x="140" y="3725" width="120" height="35" fill="#4CAF50" stroke="#388E3C"/>
+  <text x="200" y="3747" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Enviar</text>
+  
+  <!-- FOOTER -->
+  <rect x="20" y="3900" width="360" height="180" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="3925" font-size="12" font-weight="bold">RODAPÉ</text>
+  
+  <rect x="30" y="3945" width="340" height="120" fill="#f5f5f5" stroke="#999"/>
+  
+  <text x="200" y="3975" text-anchor="middle" font-size="8">© 2026 CACA</text>
+  <text x="200" y="3995" text-anchor="middle" font-size="8">Universidade dos Açores</text>
+  
+  <text x="200" y="4035" text-anchor="middle" font-size="7">Privacidade | Acessibilidade</text>
+  
+  <circle cx="170" cy="4050" r="8" fill="#e0e0e0" stroke="#999"/>
+  <circle cx="200" cy="4050" r="8" fill="#e0e0e0" stroke="#999"/>
+  <circle cx="230" cy="4050" r="8" fill="#e0e0e0" stroke="#999"/>
+  
+</svg>

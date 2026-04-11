@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Centro Académico Clínico dos Açores - Parceria entre a Universidade dos Açores e instituições de saúde regionais.">
+    <meta name="keywords" content="CACA, saúde, Açores, investigação clínica, telemedicina, e-saúde, universidade">
+    <title>CACA | Centro Académico Clínico dos Açores</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+</head>
+<body>
+    <noscript>
+        <div class="java-disabled">
+            <p><strong>Aviso:</strong> O JavaScript está desativado. Para uma experiência completa, por favor ative o JavaScript.</p>
+        </div>
+    </noscript>
+
+    <header id="header" class="header">
+        <div class="container header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <div id="logo-3d-container" class="logo-3d-container"></div>
+                </div>
+                <div class="site-title">
+                    <h1 class="title-main">Centro Académico Clínico dos Açores</h1>
+                    <p class="title-sub">Inovação e Excelência em Saúde</p>
+                </div>
+            </div>
+
+            <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#missao">Missão</a></li>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#oportunidades">Oportunidades</a></li>
+                    <li><a href="#contactos">Contactos</a></li>
+                </ul>
+            </nav>
+
+            <button type="button" class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="missao" class="hero">
+            <div class="hero-pattern"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">Construindo o Futuro<br>da Saúde nos Açores</h2>
+                    <p class="hero-description">
+                        Uma parceria inovadora entre a Universidade dos Açores e instituições
+                        de saúde regionais, dedicada à investigação clínica de excelência,
+                        ao ensino de qualidade e à melhoria dos cuidados de saúde nas ilhas.
+                    </p>
+                    <button type="button" class="btn cta-button" id="SaberMais">Conheça as Nossas Áreas</button>
+                </div>
+                <div class="hero-image">
+                    <div class="carousel" id="heroCarousel">
+                        <div class="carousel-inner">
+                            <img src="./assets/imagem.jpg" alt="Paisagem dos Açores" class="carousel-item active">
+                            <img src="./assets/uac.png" alt="Universidade dos Açores" class="carousel-item">
+                            <img src="./assets/governo-acores.jpg" alt="Governo dos Açores" class="carousel-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="investigacao" class="research-areas">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Áreas de Investigação</h2>
+                    <p class="section-subtitle">Desenvolvendo soluções inovadoras para os desafios da saúde regional e global</p>
+                </header>
+
+                <div class="research-grid">
+                    <article class="research-card card-blue" tabindex="0">
+                        <div class="card-header"><h3 class="card-title">e-Saúde</h3></div>
+                        <p class="card-description">Desenvolvimento de plataformas digitais para gestão de saúde, telesaúde e monitorização remota de pacientes nas ilhas.</p>
+                    </article>
+
+                    <article class="research-card card-green" tabindex="0">
+                        <div class="card-header"><h3 class="card-title">Inteligência Artificial</h3></div>
+                        <p class="card-description">Aplicação de machine learning e análise preditiva para diagnóstico precoce e otimização de processos clínicos.</p>
+                    </article>
+
+                    <article class="research-card card-orange" tabindex="0">
+                        <div class="card-header"><h3 class="card-title">Telemedicina</h3></div>
+                        <p class="card-description">Soluções inovadoras de teleconsulta para populações insulares e áreas remotas, reduzindo barreiras geográficas.</p>
+                    </article>
+
+                    <article class="research-card card-purple" tabindex="0">
+                        <div class="card-header"><h3 class="card-title">Epidemiologia Regional</h3></div>
+                        <p class="card-description">Estudos de prevalência de doenças e fatores de risco específicos das populações insulares.</p>
+                    </article>
+
+                    <article class="research-card card-red" tabindex="0">
+                        <div class="card-header"><h3 class="card-title">Saúde Pública</h3></div>
+                        <p class="card-description">Promoção da saúde e desenvolvimento de intervenções comunitárias adaptadas à realidade açoriana.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="parceiros" class="partners">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Nossos Parceiros</h2>
+                    <p class="section-subtitle">Colaboração institucional para excelência em saúde e investigação</p>
+                </header>
+
+                <div class="partners-grid">
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-graduation-cap"></i></div><h3 class="partner-name">Universidade dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-hospital"></i></div><h3 class="partner-name">Hospital Regional dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-building"></i></div><h3 class="partner-name">Governo Regional dos Açores</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-microscope"></i></div><h3 class="partner-name">Centros de Investigação</h3></div>
+                    <div class="partner-box" tabindex="0"><div class="partner-icon"><i class="fi fi-rr-globe"></i></div><h3 class="partner-name">Parceiros Internacionais</h3></div>
+                </div>
+                <p class="partners-note">+ várias outras instituições colaboradoras</p>
+            </div>
+        </section>
+
+        <section id="oportunidades" class="opportunities">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Oportunidades</h2>
+                    <p class="section-subtitle">Junte-se a nós na construção do futuro da saúde</p>
+                </header>
+
+                <div class="opportunities-grid">
+                    <article class="opportunity-card" tabindex="0">
+                        <div class="opportunity-icon"><i class="fi fi-rr-graduation-cap"></i></div>
+                        <h3 class="opportunity-title">Estágios</h3>
+                        <p class="opportunity-description">Programas de estágio em investigação clínica e áreas tecnológicas de saúde.</p>
+                    </article>
+                    <article class="opportunity-card" tabindex="0">
+                        <div class="opportunity-icon"><i class="fi fi-rr-microscope"></i></div>
+                        <h3 class="opportunity-title">Projetos de Investigação</h3>
+                        <p class="opportunity-description">Oportunidades de participação em projetos inovadores financiados por programas de saúde.</p>
+                    </article>
+                    <article class="opportunity-card" tabindex="0">
+                        <div class="opportunity-icon"><i class="fi fi-rr-book"></i></div>
+                        <h3 class="opportunity-title">Teses e Dissertações</h3>
+                        <p class="opportunity-description">Temas de investigação para mestrados e doutoramentos nas áreas da saúde.</p>
+                    </article>
+                    <article class="opportunity-card" tabindex="0">
+                        <div class="opportunity-icon"><i class="fi fi-rr-coins"></i></div>
+                        <h3 class="opportunity-title">Bolsas de Investigação</h3>
+                        <p class="opportunity-description">Bolsas de investigação apoiando projetos de excelência em saúde e inovação biomédica.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="grafico">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Gráfico de Oportunidades</h2>
+                </header>
+                <div id="estatisticas-grafico"></div>
+                <div class="grafico-placeholder">
+                   <svg id="opportunityChart" tabindex="0" aria-label="Gráfico de Barras de Oportunidades">
+                    <g class="eixo-x"></g>
+                    <g class="corpo-grafico"></g>   
+                   </svg>
+                </div>
+            </div>
+        </section>
+
+        <section id="contactos" class="contacts">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Contactos</h2>
+                </header>
+
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">Informações de Contacto</h3>
+                        <div class="contact-item">
+                            <strong class="contact-label">Email</strong>
+                            <a href="mailto:geral@caca.uac.pt" class="contact-value">geral@caca.uac.pt</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong class="contact-label">Telefone</strong>
+                            <span class="contact-value">+351 296 650 000</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong class="contact-label">Morada</strong>
+                            <address class="contact-value">
+                                Campus de Ponta Delgada<br>
+                                Rua da Mãe de Deus, 9500-321<br>
+                                Ponta Delgada, São Miguel, Açores
+                            </address>
+                        </div>
+                        <div class="location-note">Localização: Ilha de São Miguel, Açores, Portugal</div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <h3 class="contact-form-title">Envie uma Mensagem</h3>
+                        <p class="form-mandatory-note">Os campos com * são obrigatórios.</p>
+                        <form class="contact-form" aria-label="Formulário de contacto">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Nome completo</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Nome Completo"><i class="fi fi-rr-user"></i></span>
+                                    <input type="text" id="name" name="name" placeholder="Nome completo *" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Endereço de email</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Email"><i class="fi fi-rr-envelope"></i></span>
+                                    <input type="email" id="email" name="email" placeholder="Endereço de email *" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="sr-only">Telemóvel</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Telefone"><i class="fi fi-rr-smartphone"></i></span>
+                                    <select id="country-code" name="country-code" class="country-select" aria-label="Indicativo">
+                                        <option value="+351" selected>🇵🇹 +351</option>
+                                        <option value="+55">🇧🇷 +55</option>
+                                        <option value="+34">🇪🇸 +34</option>
+                                        <option value="+44">🇬🇧 +44</option>
+                                        <option value="+33">🇫🇷 +33</option>
+                                        <option value="+1">🇺🇸 +1</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="Número de telemóvel *" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="sr-only">Morada</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Morada"><i class="fi fi-rr-marker"></i></span>
+                                    <input type="text" id="address" name="address" placeholder="Morada (Opcional)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="sr-only">Assunto</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon" title="Assunto"><i class="fi fi-rr-document"></i></span>
+                                    <select id="subject" name="subject" required>
+                                        <option value="" disabled selected>Selecione o Assunto da mensagem *</option>
+                                        <option value="Informações Gerais">Informações Gerais</option>
+                                        <option value="Estágios e Oportunidades">Estágios e Oportunidades</option>
+                                        <option value="Parcerias">Parcerias Institucionais</option>
+                                        <option value="Apoio">Apoio / Outros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="sr-only">Mensagem</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon align-top" title="Mensagem"><i class="fi fi-rr-comment"></i></span>
+                                    <textarea id="message" name="message" rows="5" placeholder="Escreva aqui a sua mensagem *" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn submit-button">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-main">
+                <p class="footer-copyright">© 2026 Centro Académico Clínico dos Açores (CACA)</p>
+                <p class="footer-university">Universidade dos Açores</p>
+            </div>
+            <nav class="footer-links" aria-label="Links do rodapé">
+                <a href="#privacidade">Política de Privacidade</a>
+                <a href="#acessibilidade">Acessibilidade</a>
+                <a href="#termos">Termos de Uso</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#facebook" aria-label="Facebook" class="social-link"><span class="social-icon">f</span></a>
+                <a href="#twitter" aria-label="Twitter" class="social-link"><span class="social-icon">𝕏</span></a>
+                <a href="#linkedin" aria-label="LinkedIn" class="social-link"><span class="social-icon">in</span></a>
+            </div>
+        </div>
+    </footer>
+    <button type="button" class="btn-top" id="btn-topo" aria-label="Voltar ao topo">⬆</button>
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
