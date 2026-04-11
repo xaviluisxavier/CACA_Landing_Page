@@ -5,6 +5,7 @@ import { ValidacaoFormulario } from './formulario.js';
 import { initMenuNav } from './menu-nav.js';
 import { initSaberMais } from './saber-mais.js';
 import { initScrollToTop } from './scroll-to-top.js';
+import { getWeatherByCity } from './meteorologia.js';
 
 /**
  * Conjunto de dados base para o gráfico de oportunidades.
@@ -38,7 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const meuFormulario = new ValidacaoFormulario();
     meuFormulario.iniciar();
 
+    const btnVerTempo = document.getElementById('btn-ver-tempo');
+    const inputCidade = document.getElementById('cidade-evento');
+
+    if (btnVerTempo && inputCidade) {
+        btnVerTempo.addEventListener('click', () => {
+            const cidade = inputCidade.value.trim();
+            if (cidade) {
+                getWeatherByCity(cidade);
+            }
+        });
+    }
     window.addEventListener('resize', () => {
         meuGrafico.mostrarGrafico(); 
     });
+
 });
