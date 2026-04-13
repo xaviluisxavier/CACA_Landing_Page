@@ -20,13 +20,13 @@ De forma a garantir que todos os elementos participam em todas as etapas (como r
 * **Sincronização de Estado:** Garantir que, ao renderizar os eventos guardados localmente, o sistema faz chamadas assíncronas e dinâmicas às APIs de Meteorologia e Mapas (desenvolvidas pelo Tomás), lidando com *promises*, gestão de erros de rede e *loading states* na interface.
 
 ### 2. Integração de Web APIs (Meteorologia e Mapas)
-**Responsável Principal:** Tomás Raposo Pacheco
+**Responsável Principal:** Luis Xavier da Silva Pacheco
 * **API de Previsão Meteorológica:** Desenvolver o módulo de comunicação com a API (ex: OpenWeatherMap) para receber coordenadas/cidades e devolver os dados climáticos formatados.
 * **API de Mapas:** Configurar e integrar o motor de mapas (ex: Leaflet/OpenStreetMap ou Google Maps) para gerar mapas interativos baseados nos locais dos eventos.
 * **Passagem de Dados:** Fornecer as funções modulares destas APIs para que o David as possa integrar no motor do CRUD.
 
 ### 3. Subscrição de Newsletter e UI/UX Global
-**Responsável Principal:** Luis Xavier da Silva Pacheco
+**Responsável Principal:** Tomás Raposo Pacheco
 * **Subscrição de Newsletter:** Criação do formulário (nome e e-mail) com validações robustas em JavaScript (RegEx).
 * **Persistência da Newsletter:** Ligar o formulário ao *object store* da Newsletter criado na IndexedDB, garantindo feedback visual (sucesso/erro).
 * **UI/UX dos Formulários:** Desenhar a interface dos formulários (Eventos e Newsletter) garantindo que são responsivos e seguem a identidade visual da landing page (PEI1/PEI2).
