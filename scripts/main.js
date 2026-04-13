@@ -38,18 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const meuFormulario = new ValidacaoFormulario();
     meuFormulario.iniciar();
-
-    const btnVerTempo = document.getElementById('btn-ver-tempo');
-    const inputCidade = document.getElementById('cidade-evento');
-
-    if (btnVerTempo && inputCidade) {
-        btnVerTempo.addEventListener('click', () => {
-            const cidade = inputCidade.value.trim();
-            if (cidade) {
-                getWeatherByCity(cidade);
-            }
-        });
-    }
+    
     window.addEventListener('resize', () => {
         meuGrafico.mostrarGrafico(); 
     });
