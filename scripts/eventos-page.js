@@ -50,29 +50,34 @@ export async function initEventosPage() {
             const card = criarCardEvento(evento);
             container.appendChild(card);
 
-            // Carregar mapa assincronamente (ou tentar obter via Geocoding)
-            if (evento.lat && evento.lng) {
-                inicializarMapa(card.querySelector('.evento-mapa'), evento.lat, evento.lng, evento.local);
-            } else if (evento.local) {
-                // Se não tem coords, mas tem local, procura no OpenStreetMap
-                pesquisarCoordenadas(evento.local).then(coords => {
-                    const mapContainer = card.querySelector('.evento-mapa');
-                    if (coords && mapContainer) {
-                        inicializarMapa(mapContainer, coords.lat, coords.lng, evento.local);
-                    }
-                });
-            }
+            const mapContainer = card.querySelector('.evento-mapa');
+            const meteoContainer = card.querySelector('.evento-meteo');
 
-            // Carregar meteorologia assincronamente (precisa das coordenadas)
             if (evento.lat && evento.lng) {
-                carregarMeteo(card.querySelector('.evento-meteo'), evento.lat, evento.lng);
+                // Tem as coordenadas dadas manualmente no admin
+                if (mapContainer) inicializarMapa(mapContainer, evento.lat, evento.lng, evento.local);
+                if (meteoContainer) carregarMeteo(meteoContainer, evento.lat, evento.lng);
             } else if (evento.local) {
-                // Se a geocodificação encontrar as coordenadas depois, tenta carregar o tempo também.
+                // Não tem coords, descobrir online pelo nome offline (Geocoding)
                 pesquisarCoordenadas(evento.local).then(coords => {
                     if (coords) {
-                        carregarMeteo(card.querySelector('.evento-meteo'), coords.lat, coords.lng);
+                        if (mapContainer) inicializarMapa(mapContainer, coords.lat, coords.lng, evento.local);
+                        if (meteoContainer) carregarMeteo(meteoContainer, coords.lat, coords.lng);
+                    } else {
+                        // Se falhou a descoberta das coordenadas (ex: local inexistente)
+                        if (mapContainer) {
+                            mapContainer.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}</div>`;
+                        }
+                        if (meteoContainer) {
+                            meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem previsão</div>`;
+                        }
                     }
+                }).catch(err => {
+                    console.warn(err);
+                    if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Erro de rede</div>`;
                 });
+            } else {
+                if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem local</div>`;
             }
         }
 
@@ -88,16 +93,16 @@ export async function initEventosPage() {
 }
 
 /**
- * Procura latitude e longitude a partir do nome de um local usando Nominatim (OSM).
+ * Procura latitude e longitude a partir do nome de um local usando a API da Open-Meteo.
  * @param {string} local 
  * @returns {Promise<{lat: number, lng: number}|null>}
  */
 async function pesquisarCoordenadas(local) {
     try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(local)}&limit=1`);
+        const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(local)}&count=1&language=pt&format=json`);
         const data = await response.json();
-        if (data && data.length > 0) {
-            return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+        if (data.results && data.results.length > 0) {
+            return { lat: parseFloat(data.results[0].latitude), lng: parseFloat(data.results[0].longitude) };
         }
     } catch (err) {
         console.warn('Geocoding falhou:', err);
@@ -218,10 +223,10 @@ async function carregarMeteo(container, lat, lng) {
     try {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`;
         const response = await fetch(url);
-        
+
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        
+
         const clima = interpretarClima(data.current_weather.weathercode);
         const temp = Math.round(data.current_weather.temperature);
 
