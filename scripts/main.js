@@ -6,7 +6,7 @@ import { initMenuNav } from './menu-nav.js';
 import { initSaberMais } from './saber-mais.js';
 import { initScrollToTop } from './scroll-to-top.js';
 import { initEventosPage } from './eventos-page.js';
-import { initContactMap } from './contact-map.js';
+import { renderizarMapa } from './mapa.js';
 
 /**
  * Conjunto de dados base para o gráfico de oportunidades.
@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initSaberMais();
     initScrollToTop();
     initEventosPage();
-    initContactMap();
+    
+    // Inicializar mapa de contactos re-utilizando o mapa.js
+    renderizarMapa('contact-map', 37.7451, -25.6603, "CACA - Sede Principal");
 
     const meuGrafico = new GraficoOportunidades(dadosOportunidades);
     meuGrafico.analisarDados(); 
