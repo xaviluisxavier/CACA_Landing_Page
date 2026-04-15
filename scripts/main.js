@@ -5,6 +5,8 @@ import { ValidacaoFormulario } from './formulario.js';
 import { initMenuNav } from './menu-nav.js';
 import { initSaberMais } from './saber-mais.js';
 import { initScrollToTop } from './scroll-to-top.js';
+import { initEventosPage } from './eventos-page.js';
+import { initContactMap } from './contact-map.js';
 
 /**
  * Conjunto de dados base para o gráfico de oportunidades.
@@ -30,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMenuNav();
     initSaberMais();
     initScrollToTop();
+    initEventosPage();
+    initContactMap();
 
     const meuGrafico = new GraficoOportunidades(dadosOportunidades);
     meuGrafico.analisarDados(); 

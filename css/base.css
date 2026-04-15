@@ -4,11 +4,20 @@ html { scroll-behavior: smooth; font-size: 16px; max-width: 100vw; overflow-x: h
 
 body {
     font-family: var(--font-body);
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--color-dark-gray);
-    background-color: var(--color-off-white);
+    background-color: var(--color-navy);
     max-width: 100vw;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    background-color: var(--color-off-white);
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -30,21 +39,41 @@ button { cursor: pointer; border: none; font-family: inherit; background: transp
     to { opacity: 1; transform: translateY(0); } 
 }
 
-/* BOTÕES GLOBAIS */
+/* BOTÕES GLOBAIS - AESTHETICS UPGRADE */
 .btn {
     display: inline-block;
-    background-color: var(--color-secondary);
-    color: #000000;
+    background: var(--gradient-accent); /* Vivid gradient focus */
+    color: var(--color-primary-dark);
     border-radius: 50px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(255, 209, 0, 0.3);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Subtle inner glow pseudo-element */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
     transition: var(--transition);
 }
 
 .btn:hover, .btn:focus-visible {
-    background-color: var(--color-secondary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 209, 0, 0.4);
+    transform: translateY(-3px) scale(1.03); /* Dynamic bump */
+    box-shadow: var(--shadow-glow); /* Bright shadow */
+    color: #000;
+}
+
+.btn:hover::before {
+    opacity: 1; /* Trigger inner glow on hover */
 }
 
 .cta-button { padding: 1rem 2rem; font-size: 1.125rem; }
@@ -60,5 +89,5 @@ button { cursor: pointer; border: none; font-family: inherit; background: transp
 
 section { padding: var(--spacing-2xl) 0; }
 .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
-.section-title { font-family: var(--font-display); font-size: 2.625rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-sm); }
-.section-subtitle { font-size: 1.125rem; color: var(--color-gray); max-width: 700px; margin: 0 auto; font-style: italic; }
+.section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-sm); line-height: 1.1; letter-spacing: -0.5px; }
+.section-subtitle { font-size: 1.125rem; color: var(--color-gray); max-width: 700px; margin: 0 auto; line-height: 1.6; }
