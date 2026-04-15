@@ -21,7 +21,6 @@ export function renderizarMapa(mapCont, lat, lon, nomeLocal = "Local do Evento")
     const map = L.map(mapCont).setView([lat, lon], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
     L.marker([lat, lon])
