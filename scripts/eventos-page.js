@@ -1,14 +1,12 @@
 /**
  * @module eventos-page
  * @description Renderiza os eventos na landing page (index.html).
- * Integra APIs de meteorologia (OpenWeatherMap) e mapas (Leaflet/OpenStreetMap).
+ * Integra as funções de meteorologia (meteorologia.js) e mapas (mapa.js).
  */
 
 import { obterTodosEventos } from './eventos.js';
-
-/**
- * A meteorologia agora usa a API Open-Meteo (100% gratuita, sem necessidade de chave).
- */
+import { getWeatherByCity } from './meteorologia.js';
+import { renderizarMapa } from './mapa.js';
 
 /**
  * Inicializa a secção de eventos na landing page.
@@ -50,32 +48,30 @@ export async function initEventosPage() {
             const card = criarCardEvento(evento);
             container.appendChild(card);
 
-            const mapContainer = card.querySelector('.evento-mapa');
+            const mapEl = card.querySelector('.evento-mapa');
             const meteoContainer = card.querySelector('.evento-meteo');
 
             if (evento.lat && evento.lng) {
-                // Tem as coordenadas dadas manualmente no admin
-                if (mapContainer) inicializarMapa(mapContainer, evento.lat, evento.lng, evento.local);
-                if (meteoContainer) carregarMeteo(meteoContainer, evento.lat, evento.lng);
+                // Coords manuais fornecidas pelo admin — usar directamente
+                const mapId = `mapa-${evento.id}`;
+                if (mapEl) { mapEl.id = mapId; renderizarMapa(mapId, evento.lat, evento.lng, evento.local); }
+                // Meteo via lat/lon directo (Open-Meteo)
+                carregarMeteoCoords(meteoContainer, evento.lat, evento.lng);
             } else if (evento.local) {
-                // Não tem coords, descobrir online pelo nome offline (Geocoding)
-                pesquisarCoordenadas(evento.local).then(coords => {
-                    if (coords) {
-                        if (mapContainer) inicializarMapa(mapContainer, coords.lat, coords.lng, evento.local);
-                        if (meteoContainer) carregarMeteo(meteoContainer, coords.lat, coords.lng);
-                    } else {
-                        // Se falhou a descoberta das coordenadas (ex: local inexistente)
-                        if (mapContainer) {
-                            mapContainer.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}</div>`;
-                        }
-                        if (meteoContainer) {
-                            meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem previsão</div>`;
-                        }
-                    }
-                }).catch(err => {
-                    console.warn(err);
-                    if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Erro de rede</div>`;
-                });
+                // Sem coords — usar getWeatherByCity do colega (devolve coords + meteo de uma só vez)
+                getWeatherByCity(evento.local)
+                    .then(dados => {
+                        // Renderizar mapa com as coords que vieram da API OpenWeatherMap
+                        const mapId = `mapa-${evento.id}`;
+                        if (mapEl) { mapEl.id = mapId; renderizarMapa(mapId, dados.coords.lat, dados.coords.lon, evento.local); }
+                        // Mostrar meteo com os dados já recebidos
+                        mostrarMeteo(meteoContainer, dados);
+                    })
+                    .catch(err => {
+                        console.warn('getWeatherByCity falhou:', err);
+                        if (mapEl) mapEl.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}</div>`;
+                        if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem previsão</div>`;
+                    });
             } else {
                 if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem local</div>`;
             }
@@ -93,24 +89,6 @@ export async function initEventosPage() {
 }
 
 /**
- * Procura latitude e longitude a partir do nome de um local usando a API da Open-Meteo.
- * @param {string} local 
- * @returns {Promise<{lat: number, lng: number}|null>}
- */
-async function pesquisarCoordenadas(local) {
-    try {
-        const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(local)}&count=1&language=pt&format=json`);
-        const data = await response.json();
-        if (data.results && data.results.length > 0) {
-            return { lat: parseFloat(data.results[0].latitude), lng: parseFloat(data.results[0].longitude) };
-        }
-    } catch (err) {
-        console.warn('Geocoding falhou:', err);
-    }
-    return null;
-}
-
-/**
  * Cria o elemento HTML de um card de evento.
  * @param {Object} evento - Dados do evento.
  * @returns {HTMLElement} O elemento do card.
@@ -124,16 +102,8 @@ function criarCardEvento(evento) {
         ? new Date(evento.data + 'T00:00:00').toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' })
         : 'Sem data';
 
-    const temCoordenadas = evento.lat && evento.lng;
-
     card.innerHTML = `
-        <div class="evento-mapa">
-            ${!temCoordenadas ? `
-                <div class="evento-mapa-placeholder">
-                    <i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}
-                </div>
-            ` : ''}
-        </div>
+        <div class="evento-mapa"></div>
         <div class="evento-body">
             <h3>${escapeHtml(evento.titulo)}</h3>
             <div class="evento-info">
@@ -152,94 +122,45 @@ function criarCardEvento(evento) {
 }
 
 /**
- * Inicializa um mini-mapa Leaflet num contentor.
- * @param {HTMLElement} container - O elemento onde desenhar o mapa.
- * @param {number} lat - Latitude.
- * @param {number} lng - Longitude.
- * @param {string} label - Texto para o popup do marcador.
- * @returns {void}
+ * Mostra os dados meteorológicos devolvidos pelo getWeatherByCity do colega.
+ * @param {HTMLElement} container
+ * @param {Object} dados - Objeto devolvido por getWeatherByCity
  */
-function inicializarMapa(container, lat, lng, label) {
-    if (!container || typeof L === 'undefined') {
-        if (container) {
-            container.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(label)}</div>`;
-        }
-        return;
-    }
-
-    try {
-        const map = L.map(container, {
-            scrollWheelZoom: false,
-            dragging: false,
-            zoomControl: false,
-            attributionControl: false
-        }).setView([lat, lng], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-        L.marker([lat, lng])
-            .addTo(map)
-            .bindPopup(`<strong>${escapeHtml(label)}</strong>`);
-
-        // Fix para o mapa carregar corretamente
-        setTimeout(() => map.invalidateSize(), 200);
-
-    } catch (err) {
-        console.error('Erro ao inicializar mapa:', err);
-        container.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(label)}</div>`;
-    }
+function mostrarMeteo(container, dados) {
+    if (!container) return;
+    container.innerHTML = `
+        <img src="${dados.iconeUrl}" alt="${dados.descricao}" style="width:48px;height:48px;">
+        <div class="evento-meteo-info">
+            <span class="evento-meteo-temp">${dados.temperatura}°C</span>
+            <span class="evento-meteo-desc">${dados.descricao}</span>
+            <span style="font-size:0.8rem;color:var(--color-gray)">💧 ${dados.humidade}% | 💨 ${dados.vento} m/s</span>
+        </div>
+    `;
 }
 
 /**
- * Traduz o código WMO da Open-Meteo para um icon e descrição.
- * @param {number} code 
- * @returns {{icon: string, desc: string}}
+ * Fallback para quando o admin forneceu coords manuais.
+ * Vai buscar meteo via Open-Meteo (sem necessidade de API key).
+ * @param {HTMLElement} container
+ * @param {number} lat
+ * @param {number} lng
  */
-function interpretarClima(code) {
-    if (code === 0) return { icon: '☀️', desc: 'Céu limpo' };
-    if (code >= 1 && code <= 3) return { icon: '🌤️', desc: 'Parcialmente nublado' };
-    if (code === 45 || code === 48) return { icon: '🌫️', desc: 'Nevoeiro' };
-    if (code >= 51 && code <= 57) return { icon: '🌧️', desc: 'Chuviscos' };
-    if (code >= 61 && code <= 67) return { icon: '🌧️', desc: 'Chuva' };
-    if (code >= 71 && code <= 77) return { icon: '❄️', desc: 'Neve' };
-    if (code >= 80 && code <= 82) return { icon: '🌦️', desc: 'Aguaceiros' };
-    if (code >= 85 && code <= 86) return { icon: '🌨️', desc: 'Aguaceiros de neve' };
-    if (code >= 95 && code <= 99) return { icon: '⛈️', desc: 'Trovoada' };
-    return { icon: '☁️', desc: 'Indisponível' };
-}
-
-/**
- * Carrega a temperatura atual via Open-Meteo (API Gratuita, s/ chave).
- * @param {HTMLElement} container - O elemento onde mostrar a meteorologia.
- * @param {number} lat - Latitude.
- * @param {number} lng - Longitude.
- * @returns {Promise<void>}
- */
-async function carregarMeteo(container, lat, lng) {
-    if (!container || !lat || !lng) return;
-
+async function carregarMeteoCoords(container, lat, lng) {
+    if (!container) return;
     try {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`;
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-
-        const clima = interpretarClima(data.current_weather.weathercode);
-        const temp = Math.round(data.current_weather.temperature);
-
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        const cw = data.current_weather;
         container.innerHTML = `
-            <div style="font-size: 2.2rem; line-height: 1;">${clima.icon}</div>
             <div class="evento-meteo-info">
-                <span class="evento-meteo-temp">${temp}°C</span>
-                <span class="evento-meteo-desc">${clima.desc}</span>
+                <span class="evento-meteo-temp">${Math.round(cw.temperature)}°C</span>
+                <span class="evento-meteo-desc">Vento ${cw.windspeed} km/h</span>
             </div>
         `;
     } catch (err) {
-        console.error('Erro meteorologia:', err);
-        container.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud"></i> Erro ao carregar</div>`;
+        container.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem previsão</div>`;
     }
 }
 
