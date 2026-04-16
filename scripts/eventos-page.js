@@ -25,6 +25,7 @@ export async function initEventosPage() {
                 <div class="skeleton-line medium"></div>
                 <div class="skeleton-line short"></div>
                 <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
             </div>
         </div>
     `).join('');
@@ -54,7 +55,12 @@ export async function initEventosPage() {
             if (evento.lat && evento.lng) {
                 // Coords manuais fornecidas pelo admin — usar directamente
                 const mapId = `mapa-${evento.id}`;
-                if (mapEl) { mapEl.id = mapId; renderizarMapa(mapId, evento.lat, evento.lng, evento.local); }
+                const mapContainer = document.createElement('div');
+                mapContainer.id = mapId;
+                mapContainer.style.width = '100%';
+                mapContainer.style.height = '100%';
+                mapEl.insertBefore(mapContainer, mapEl.firstChild);
+                renderizarMapa(mapId, evento.lat, evento.lng, evento.local);
                 // Meteo via lat/lon directo (Open-Meteo)
                 carregarMeteoCoords(meteoContainer, evento.lat, evento.lng);
             } else if (evento.local) {
@@ -63,13 +69,21 @@ export async function initEventosPage() {
                     .then(dados => {
                         // Renderizar mapa com as coords que vieram da API OpenWeatherMap
                         const mapId = `mapa-${evento.id}`;
-                        if (mapEl) { mapEl.id = mapId; renderizarMapa(mapId, dados.coords.lat, dados.coords.lon, evento.local); }
+                        const mapContainer = document.createElement('div');
+                        mapContainer.id = mapId;
+                        mapContainer.style.width = '100%';
+                        mapContainer.style.height = '100%';
+                        mapEl.insertBefore(mapContainer, mapEl.firstChild);
+                        renderizarMapa(mapId, dados.coords.lat, dados.coords.lon, evento.local);
                         // Mostrar meteo com os dados já recebidos
                         mostrarMeteo(meteoContainer, dados);
                     })
                     .catch(err => {
                         console.warn('getWeatherByCity falhou:', err);
-                        if (mapEl) mapEl.innerHTML = `<div class="evento-mapa-placeholder"><i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}</div>`;
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'evento-mapa-placeholder';
+                        placeholder.innerHTML = `<i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}`;
+                        mapEl.insertBefore(placeholder, mapEl.firstChild);
                         if (meteoContainer) meteoContainer.innerHTML = `<div class="evento-meteo-error"><i class="fi fi-rr-cloud-disabled"></i> Sem previsão</div>`;
                     });
             } else {
@@ -98,30 +112,37 @@ function criarCardEvento(evento) {
     card.className = 'evento-card';
     card.setAttribute('tabindex', '0');
 
-    const dataFormatada = evento.data
-        ? new Date(evento.data + 'T00:00:00').toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' })
-        : 'Sem data';
+    let dateBadgeHtml = '<span class="evento-date-badge"><i class="fi fi-rr-calendar"></i> Sem data</span>';
+    if (evento.data) {
+        const d = new Date(evento.data + 'T00:00:00');
+        const day = d.toLocaleDateString('pt-PT', { day: '2-digit' });
+        const month = d.toLocaleDateString('pt-PT', { month: 'short' }).replace('.', '').toUpperCase();
+        dateBadgeHtml = `
+            <div class="evento-date-block">
+                <span class="date-day">${day}</span>
+                <span class="date-month">${month}</span>
+            </div>
+        `;
+    }
 
     const temDescricao = evento.descricao && evento.descricao.trim().length > 0;
 
     card.innerHTML = `
-        <div class="evento-mapa"></div>
+        <div class="evento-mapa">
+            ${dateBadgeHtml}
+        </div>
         <div class="evento-body">
-            <span class="evento-date-badge">
-                <i class="fi fi-rr-calendar"></i> ${dataFormatada}
-            </span>
             <h3>${escapeHtml(evento.titulo)}</h3>
             <div class="evento-info">
                 ${evento.hora ? `<span><i class="fi fi-rr-clock"></i> ${evento.hora}</span>` : ''}
                 <span><i class="fi fi-rr-marker"></i> ${escapeHtml(evento.local)}</span>
             </div>
-            ${temDescricao ? `
             <div class="evento-descricao-wrapper">
-                <p class="evento-descricao" id="desc-${evento.id}">${escapeHtml(evento.descricao)}</p>
-                <button type="button" class="btn-ver-mais" id="btn-desc-${evento.id}" aria-expanded="false">
-                    Ver mais <i class="fi fi-rr-angle-small-down"></i>
-                </button>
-            </div>` : ''}
+                <div class="evento-descricao" id="desc-${evento.id}">${temDescricao ? escapeHtml(evento.descricao) : ''}</div>
+            </div>
+            <button type="button" class="btn-ver-mais" id="btn-desc-${evento.id}" aria-expanded="false">
+                Ver mais <i class="fi fi-rr-angle-small-down"></i>
+            </button>
             <div class="evento-meteo">
                 <div class="evento-meteo-loading"><div class="spinner-small"></div> A carregar previsão...</div>
             </div>
@@ -129,27 +150,63 @@ function criarCardEvento(evento) {
     `;
 
     // Botão "Ver mais / Ver menos"
-    if (temDescricao) {
+    // Use a more robust check for whether text needs expanding
+    // Timeout is necessary to wait for DOM to fully render the text and calculate line wraps
+    setTimeout(() => {
         const descEl = card.querySelector(`#desc-${evento.id}`);
         const btnEl  = card.querySelector(`#btn-desc-${evento.id}`);
+        if(!descEl || !btnEl) return;
+        
+        if (!temDescricao) return;
 
-        // Mostrar botão apenas se o conteúdo exceder o max-height definido no CSS
-        const checkOverflow = () => {
-            const maxH = parseFloat(getComputedStyle(descEl).maxHeight) || 0;
-            if (descEl.scrollHeight > maxH + 2) {
-                btnEl.style.display = 'inline-flex';
-            }
-        };
-        requestAnimationFrame(checkOverflow);
+        // Determine if the text actually spans more than 3 lines
+        // We check the unconstrained height by cloning it temporarily
+        const clone = descEl.cloneNode(true);
+        clone.style.display = 'block';
+        clone.style.webkitLineClamp = 'unset';
+        clone.style.position = 'absolute';
+        clone.style.visibility = 'hidden';
+        clone.style.height = 'auto';
+        clone.style.maxHeight = 'none';
+        descEl.parentNode.appendChild(clone);
+        
+        const realHeight = clone.clientHeight;
+        const clampedHeight = descEl.clientHeight;
+        
+        descEl.parentNode.removeChild(clone);
 
-        btnEl.addEventListener('click', () => {
-            const expanded = descEl.classList.toggle('expanded');
-            btnEl.setAttribute('aria-expanded', expanded);
-            btnEl.innerHTML = expanded
-                ? 'Ver menos <i class="fi fi-rr-angle-small-up"></i>'
-                : 'Ver mais <i class="fi fi-rr-angle-small-down"></i>';
-        });
-    }
+        // If real height is greater than the clamped height, show the button
+        // A clamped block typically has height ~77px (3 * 1.7 * 15.2px)
+        if (realHeight > clampedHeight + 2) { 
+            btnEl.style.visibility = 'visible';
+            card.querySelector('.evento-descricao-wrapper').classList.add('has-overflow');
+        }
+
+            btnEl.addEventListener('click', () => {
+                const expanded = descEl.classList.toggle('expanded');
+                
+                // Add expanded class to wrapper to remove fade effect
+                const wrapperEl = card.querySelector('.evento-descricao-wrapper');
+                if (expanded) {
+                    wrapperEl.classList.add('expanded');
+                    // Add margin bottom to button so it doesn't stick to the weather pill
+                    btnEl.style.marginBottom = '2rem';
+                } else {
+                    wrapperEl.classList.remove('expanded');
+                    btnEl.style.marginBottom = '1.5rem';
+                }
+                
+                btnEl.setAttribute('aria-expanded', expanded);
+                btnEl.innerHTML = expanded
+                    ? 'Ver menos <i class="fi fi-rr-angle-small-up"></i>'
+                    : 'Ver mais <i class="fi fi-rr-angle-small-down"></i>';
+                
+                // Optional: Scroll slightly if closing so user doesn't lose context
+                if(!expanded) {
+                    descEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+        }, 150); // Increased timeout slightly to ensure font loading is done
 
     return card;
 }
@@ -162,11 +219,10 @@ function criarCardEvento(evento) {
 function mostrarMeteo(container, dados) {
     if (!container) return;
     container.innerHTML = `
-        <img src="${dados.iconeUrl}" alt="${dados.descricao}" style="width:48px;height:48px;">
+        <img src="${dados.iconeUrl}" alt="${dados.descricao}">
         <div class="evento-meteo-info">
             <span class="evento-meteo-temp">${dados.temperatura}°C</span>
             <span class="evento-meteo-desc">${dados.descricao}</span>
-            <span style="font-size:0.8rem;color:var(--color-gray)">💧 ${dados.humidade}% | 💨 ${dados.vento} m/s</span>
         </div>
     `;
 }
