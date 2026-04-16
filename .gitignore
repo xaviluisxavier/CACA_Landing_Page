@@ -1,0 +1,5 @@
+# Ficheiros de ambiente (Segurança)
+.env
+
+# Dependências do Node.js
+node_modules/
