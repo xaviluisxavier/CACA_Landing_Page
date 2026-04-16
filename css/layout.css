@@ -1,0 +1,76 @@
+/* CABEÇALHO E NAVEGAÇÃO */
+.header { 
+    background-color: var(--glass-bg); 
+    border-bottom: var(--glass-border); 
+    box-shadow: var(--shadow-soft); 
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem var(--spacing-md); width: 100%; transition: padding 0.3s ease; }
+
+.logo-section { display: flex; align-items: center; gap: 1rem; }
+#logo-3d-container canvas { display: block; cursor: pointer; width: 60px; height: 60px; }
+
+.site-title { display: flex; flex-direction: column; justify-content: center; }
+.title-main { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-primary); line-height: 1.2; }
+.title-sub { font-size: 0.9rem; color: var(--color-gray); font-weight: 400; }
+
+.main-nav ul { display: flex; align-items: center; gap: 2rem; }
+.main-nav a { 
+    display: inline-block; 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    color: var(--color-dark-gray); 
+    padding: 0.5rem 0; 
+    position: relative;
+}
+
+/* Magic underline animation for links */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover, .main-nav a:focus-visible { color: var(--color-primary); background-color: transparent;}
+.main-nav a:hover::after { width: 100%; }
+
+.mobile-menu-toggle { display: none; font-size: 2.2rem; color: var(--color-primary); position: absolute; right: 1.5rem; top: 1.2rem; }
+
+/* FOOTER */
+.footer { background-color: var(--color-navy); color: var(--color-white); padding: 4rem 0 2rem 0; position: relative; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent-orange)); }
+
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+
+.footer-brand h2 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-white); }
+.footer-brand p { color: #BBDEFB; font-size: 0.95rem; line-height: 1.6; padding-right: 2rem; }
+
+.footer-links-group h3 { font-size: 1.1rem; color: var(--color-white); margin-bottom: 1.25rem; position: relative; display: inline-block; }
+.footer-links-group h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 30px; height: 2px; background-color: var(--color-secondary); }
+
+.footer-links-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-links-list a { color: #E3F2FD; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: var(--transition); }
+.footer-links-list a::before { content: '›'; color: var(--color-secondary); font-size: 1.2rem; line-height: 1; transition: transform 0.3s ease; }
+.footer-links-list a:hover { color: var(--color-secondary); transform: translateX(5px); }
+.footer-links-list a:hover::before { transform: translateX(3px); }
+
+.footer-social-wrapper h3 { font-size: 1.1rem; color: var(--color-white); margin-bottom: 1.25rem; position: relative; display: inline-block; }
+.footer-social-wrapper h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 30px; height: 2px; background-color: var(--color-secondary); }
+
+.footer-social { display: flex; gap: 1rem; }
+.social-link { width: 42px; height: 42px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #FFF; font-size: 1.1rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+.social-link:hover { background-color: var(--color-secondary); color: var(--color-primary-dark); transform: translateY(-5px) scale(1.1); box-shadow: 0 10px 20px rgba(255, 209, 0, 0.3); border-color: transparent; }
+
+.footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #90CAF9; }
+.footer-copyright { font-weight: 500; }
+.footer-university { display: flex; align-items: center; gap: 0.5rem; }
