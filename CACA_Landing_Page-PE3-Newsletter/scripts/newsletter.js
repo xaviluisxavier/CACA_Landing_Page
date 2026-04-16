@@ -19,7 +19,7 @@ export class GestorNewsletter {
         this.campos = Array.from(document.querySelectorAll('#newsletter-form input'));
         this.feedbackEl = document.getElementById('newsletter-feedback');
         
-        // Configurações visuais (exatamente iguais às do formulário de contacto)
+        // Configurações visuais 
         this.config = {
             corValido: "4px solid #4CAF50",
             corInvalido: "4px solid #ff4d4d"
@@ -76,7 +76,7 @@ export class GestorNewsletter {
             return valor.length >= 3;
         }
 
-        // Validação do Email da Newsletter (Mesmo Regex do Formulário)
+        // Validação do Email da Newsletter 
         if (elemento.id === 'news-email') {
             const regexEmail = /^[^\s@]+@(uac\.pt|gmail\.com|outlook\.com)$/i;
             return regexEmail.test(valor);
