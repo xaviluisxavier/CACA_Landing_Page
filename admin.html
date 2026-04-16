@@ -115,6 +115,44 @@
                 </div>
 
             </div>
+
+            <!-- Painel de Subscritores Newsletter -->
+            <div class="newsletter-panel">
+                <div class="newsletter-panel-header">
+                    <div class="newsletter-panel-title">
+                        <i class="fi fi-rr-envelope"></i>
+                        <h2>Subscritores da Newsletter</h2>
+                    </div>
+                    <div class="newsletter-panel-actions">
+                        <span class="event-count" id="subscriberCount">0</span>
+                        <button type="button" class="btn-export" id="btnExportCSV" title="Exportar como CSV">
+                            <i class="fi fi-rr-file-export"></i> Exportar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="subscribers-table-wrapper">
+                    <table class="subscribers-table" id="subscribersTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><i class="fi fi-rr-user"></i> Nome</th>
+                                <th><i class="fi fi-rr-envelope"></i> Email</th>
+                                <th><i class="fi fi-rr-calendar"></i> Data de Subscrição</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscribersList">
+                            <tr>
+                                <td colspan="5" class="empty-state-td">
+                                    <span class="empty-icon">📭</span>
+                                    <p>Nenhum subscritor ainda</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 

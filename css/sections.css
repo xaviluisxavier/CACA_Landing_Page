@@ -197,3 +197,28 @@
 .corpo-grafico rect:hover { fill: var(--color-primary-dark); }
 .eixo-x text { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; fill: #666; }
 .eixo-x .domain { stroke: #ddd; }
+
+/* NEWSLETTER */
+.newsletter-wrapper {
+    max-width: 550px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.newsletter-wrapper:hover,
+.newsletter-wrapper:focus-within {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(0, 56, 130, 0.15);
+}
+
+.feedback-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    min-height: 1.5rem;
+}

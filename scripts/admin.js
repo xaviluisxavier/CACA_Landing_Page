@@ -231,3 +231,129 @@ btnCancel.addEventListener('click', resetForm);
 // Renderizar eventos diretamente ao carregar
 renderizarEventos();
 
+// ─── Newsletter: Subscritores ───────────────────────────────────
+
+const DB_NAME = 'CACA_Database';
+const STORE_NAME = 'subscritores_newsletter';
+
+/**
+ * Abre o IndexedDB partilhado com o GestorNewsletter.
+ * @returns {Promise<IDBDatabase>}
+ */
+function abrirDB() {
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, 1);
+        req.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME, { keyPath: 'email' });
+            }
+        };
+        req.onsuccess = (e) => resolve(e.target.result);
+        req.onerror = (e) => reject(e.target.error);
+    });
+}
+
+/**
+ * Obtém todos os subscritores do IndexedDB.
+ * @returns {Promise<Array>}
+ */
+async function obterSubscritores() {
+    const db = await abrirDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.getAll();
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = (e) => reject(e.target.error);
+    });
+}
+
+/**
+ * Remove um subscritor pelo email.
+ * @param {string} email
+ * @returns {Promise<void>}
+ */
+async function removerSubscritor(email) {
+    const db = await abrirDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.delete(email);
+        req.onsuccess = () => resolve();
+        req.onerror = (e) => reject(e.target.error);
+    });
+}
+
+/** Renderiza a tabela de subscritores. */
+async function renderizarSubscritores() {
+    const subscribersList = document.getElementById('subscribersList');
+    const subscriberCount = document.getElementById('subscriberCount');
+    try {
+        const lista = await obterSubscritores();
+        subscriberCount.textContent = lista.length;
+
+        if (lista.length === 0) {
+            subscribersList.innerHTML = `
+                <tr>
+                    <td colspan="5" class="empty-state-td">
+                        <span class="empty-icon">📭</span>
+                        <p>Nenhum subscritor ainda</p>
+                    </td>
+                </tr>`;
+            return;
+        }
+
+        subscribersList.innerHTML = lista.map((s, i) => {
+            const data = s.dataSubscricao
+                ? new Date(s.dataSubscricao).toLocaleDateString('pt-PT', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+                : '—';
+            return `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${escapeHtml(s.nome)}</td>
+                    <td><a href="mailto:${escapeHtml(s.email)}">${escapeHtml(s.email)}</a></td>
+                    <td>${data}</td>
+                    <td>
+                        <button class="btn-delete btn-unsub" data-email="${escapeHtml(s.email)}" title="Remover subscritor">
+                            <i class="fi fi-rr-trash"></i>
+                        </button>
+                    </td>
+                </tr>`;
+        }).join('');
+
+        subscribersList.querySelectorAll('.btn-unsub').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                if (!confirm(`Remover subscritor ${btn.dataset.email}?`)) return;
+                await removerSubscritor(btn.dataset.email);
+                showToast('Subscritor removido.', 'info');
+                renderizarSubscritores();
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        subscribersList.innerHTML = '<tr><td colspan="5" style="color:#D32F2F;">Erro ao carregar subscritores.</td></tr>';
+    }
+}
+
+/** Exporta a lista de subscritores como ficheiro CSV. */
+async function exportarCSV() {
+    const lista = await obterSubscritores();
+    if (lista.length === 0) { showToast('Sem subscritores para exportar.', 'info'); return; }
+
+    const cabecalho = 'Nome,Email,Data de Subscrição';
+    const linhas = lista.map(s => `"${s.nome}","${s.email}","${s.dataSubscricao || ''}"`);
+    const csv = [cabecalho, ...linhas].join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `subscritores_newsletter_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('CSV exportado com sucesso!', 'success');
+}
+
+document.getElementById('btnExportCSV').addEventListener('click', exportarCSV);
+renderizarSubscritores();

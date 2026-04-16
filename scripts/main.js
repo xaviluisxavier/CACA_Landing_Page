@@ -7,6 +7,8 @@ import { initSaberMais } from './saber-mais.js';
 import { initScrollToTop } from './scroll-to-top.js';
 import { initEventosPage } from './eventos-page.js';
 import { renderizarMapa } from './mapa.js';
+import { GestorNewsletter } from './newsletter.js';
+
 
 /**
  * Conjunto de dados base para o gráfico de oportunidades.
@@ -43,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const meuFormulario = new ValidacaoFormulario();
     meuFormulario.iniciar();
+
+    const newsletter = new GestorNewsletter();
+    newsletter.iniciar();
 
     window.addEventListener('resize', () => {
         meuGrafico.mostrarGrafico(); 
