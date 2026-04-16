@@ -8,6 +8,7 @@ import { initScrollToTop } from './scroll-to-top.js';
 import { initEventosPage } from './eventos-page.js';
 import { renderizarMapa } from './mapa.js';
 import { GestorNewsletter } from './newsletter.js';
+import { initNoticias } from './noticias.js';
 
 
 /**
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSaberMais();
     initScrollToTop();
     initEventosPage();
+    initNoticias(); 
+
     
     // Inicializar mapa de contactos re-utilizando o mapa.js
     renderizarMapa('contact-map', 37.7451, -25.6603, "CACA - Sede Principal");
