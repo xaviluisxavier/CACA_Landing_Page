@@ -1,0 +1,23 @@
+/* Feedback de Validação da Newsletter */
+.feedback-message {
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    display: none;
+    text-align: center;
+}
+
+.feedback-message.show { display: block !important; }
+
+.feedback-success { 
+    background-color: #E8F5E9 !important; 
+    color: #2E7D32 !important; 
+    border: 1px solid #4CAF50 !important; 
+}
+
+.feedback-error { 
+    background-color: #FFEBEE !important; 
+    color: #C62828 !important; 
+    border: 1px solid #EF5350 !important; 
+}

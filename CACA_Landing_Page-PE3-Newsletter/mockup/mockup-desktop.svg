@@ -1,0 +1,377 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 3200" style="background: #f8f9fa;">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="sectionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f4f8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- HEADER -->
+  <rect x="0" y="60" width="1440" height="100" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Logo -->
+  <circle cx="100" cy="110" r="30" fill="url(#heroGrad)"/>
+  <text x="100" y="118" text-anchor="middle" font-size="14" font-weight="bold" fill="white">CACA</text>
+  
+  <!-- Site Title -->
+  <text x="160" y="100" font-size="24" font-weight="700" fill="#1976D2" font-family="'Segoe UI', Arial, sans-serif">
+    Centro Académico Clínico dos Açores
+  </text>
+  <text x="160" y="125" font-size="14" font-weight="400" fill="#666" font-family="'Segoe UI', Arial, sans-serif">
+    Inovação e Excelência em Saúde
+  </text>
+  
+  <!-- Navigation Menu -->
+  <text x="900" y="110" font-size="15" font-weight="500" fill="#333" font-family="'Segoe UI', sans-serif">
+    Missão
+  </text>
+  <text x="990" y="110" font-size="15" font-weight="500" fill="#333" font-family="'Segoe UI', sans-serif">
+    Investigação
+  </text>
+  <text x="1110" y="110" font-size="15" font-weight="500" fill="#333" font-family="'Segoe UI', sans-serif">
+    Parceiros
+  </text>
+  <text x="1220" y="110" font-size="15" font-weight="500" fill="#333" font-family="'Segoe UI', sans-serif">
+    Oportunidades
+  </text>
+  <text x="1360" y="110" font-size="15" font-weight="500" fill="#333" font-family="'Segoe UI', sans-serif">
+    Contactos
+  </text>
+  
+  <!-- HERO SECTION -->
+  <rect x="0" y="160" width="1440" height="550" fill="url(#heroGrad)"/>
+  
+  <!-- Hero overlay pattern (representing Azores) -->
+  <circle cx="1200" cy="300" r="150" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1150" cy="450" r="100" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1300" cy="500" r="80" fill="#ffffff" opacity="0.05"/>
+  
+  <!-- Hero Content -->
+  <text x="100" y="260" font-size="48" font-weight="700" fill="#ffffff" font-family="'Segoe UI', Arial, sans-serif">
+    Construindo o Futuro
+  </text>
+  <text x="100" y="315" font-size="48" font-weight="700" fill="#ffffff" font-family="'Segoe UI', Arial, sans-serif">
+    da Saúde nos Açores
+  </text>
+  
+  <text x="100" y="370" font-size="20" font-weight="400" fill="#e3f2fd" font-family="Georgia, serif">
+    Uma parceria inovadora entre a Universidade dos Açores e instituições
+  </text>
+  <text x="100" y="400" font-size="20" font-weight="400" fill="#e3f2fd" font-family="Georgia, serif">
+    de saúde regionais, dedicada à investigação clínica de excelência,
+  </text>
+  <text x="100" y="430" font-size="20" font-weight="400" fill="#e3f2fd" font-family="Georgia, serif">
+    ao ensino de qualidade e à melhoria dos cuidados de saúde.
+  </text>
+  
+  <!-- CTA Button -->
+  <rect x="100" y="470" width="250" height="55" rx="28" fill="#43A047"/>
+  <text x="225" y="503" text-anchor="middle" font-size="18" font-weight="600" fill="#ffffff">
+    Conheça as Nossas Áreas
+  </text>
+  
+  <!-- Hero Image representation -->
+  <rect x="850" y="220" width="500" height="400" rx="10" fill="#ffffff" opacity="0.15"/>
+  <text x="1100" y="425" text-anchor="middle" font-size="16" fill="#ffffff" opacity="0.8">
+    [Imagem: Paisagem dos Açores / Campus Universitário]
+  </text>
+  
+  <!-- ÁREAS DE INVESTIGAÇÃO SECTION -->
+  <rect x="0" y="710" width="1440" height="700" fill="url(#sectionGrad)"/>
+  
+  <text x="720" y="780" text-anchor="middle" font-size="42" font-weight="700" fill="#1976D2" font-family="'Segoe UI', Arial">
+    Áreas de Investigação
+  </text>
+  <text x="720" y="820" text-anchor="middle" font-size="18" font-weight="400" fill="#666" font-family="Georgia, serif">
+    Desenvolvendo soluções inovadoras para os desafios da saúde regional e global
+  </text>
+  
+  <!-- Research Area Cards -->
+  <!-- Card 1: e-Saúde -->
+  <rect x="80" y="870" width="380" height="280" rx="12" fill="#ffffff" stroke="#1976D2" stroke-width="2"/>
+  <rect x="80" y="870" width="380" height="60" rx="12" fill="#1976D2"/>
+  <text x="270" y="910" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">
+    e-Saúde
+  </text>
+  <text x="100" y="970" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    Desenvolvimento de plataformas
+  </text>
+  <text x="100" y="995" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    digitais para gestão de saúde,
+  </text>
+  <text x="100" y="1020" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    telesaúde e monitorização remota
+  </text>
+  <text x="100" y="1045" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    de pacientes nas ilhas.
+  </text>
+  
+  <!-- Card 2: IA em Saúde -->
+  <rect x="530" y="870" width="380" height="280" rx="12" fill="#ffffff" stroke="#43A047" stroke-width="2"/>
+  <rect x="530" y="870" width="380" height="60" rx="12" fill="#43A047"/>
+  <text x="720" y="910" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">
+    Inteligência Artificial
+  </text>
+  <text x="550" y="970" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    Aplicação de machine learning
+  </text>
+  <text x="550" y="995" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    para diagnóstico precoce, análise
+  </text>
+  <text x="550" y="1020" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    preditiva e personalização de
+  </text>
+  <text x="550" y="1045" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    tratamentos médicos.
+  </text>
+  
+  <!-- Card 3: Telemedicina -->
+  <rect x="980" y="870" width="380" height="280" rx="12" fill="#ffffff" stroke="#FF6F00" stroke-width="2"/>
+  <rect x="980" y="870" width="380" height="60" rx="12" fill="#FF6F00"/>
+  <text x="1170" y="910" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">
+    Telemedicina
+  </text>
+  <text x="1000" y="970" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    Soluções de teleconsulta e apoio
+  </text>
+  <text x="1000" y="995" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    à decisão clínica para populações
+  </text>
+  <text x="1000" y="1020" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    insulares e áreas remotas dos
+  </text>
+  <text x="1000" y="1045" font-size="15" fill="#333" font-family="'Segoe UI', sans-serif">
+    Açores.
+  </text>
+  
+  <!-- Card 4: Epidemiologia -->
+  <rect x="305" y="1180" width="380" height="200" rx="12" fill="#ffffff" stroke="#7B1FA2" stroke-width="2"/>
+  <rect x="305" y="1180" width="380" height="50" rx="12" fill="#7B1FA2"/>
+  <text x="495" y="1213" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">
+    Epidemiologia Regional
+  </text>
+  <text x="325" y="1265" font-size="14" fill="#333">
+    Estudos de prevalência de doenças e fatores
+  </text>
+  <text x="325" y="1288" font-size="14" fill="#333">
+    de risco específicos das populações insulares.
+  </text>
+  
+  <!-- Card 5: Saúde Pública -->
+  <rect x="755" y="1180" width="380" height="200" rx="12" fill="#ffffff" stroke="#C62828" stroke-width="2"/>
+  <rect x="755" y="1180" width="380" height="50" rx="12" fill="#C62828"/>
+  <text x="945" y="1213" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">
+    Saúde Pública
+  </text>
+  <text x="775" y="1265" font-size="14" fill="#333">
+    Promoção da saúde, prevenção de doenças e
+  </text>
+  <text x="775" y="1288" font-size="14" fill="#333">
+    políticas de saúde baseadas em evidência.
+  </text>
+  
+  <!-- PARCEIROS SECTION -->
+  <rect x="0" y="1410" width="1440" height="400" fill="#ffffff"/>
+  
+  <text x="720" y="1480" text-anchor="middle" font-size="42" font-weight="700" fill="#1976D2">
+    Nossos Parceiros
+  </text>
+  <text x="720" y="1520" text-anchor="middle" font-size="18" font-weight="400" fill="#666" font-family="Georgia, serif">
+    Colaboração institucional para excelência em saúde e investigação
+  </text>
+  
+  <!-- Partner boxes -->
+  <rect x="100" y="1560" width="220" height="120" rx="8" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="210" y="1610" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    Universidade
+  </text>
+  <text x="210" y="1635" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    dos Açores
+  </text>
+  
+  <rect x="360" y="1560" width="220" height="120" rx="8" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="470" y="1610" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    Hospital Regional
+  </text>
+  <text x="470" y="1635" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    dos Açores
+  </text>
+  
+  <rect x="620" y="1560" width="220" height="120" rx="8" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="730" y="1610" text-anchor="middle" font-size="15" font-weight="600" fill="#333">
+    Governo Regional
+  </text>
+  <text x="730" y="1635" text-anchor="middle" font-size="15" font-weight="600" fill="#333">
+    dos Açores
+  </text>
+  
+  <rect x="880" y="1560" width="220" height="120" rx="8" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="990" y="1610" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    Centros de
+  </text>
+  <text x="990" y="1635" text-anchor="middle" font-size="16" font-weight="600" fill="#333">
+    Investigação
+  </text>
+  
+  <rect x="1140" y="1560" width="200" height="120" rx="8" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="1240" y="1610" text-anchor="middle" font-size="15" font-weight="600" fill="#333">
+    Parceiros
+  </text>
+  <text x="1240" y="1635" text-anchor="middle" font-size="15" font-weight="600" fill="#333">
+    Internacionais
+  </text>
+  
+  <text x="720" y="1750" text-anchor="middle" font-size="14" fill="#999" font-style="italic">
+    + várias outras instituições colaboradoras
+  </text>
+  
+  <!-- OPORTUNIDADES SECTION -->
+  <rect x="0" y="1810" width="1440" height="450" fill="url(#sectionGrad)"/>
+  
+  <text x="720" y="1880" text-anchor="middle" font-size="42" font-weight="700" fill="#43A047">
+    Oportunidades
+  </text>
+  <text x="720" y="1920" text-anchor="middle" font-size="18" font-weight="400" fill="#666" font-family="Georgia, serif">
+    Junte-se a nós na construção do futuro da saúde
+  </text>
+  
+  <!-- Opportunity cards -->
+  <rect x="80" y="1960" width="300" height="260" rx="12" fill="#ffffff" stroke="#43A047" stroke-width="2"/>
+  <circle cx="230" cy="2020" r="35" fill="#43A047" opacity="0.1"/>
+  <text x="230" y="2030" text-anchor="middle" font-size="32">🎓</text>
+  <text x="230" y="2090" text-anchor="middle" font-size="22" font-weight="700" fill="#333">
+    Estágios
+  </text>
+  <text x="100" y="2130" font-size="14" fill="#666">
+    Programas de estágio em
+  </text>
+  <text x="100" y="2152" font-size="14" fill="#666">
+    investigação clínica e áreas
+  </text>
+  <text x="100" y="2174" font-size="14" fill="#666">
+    tecnológicas de saúde.
+  </text>
+  
+  <rect x="420" y="1960" width="300" height="260" rx="12" fill="#ffffff" stroke="#1976D2" stroke-width="2"/>
+  <circle cx="570" cy="2020" r="35" fill="#1976D2" opacity="0.1"/>
+  <text x="570" y="2030" text-anchor="middle" font-size="32">🔬</text>
+  <text x="570" y="2090" text-anchor="middle" font-size="22" font-weight="700" fill="#333">
+    Projetos
+  </text>
+  <text x="440" y="2130" font-size="14" fill="#666">
+    Oportunidades de participação
+  </text>
+  <text x="440" y="2152" font-size="14" fill="#666">
+    em projetos de investigação
+  </text>
+  <text x="440" y="2174" font-size="14" fill="#666">
+    inovadores.
+  </text>
+  
+  <rect x="760" y="1960" width="300" height="260" rx="12" fill="#ffffff" stroke="#FF6F00" stroke-width="2"/>
+  <circle cx="910" cy="2020" r="35" fill="#FF6F00" opacity="0.1"/>
+  <text x="910" y="2030" text-anchor="middle" font-size="32">📚</text>
+  <text x="910" y="2090" text-anchor="middle" font-size="22" font-weight="700" fill="#333">
+    Teses
+  </text>
+  <text x="780" y="2130" font-size="14" fill="#666">
+    Temas de investigação para
+  </text>
+  <text x="780" y="2152" font-size="14" fill="#666">
+    mestrados e doutoramentos
+  </text>
+  <text x="780" y="2174" font-size="14" fill="#666">
+    em saúde.
+  </text>
+  
+  <rect x="1100" y="1960" width="260" height="260" rx="12" fill="#ffffff" stroke="#7B1FA2" stroke-width="2"/>
+  <circle cx="1230" cy="2020" r="35" fill="#7B1FA2" opacity="0.1"/>
+  <text x="1230" y="2030" text-anchor="middle" font-size="32">💰</text>
+  <text x="1230" y="2090" text-anchor="middle" font-size="22" font-weight="700" fill="#333">
+    Bolsas
+  </text>
+  <text x="1120" y="2130" font-size="14" fill="#666">
+    Bolsas de investigação
+  </text>
+  <text x="1120" y="2152" font-size="14" fill="#666">
+    para estudantes e
+  </text>
+  <text x="1120" y="2174" font-size="14" fill="#666">
+    investigadores.
+  </text>
+  
+  <!-- CONTACTOS SECTION -->
+  <rect x="0" y="2260" width="1440" height="550" fill="#ffffff"/>
+  
+  <text x="720" y="2330" text-anchor="middle" font-size="42" font-weight="700" fill="#1976D2">
+    Contactos
+  </text>
+  
+  <!-- Contact info and form side by side -->
+  <rect x="100" y="2380" width="580" height="380" rx="12" fill="#f8f9fa" stroke="#e0e0e0"/>
+  <text x="390" y="2420" text-anchor="middle" font-size="24" font-weight="700" fill="#333">
+    Informações de Contacto
+  </text>
+  
+  <text x="130" y="2475" font-size="16" font-weight="600" fill="#1976D2">📧 Email:</text>
+  <text x="130" y="2500" font-size="15" fill="#666">caca@uac.pt</text>
+  
+  <text x="130" y="2545" font-size="16" font-weight="600" fill="#1976D2">📞 Telefone:</text>
+  <text x="130" y="2570" font-size="15" fill="#666">+351 296 650 000</text>
+  
+  <text x="130" y="2615" font-size="16" font-weight="600" fill="#1976D2">📍 Morada:</text>
+  <text x="130" y="2640" font-size="15" fill="#666">Campus de Ponta Delgada</text>
+  <text x="130" y="2662" font-size="15" fill="#666">Rua da Mãe de Deus, 9500-321</text>
+  <text x="130" y="2684" font-size="15" fill="#666">Ponta Delgada, São Miguel, Açores</text>
+  
+  <rect x="130" y="2710" width="520" height="30" rx="4" fill="#e3f2fd"/>
+  <text x="390" y="2730" text-anchor="middle" font-size="13" fill="#666" font-style="italic">
+    🗺️ Localização: Ilha de São Miguel, Açores, Portugal
+  </text>
+  
+  <!-- Contact form -->
+  <rect x="760" y="2380" width="580" height="380" rx="12" fill="#f8f9fa" stroke="#e0e0e0"/>
+  <text x="1050" y="2420" text-anchor="middle" font-size="24" font-weight="700" fill="#333">
+    Envie uma Mensagem
+  </text>
+  
+  <rect x="790" y="2450" width="520" height="40" rx="6" fill="#ffffff" stroke="#ccc"/>
+  <text x="805" y="2475" font-size="14" fill="#999">Nome completo</text>
+  
+  <rect x="790" y="2505" width="520" height="40" rx="6" fill="#ffffff" stroke="#ccc"/>
+  <text x="805" y="2530" font-size="14" fill="#999">Endereço de email</text>
+  
+  <rect x="790" y="2560" width="520" height="40" rx="6" fill="#ffffff" stroke="#ccc"/>
+  <text x="805" y="2585" font-size="14" fill="#999">Assunto</text>
+  
+  <rect x="790" y="2615" width="520" height="100" rx="6" fill="#ffffff" stroke="#ccc"/>
+  <text x="805" y="2640" font-size="14" fill="#999">Mensagem...</text>
+  
+  <rect x="1050" y="2730" width="160" height="45" rx="23" fill="#43A047"/>
+  <text x="1130" y="2758" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">
+    Enviar Mensagem
+  </text>
+  
+  <!-- FOOTER -->
+  <rect x="0" y="2810" width="1440" height="200" fill="#1a237e"/>
+  
+  <text x="720" y="2870" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="600">
+    © 2026 Centro Académico Clínico dos Açores (CACA)
+  </text>
+  <text x="720" y="2900" text-anchor="middle" font-size="14" fill="#bbdefb">
+    Universidade dos Açores
+  </text>
+  
+  <text x="400" y="2950" font-size="13" fill="#90caf9">Política de Privacidade</text>
+  <text x="720" y="2950" text-anchor="middle" font-size="13" fill="#90caf9">Acessibilidade</text>
+  <text x="1000" y="2950" font-size="13" fill="#90caf9">Termos de Uso</text>
+  
+  <!-- Social media icons -->
+  <circle cx="680" cy="2980" r="15" fill="#3b5998"/>
+  <circle cx="720" cy="2980" r="15" fill="#1DA1F2"/>
+  <circle cx="760" cy="2980" r="15" fill="#0077b5"/>
+</svg>
