@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Administração | CACA</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo-caca.svg">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+</head>
+
+<body class="admin-body">
+
+    <!-- ═══════ ADMIN AREA ═══════ -->
+    <div id="adminArea">
+
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="container admin-header-content">
+                <div class="admin-header-left">
+                    <div class="admin-header-brand">
+                        <h1>CACA</h1>
+                        <span class="badge">Admin</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <a href="./index.html" class="btn-back">
+                        <i class="fi fi-rr-arrow-left"></i> Voltar ao Site
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <div class="container admin-grid">
+
+                <!-- Formulário -->
+                <div class="form-panel">
+                    <h2 id="formTitle"><i class="fi fi-rr-plus-small"></i> Novo Evento</h2>
+
+                    <form class="admin-form" id="eventoForm">
+                        <div class="field-group">
+                            <label for="evTitulo">Título *</label>
+                            <input type="text" id="evTitulo" placeholder="Nome do evento" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="field-group">
+                                <label for="evData">Data *</label>
+                                <input type="date" id="evData" required>
+                            </div>
+                            <div class="field-group">
+                                <label for="evHora">Hora</label>
+                                <input type="time" id="evHora">
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="evLocal">Local / Cidade *</label>
+                            <input type="text" id="evLocal" placeholder="Ex: Ponta Delgada" required>
+                        </div>
+
+                        <div class="form-divider"></div>
+                        <p class="form-section-label">Coordenadas (opcional)</p>
+
+                        <div class="form-row">
+                            <div class="field-group">
+                                <label for="evLat">Latitude</label>
+                                <input type="number" id="evLat" step="any" placeholder="37.7833">
+                            </div>
+                            <div class="field-group">
+                                <label for="evLng">Longitude</label>
+                                <input type="number" id="evLng" step="any" placeholder="-25.5833">
+                            </div>
+                        </div>
+
+                        <div class="form-divider"></div>
+
+                        <div class="field-group">
+                            <label for="evDescricao">Descrição</label>
+                            <textarea id="evDescricao" placeholder="Descrição breve do evento..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-save" id="btnSave">Guardar Evento</button>
+                            <button type="button" class="btn-cancel" id="btnCancel">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Lista de Eventos -->
+                <div class="list-panel">
+                    <div class="list-panel-header">
+                        <h2><i class="fi fi-rr-calendar"></i> Eventos</h2>
+                        <span class="event-count" id="eventCount">0</span>
+                    </div>
+                    <div class="events-list" id="eventsList">
+                        <div class="empty-state">
+                            <span class="empty-icon">📭</span>
+                            <p>Nenhum evento criado</p>
+                            <small>Use o formulário ao lado para adicionar o primeiro evento.</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Painel de Subscritores Newsletter -->
+            <div class="newsletter-panel">
+                <div class="newsletter-panel-header">
+                    <div class="newsletter-panel-title">
+                        <i class="fi fi-rr-envelope"></i>
+                        <h2>Subscritores da Newsletter</h2>
+                    </div>
+                    <div class="newsletter-panel-actions">
+                        <span class="event-count" id="subscriberCount">0</span>
+                        <button type="button" class="btn-export" id="btnExportCSV" title="Exportar como CSV">
+                            <i class="fi fi-rr-file-export"></i> Exportar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="subscribers-table-wrapper">
+                    <table class="subscribers-table" id="subscribersTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><i class="fi fi-rr-user"></i> Nome</th>
+                                <th><i class="fi fi-rr-envelope"></i> Email</th>
+                                <th><i class="fi fi-rr-calendar"></i> Data de Subscrição</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscribersList">
+                            <tr>
+                                <td colspan="5" class="empty-state-td">
+                                    <span class="empty-icon">📭</span>
+                                    <p>Nenhum subscritor ainda</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script type="module" src="scripts/admin.js"></script>
+</body>
+
+</html>
