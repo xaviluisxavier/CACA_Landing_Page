@@ -9,6 +9,32 @@
 
 ---
 
+## Integração de Web APIs e Persistência de Dados (Entrega 3)
+
+Nesta terceira e última fase do projeto, o foco foi elevar a landing page a uma aplicação web dinâmica (Web App), implementando persistência de dados local, assincronismo (`Promises`, `async/await`) e consumo de APIs externas. A arquitetura foi estritamente modular, garantindo a separação de responsabilidades (Separation of Concerns).
+
+### Arquitetura Core, CRUD e IndexedDB
+Implementámos um motor centralizado de base de dados para garantir que os dados não se perdem ao recarregar a página.
+
+* **Módulo de Base de Dados (`db.js`):** Criação de um *wrapper* sobre a API nativa da **IndexedDB** (`CACA_DB`). Este módulo gere transações assíncronas e expõe funções genéricas (`addRecord`, `getAllRecords`, `updateRecord`, `deleteRecord`) para serem consumidas pelo resto da aplicação. Foram criados dois *object stores*: `eventos` e `newsletter`.
+* **Backoffice / Dashboard de Administração (`admin.js`):** Desenvolvimento de uma área reservada aos administradores do CACA.
+    * **CRUD de Eventos:** Permite Adicionar, Visualizar, Editar e Remover eventos, definindo datas, horas, locais e coordenadas geográficas (lat/lng).
+    * **Gestão de Subscritores:** Permite visualizar a lista de subscritores da newsletter, remover contactos e exportar a lista em formato CSV para uso em campanhas de marketing.
+
+### Integração de Web APIs (Meteorologia e Mapas)
+A secção de eventos da página principal (`eventos-page.js`) foi transformada para consumir dados dinâmicos das APIs externas em tempo real, baseando-se nos registos guardados na base de dados.
+
+* **API de Mapas (Leaflet / OpenStreetMap):** O módulo `mapa.js` gera mapas interativos para cada evento. Se o administrador fornecer coordenadas exatas, o mapa centra-se nesse ponto; caso contrário, utiliza a geocodificação da cidade.
+* **API de Previsão Meteorológica (OpenWeatherMap):** O módulo `meteorologia.js` faz pedidos assíncronos à API para obter o estado do tempo (temperatura, vento, ícones descritivos) para a localização de cada evento, seja por pesquisa pelo nome da cidade ou pesquisa direta por coordenadas GPS.
+* **UI/UX e Tratamento de Erros:** A renderização inclui *Loading Skeletons* enquanto as APIs respondem, *badges* de datas flutuantes sobre os mapas e tratamentos de erro graciosos (ex: mostrar "Sem previsão" caso a API falhe, sem quebrar o resto do site).
+
+### Subscrição de Newsletter Modular
+* **Módulo Dedicado (`newsletter.js`):** Implementação de um sistema de subscrição no rodapé da página principal.
+* **Validação e Persistência:** Utiliza RegEx para validar os dados do utilizador (incluindo restrição de domínios de email) e comunica diretamente com o `db.js` para persistir o email na IndexedDB (que garante que não há emails duplicados via `keyPath` e restrições de integridade).
+* **Feedback Visual:** Integração perfeita com o Design System do site, alterando as cores das bordas do formulário dinamicamente em tempo real (Verde/Vermelho) e emitindo alertas nativos.
+
+---
+
 ## Novas Funcionalidades e Interatividade (Entrega 2)
 
 Nesta segunda fase do projeto, integrámos JavaScript para adicionar interatividade e dinamismo à landing page, melhorando a experiência do utilizador. O código foi estruturado de forma modular e incluído em vários ficheiros externos (com a separação de ficheiros CSS e módulos JS documentados com JSDoc), garantindo a sua clareza, legibilidade e adoção de boas práticas de desenvolvimento.
