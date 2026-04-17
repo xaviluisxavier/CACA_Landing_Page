@@ -141,7 +141,6 @@ async function renderizarEventos() {
             `;
         }).join('');
 
-        // Recuperado: Lógica correta para os botões num módulo JS
         eventsList.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => iniciarEdicao(Number(btn.dataset.id)));
         });
