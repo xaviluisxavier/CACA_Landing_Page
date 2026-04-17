@@ -19,7 +19,7 @@ Implementámos um motor centralizado de base de dados para garantir que os dados
 * **Módulo de Base de Dados (`db.js`):** Criação de um *wrapper* sobre a API nativa da **IndexedDB** (`CACA_DB`). Este módulo gere transações assíncronas e expõe funções genéricas (`addRecord`, `getAllRecords`, `updateRecord`, `deleteRecord`) para serem consumidas pelo resto da aplicação. Foram criados dois *object stores*: `eventos` e `newsletter`.
 * **Backoffice / Dashboard de Administração (`admin.js`):** Desenvolvimento de uma área reservada aos administradores do CACA.
     * **CRUD de Eventos:** Permite Adicionar, Visualizar, Editar e Remover eventos, definindo datas, horas, locais e coordenadas geográficas (lat/lng).
-    * **Gestão de Subscritores:** Permite visualizar a lista de subscritores da newsletter, remover contactos e exportar a lista em formato CSV para uso em campanhas de marketing.
+    * **Gestão de Subscritores:** Permite visualizar a lista de subscritores da newsletter, remover contactos e exportar a lista em formato CSV.
 
 ### Integração de Web APIs (Meteorologia e Mapas)
 A secção de eventos da página principal (`eventos-page.js`) foi transformada para consumir dados dinâmicos das APIs externas em tempo real, baseando-se nos registos guardados na base de dados.
