@@ -33,6 +33,14 @@ A secção de eventos da página principal (`eventos-page.js`) foi transformada 
 * **Validação e Persistência:** Utiliza RegEx para validar os dados do utilizador (incluindo restrição de domínios de email) e comunica diretamente com o `db.js` para persistir o email na IndexedDB (que garante que não há emails duplicados via `keyPath` e restrições de integridade).
 * **Feedback Visual:** Integração perfeita com o Design System do site, alterando as cores das bordas do formulário dinamicamente em tempo real (Verde/Vermelho) e emitindo alertas nativos.
 
+## Arquitetura e Backend (Porquê Node.js?)
+
+A implementação de um servidor **Node.js com Express** atua como *Proxy* entre o site e os serviços externos. Esta decisão técnica baseou-se em três motivos principais:
+
+* **1. Segurança de Chaves (API Keys):** Mantém as chaves da *GNews API* e *OpenWeather API* ocultas e seguras no servidor (via `.env`), evitando que fiquem expostas publicamente no código do browser.
+* **2. Ultrapassar Bloqueios CORS:** Como os pedidos aos jornais e APIs são feitos pelo servidor e não pelo browser do utilizador, evitamos os bloqueios automáticos de segurança (CORS) impostos pelas fontes de notícias.
+* **3. Otimização de Performance:** O servidor atua como um filtro. Em vez de enviar ficheiros JSON grandes para o cliente, o Node.js envia apenas os dados necessários (título, imagem, temperatura) e entrega um pacote leve, tornando o site muito mais rápido.
+
 ---
 
 ## Novas Funcionalidades e Interatividade (Entrega 2)
