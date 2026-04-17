@@ -1,6 +1,4 @@
-/* =========================================
-   EVENTOS SECTION E GRID
-========================================= */
+/* EVENTOS SECTION E GRID */
 .eventos-section { background-color: var(--color-white); position: relative; }
 
 .eventos-grid {
@@ -9,9 +7,7 @@
     gap: var(--spacing-md);
 }
 
-/* =========================================
-   EVENT CARD (Contentor Principal)
-========================================= */
+/* EVENT CARD */
 .evento-card {
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -29,9 +25,7 @@
     border-color: var(--color-primary);
 }
 
-/* =========================================
-   MAPA E DATA FLUTUANTE
-========================================= */
+/* MAPA E DATA */
 .evento-mapa-container {
     position: relative;
     height: 180px;
@@ -51,7 +45,7 @@
     border-radius: 0;
 }
 
-/* O Calendário Flutuante Blindado */
+/*Calendário */
 .caca-date-badge {
     position: absolute;
     bottom: -15px; /* Faz o calendário ficar metade dentro do mapa e metade fora */
@@ -87,9 +81,7 @@
     letter-spacing: 1px;
 }
 
-/* =========================================
-   CORPO DO CARD
-========================================= */
+/* CORPO DO CARD */
 .evento-body {
     padding: 1.5rem;
     flex: 1;
@@ -131,9 +123,7 @@
     flex: 1;
 }
 
-/* =========================================
-   CAIXA DA METEOROLOGIA (A "Pill")
-========================================= */
+/* CAIXA DA METEOROLOGIA */
 .evento-meteo-wrapper {
     margin-top: auto;
 }
@@ -179,9 +169,7 @@
     margin-top: 0.2rem;
 }
 
-/* =========================================
-   ESTADOS DE ERRO E LOADING
-========================================= */
+/* ESTADOS DE ERRO E LOADING */
 .evento-mapa-placeholder {
     display: flex;
     align-items: center;
@@ -215,9 +203,7 @@
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* =========================================
-   SKELETON (Para o ecrã de loading)
-========================================= */
+/* SKELETON (Para o ecrã de loading) */
 .evento-skeleton {
     background: var(--color-white);
     border-radius: var(--border-radius);
