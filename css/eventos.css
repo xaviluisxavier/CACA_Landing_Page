@@ -119,8 +119,26 @@
     font-size: 0.9rem;
     color: var(--color-gray);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex: 1;
+    margin-bottom: 0.5rem;
+    max-height: 4.8rem; /* ~3 linhas */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+    padding-right: 4px;
+}
+
+.evento-descricao::-webkit-scrollbar {
+    width: 4px;
+}
+
+.evento-descricao::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 4px;
+}
+
+.evento-descricao::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 /* CAIXA DA METEOROLOGIA */
