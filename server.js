@@ -39,7 +39,8 @@ app.get('/api/noticias', async (req, res) => {
     try {
         const apiKey = process.env.GNEWS_API_KEY;
         
-        const apiUrl = `https://gnews.io/api/v4/search?q=saúde+portugal&lang=pt&country=pt&max=3&apikey=${apiKey}`;
+        const termosPesquisa = encodeURIComponent('("e-saúde" OR "telemedicina" OR "inteligência artificial" OR "epidemiologia" OR "investigação clínica") AND (saúde OR medicina)');
+        const apiUrl = `https://gnews.io/api/v4/search?q=${termosPesquisa}&lang=pt&country=pt&max=5&apikey=${apiKey}`;
 
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error('Erro na GNews API');
