@@ -26,7 +26,7 @@ A secção de eventos da página principal (`eventos-page.js`) foi transformada 
 
 * **API de Mapas (Leaflet / OpenStreetMap):** O módulo `mapa.js` gera mapas interativos para cada evento. Se o administrador fornecer coordenadas exatas, o mapa centra-se nesse ponto; caso contrário, utiliza a geocodificação da cidade.
 * **API de Previsão Meteorológica (OpenWeatherMap):** O módulo `meteorologia.js` faz pedidos assíncronos à API para obter o estado do tempo (temperatura, vento, ícones descritivos) para a localização de cada evento, seja por pesquisa pelo nome da cidade ou pesquisa direta por coordenadas GPS.
-* **UI/UX e Tratamento de Erros:** A renderização inclui *Loading Skeletons* enquanto as APIs respondem, *badges* de datas flutuantes sobre os mapas e tratamentos de erro graciosos (ex: mostrar "Sem previsão" caso a API falhe, sem quebrar o resto do site).
+* **UI/UX e Tratamento de Erros:** A renderização inclui *Loading Skeletons* enquanto as APIs respondem, *badges* de datas sobre os mapas e tratamentos de erro (ex: mostrar "Sem previsão" caso a API falhe, sem quebrar o resto do site).
 
 ### Subscrição de Newsletter Modular
 * **Módulo Dedicado (`newsletter.js`):** Implementação de um sistema de subscrição no rodapé da página principal.
