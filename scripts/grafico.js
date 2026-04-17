@@ -76,7 +76,7 @@ export class GraficoOportunidades {
         const xScale = d3.scaleBand()
             .domain(this.dados.map(d => d.ano))
             .range([0, innerWidth])
-            .padding(0.4); // Barras mais elegantes (espaço maior entre elas)
+            .padding(0.4);
 
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(this.dados, d => d.valor) * 1.1]) // Espaço extra de 10% no topo
@@ -91,13 +91,13 @@ export class GraficoOportunidades {
         gradient.append("stop").attr("offset", "0%").attr("stop-color", "var(--color-primary)"); // Topo azul escuro
         gradient.append("stop").attr("offset", "100%").attr("stop-color", "#3CA1FF"); // Base azul claro
 
-        // Desenhar eixo Y virtual (linhas de grelha horizontais suaves)
+        // Desenhar eixo Y virtual
         grupoGrid.call(d3.axisLeft(yScale)
             .ticks(5)
             .tickSize(-innerWidth)
             .tickFormat(d => d)
         );
-        grupoGrid.select(".domain").remove(); // Remove o eixo vertical sólido
+        grupoGrid.select(".domain").remove(); 
         grupoGrid.selectAll(".tick line")
             .attr("stroke", "rgba(0,0,0,0.06)")
             .attr("stroke-dasharray", "4,4");
@@ -110,14 +110,14 @@ export class GraficoOportunidades {
         //Desenha a linha horizontal do eixo X
         grupoEixoX.call(d3.axisBottom(xScale));
         grupoEixoX.select(".domain").attr("stroke", "rgba(0,0,0,0.1)").attr("stroke-width", 2);
-        grupoEixoX.selectAll(".tick line").remove(); // Tira as réguas minúsculas do eixo
+        grupoEixoX.selectAll(".tick line").remove();
         grupoEixoX.selectAll(".tick text")
             .attr("fill", "var(--color-dark-gray)")
             .attr("font-size", "13px")
             .attr("font-weight", "700")
             .attr("dy", "1.2em");
 
-        //Cria Tooltip (Flutuante) na página, reaproveitando se existir
+        //Cria Tooltip na página, reaproveitando se existir
         let tooltip = d3.select(".chart-tooltip");
         if (tooltip.empty()) {
             tooltip = d3.select("body").append("div")
@@ -144,10 +144,10 @@ export class GraficoOportunidades {
             .attr("x", d => xScale(d.ano))
             .attr("width", xScale.bandwidth())
             .attr("fill", "url(#bar-gradient)") 
-            .attr("rx", 6) // Canto arredondado no topo (ajuda muito o visual)
+            .attr("rx", 6) // Canto arredondado no topo 
             .attr("ry", 6)
             .style("cursor", "pointer")
-            // Ações de rato (Hover)
+            // Ações de Hover
             .on("mouseover", function(event, d) {
                 d3.select(this)
                     .transition().duration(200)
@@ -177,13 +177,13 @@ export class GraficoOportunidades {
                 
                 tooltip.transition().duration(300).style("opacity", 0);
             })
-            // Animação de escada (crescer)
+            // Animação de escada
             .attr("y", innerHeight)
             .attr("height", 0)
             .transition()
             .duration(this.config.duracaoAnimacao)
             .delay((d, i) => i * 100)
-            .ease(d3.easeCubicOut) // Transição bem suave no topo
+            .ease(d3.easeCubicOut) 
             .attr("y", d => yScale(d.valor))
             .attr("height", d => innerHeight - yScale(d.valor));
 
