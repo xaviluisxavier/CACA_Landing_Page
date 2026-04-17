@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Servir os ficheiros estáticos do teu projeto (HTML, CSS, JS)
+// Servir os ficheiros estáticos do projeto (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, '/')));
 
 // ROTA DE PROXY PARA METEOROLOGIA 
