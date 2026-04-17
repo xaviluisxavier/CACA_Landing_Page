@@ -11,7 +11,7 @@
 
 ## Integração de Web APIs e Persistência de Dados (Entrega 3)
 
-Nesta terceira e última fase do projeto, o foco foi elevar a landing page a uma aplicação web dinâmica (Web App), implementando persistência de dados local, assincronismo (`Promises`, `async/await`) e consumo de APIs externas. A arquitetura foi estritamente modular, garantindo a separação de responsabilidades (Separation of Concerns).
+Nesta terceira e última fase do projeto, o foco foi elevar a landing page a uma aplicação web dinâmica (Web App), implementando persistência de dados local, assincronismo (`Promises`, `async/await`) e consumo de APIs externas. A arquitetura foi estritamente modular, garantindo a separação de responsabilidades.
 
 ### Arquitetura Core, CRUD e IndexedDB
 Implementámos um motor centralizado de base de dados para garantir que os dados não se perdem ao recarregar a página.
