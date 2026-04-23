@@ -1,0 +1,54 @@
+/* Variaveis Globais */
+
+:root {
+    /* Cores */
+    --color-primary: #003882;
+    --color-primary-dark: #002255;
+    --color-primary-light: #2c6ab5;
+    --color-secondary: #FFD100;
+    --color-secondary-dark: #E5BC00;
+    --color-secondary-light: #ffe04d;
+    --color-accent-orange: #FF6F00;
+    --color-accent-purple: #7B1FA2;
+    --color-accent-red: #D32F2F;
+    
+    /* Neutros */
+    --color-white: #FFFFFF;
+    --color-off-white: #FAFAF8;
+    --color-light-gray: #E8E8E8;
+    --color-gray: #666666;
+    --color-dark-gray: #202020;
+    --color-navy: #0e1642;
+
+    /* Gradientes */
+    --gradient-hero: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, #1565C0 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent-orange) 100%);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-blur: blur(12px);
+
+    /* Sombras */
+    --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 16px 32px rgba(0, 56, 130, 0.12);
+    --shadow-glow: 0 8px 24px rgba(255, 209, 0, 0.35);
+    
+    /* Tipografia */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+    
+    /* Layout */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4.5rem;
+    --spacing-2xl: 6rem;
+    --container-width: 1200px;
+    --border-radius: 12px;
+    
+    /* Animacoes */
+    --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

@@ -1,0 +1,53 @@
+/* Media Queries */
+@media (max-width: 960px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 680px) {
+    .login-overlay {
+        grid-template-columns: 1fr;
+    }
+
+    .login-brand {
+        display: none;
+    }
+
+    .login-form-side {
+        padding: 2.5rem 1.75rem;
+    }
+
+    .admin-header-content {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        min-height: auto;
+    }
+
+    .admin-header-left {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .admin-header-right {
+        padding-left: 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-panel,
+    .list-panel {
+        padding: 1.25rem;
+    }
+
+    .event-card-admin {
+        grid-template-columns: 64px 1fr;
+    }
+}
