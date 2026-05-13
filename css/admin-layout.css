@@ -1,4 +1,4 @@
-/* ADMIN LAYOUT */
+/* Estrutura Principal */
 .admin-body {
     background-color: var(--color-off-white);
     min-height: 100vh;
@@ -107,7 +107,7 @@
     color: var(--color-white);
 }
 
-/* CONTENT */
+/* Conteudo Base */
 .admin-content {
     padding: 2.5rem 0 4rem;
 }

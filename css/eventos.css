@@ -1,4 +1,4 @@
-/* EVENTOS SECTION E GRID */
+/* Eventos */
 .eventos-section { background-color: var(--color-white); position: relative; }
 
 .eventos-grid {
@@ -7,7 +7,7 @@
     gap: var(--spacing-md);
 }
 
-/* EVENT CARD */
+/* Event Card */
 .evento-card {
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -25,7 +25,7 @@
     border-color: var(--color-primary);
 }
 
-/* MAPA E DATA */
+/* Mapa e Data */
 .evento-mapa-container {
     position: relative;
     height: 180px;
@@ -45,10 +45,10 @@
     border-radius: 0;
 }
 
-/*Calendário */
+/* Calendario */
 .caca-date-badge {
     position: absolute;
-    bottom: -15px; /* Faz o calendário ficar metade dentro do mapa e metade fora */
+    bottom: -15px; 
     right: 20px;
     background-color: var(--color-white);
     border-radius: 8px;
@@ -58,7 +58,7 @@
     align-items: center;
     overflow: hidden;
     min-width: 60px;
-    z-index: 1000; /* Fica acima do mapa do Leaflet */
+    z-index: 1000;
 }
 
 .caca-date-badge .d-day {
@@ -81,7 +81,7 @@
     letter-spacing: 1px;
 }
 
-/* CORPO DO CARD */
+/* Corpo do Card */
 .evento-body {
     padding: 1.5rem;
     flex: 1;
@@ -120,7 +120,7 @@
     color: var(--color-gray);
     line-height: 1.6;
     margin-bottom: 0.5rem;
-    max-height: 4.8rem; /* ~3 linhas */
+    max-height: 4.8rem; 
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
@@ -141,7 +141,7 @@
     background: transparent;
 }
 
-/* CAIXA DA METEOROLOGIA */
+/* Meteorologia */
 .evento-meteo-wrapper {
     margin-top: auto;
 }
@@ -187,7 +187,7 @@
     margin-top: 0.2rem;
 }
 
-/* ESTADOS DE ERRO E LOADING */
+/* Estados */
 .evento-mapa-placeholder {
     display: flex;
     align-items: center;
@@ -221,7 +221,7 @@
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* SKELETON (Para o ecrã de loading) */
+/* Skeleton */
 .evento-skeleton {
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -252,7 +252,7 @@
 
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 768px) {
     .eventos-grid { grid-template-columns: 1fr; }
 }

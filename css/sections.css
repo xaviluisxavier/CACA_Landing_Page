@@ -1,4 +1,4 @@
-/* HERO SECTION */
+/* Hero */
 .hero { 
     background: var(--gradient-hero); 
     color: var(--color-white); 
@@ -19,13 +19,13 @@
 .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; margin-bottom: var(--spacing-md); letter-spacing: -1px; text-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 .hero-description { font-size: 1.25rem; line-height: 1.8; margin-bottom: var(--spacing-lg); font-weight: 300; color: rgba(255, 255, 255, 0.9); }
 
-/* CARROSSEL */
+/* Carrossel */
 .carousel { position: relative; border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); aspect-ratio: 4/3; width: 100%; }
 .carousel-inner { position: relative; width: 100%; height: 100%; }
 .carousel-item { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease-in-out; }
 .carousel-item.active { opacity: 1; z-index: 1; }
 
-/* INVESTIGAÇÃO — Premium Cards */
+/* Investigacao */
 .research-areas { overflow: hidden; max-height: 0; padding-top: 0; padding-bottom: 0; visibility: hidden; opacity: 0; transition: max-height 0.8s ease-in-out, padding 0.8s ease-in-out, visibility 0.8s, opacity 0.4s ease; }
 .research-areas.visible { max-height: 2000px; padding-top: var(--spacing-2xl); padding-bottom: var(--spacing-2xl); visibility: visible; opacity: 1; }
 .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); margin-bottom: var(--spacing-md); justify-content: center; }
@@ -66,7 +66,6 @@
     width: 6px;
 }
 
-/* Icon wrapper — colored circle */
 .card-icon-wrapper {
     width: 56px;
     height: 56px;
@@ -107,7 +106,6 @@
     flex: 1;
 }
 
-/* Arrow indicator */
 .card-arrow {
     display: inline-flex;
     align-items: center;
@@ -127,32 +125,28 @@
     transform: translateX(4px);
 }
 
-/* Blue */
+/* Cores dos Cards */
 .card-blue .card-icon-wrapper { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); }
 .card-blue::before { background: var(--color-primary); }
 .card-blue:hover .card-arrow { background: var(--color-primary); color: var(--color-white); }
 
-/* Green */
 .card-green .card-icon-wrapper { background: linear-gradient(135deg, #2E7D32, #43A047); }
 .card-green::before { background: #2E7D32; }
 .card-green:hover .card-arrow { background: #2E7D32; color: var(--color-white); }
 
-/* Orange */
 .card-orange .card-icon-wrapper { background: linear-gradient(135deg, var(--color-accent-orange), #FF8F00); }
 .card-orange::before { background: var(--color-accent-orange); }
 .card-orange:hover .card-arrow { background: var(--color-accent-orange); color: var(--color-white); }
 
-/* Purple */
 .card-purple .card-icon-wrapper { background: linear-gradient(135deg, var(--color-accent-purple), #9C27B0); }
 .card-purple::before { background: var(--color-accent-purple); }
 .card-purple:hover .card-arrow { background: var(--color-accent-purple); color: var(--color-white); }
 
-/* Red */
 .card-red .card-icon-wrapper { background: linear-gradient(135deg, var(--color-accent-red), #E53935); }
 .card-red::before { background: var(--color-accent-red); }
 .card-red:hover .card-arrow { background: var(--color-accent-red); color: var(--color-white); }
 
-/* PARCEIROS */
+/* Parceiros */
 .partners { background-color: var(--color-white); position: relative; }
 .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--spacing-md); margin-bottom: var(--spacing-md); }
 .partner-box { background-color: var(--color-off-white); border: 1px solid rgba(0,0,0,0.06); border-radius: var(--border-radius); padding: 2.5rem 1.5rem; text-align: center; transition: var(--transition); }
@@ -162,7 +156,7 @@
 .partner-name { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
 .partners-note { text-align: center; font-size: 0.875rem; color: var(--color-gray); font-style: italic; }
 
-/* OPORTUNIDADES */
+/* Oportunidades */
 .opportunities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); }
 .opportunity-card { background-color: var(--color-white); border-radius: var(--border-radius); padding: 2.5rem 1.5rem; text-align: center; box-shadow: var(--shadow-soft); transition: var(--transition); border: 1px solid rgba(0,0,0,0.05); }
 .opportunity-card:hover, .opportunity-card:focus-visible { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-hover); border-color: rgba(0, 56, 130, 0.15); }
@@ -171,12 +165,11 @@
 .opportunity-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.3px; }
 .opportunity-description { font-size: 0.9375rem; color: var(--color-gray); }
 
-/* GRÁFICO */
+/* Grafico */
 .grafico-placeholder { display: flex; width: 100%; height: 300px; position: relative; }
 #opportunityChart { width: 100%; height: 100%; display: block; }
 #opportunityChart:focus-visible { outline: 3px solid var(--color-primary); border-radius: 8px; }
 
-/* Tooltip do Gráfico D3 */
 .chart-tooltip {
     position: absolute;
     pointer-events: none;
@@ -196,7 +189,7 @@
 .eixo-x text { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; fill: #666; }
 .eixo-x .domain { stroke: #ddd; }
 
-/* NEWSLETTER */
+/* Newsletter */
 .newsletter-wrapper {
     max-width: 550px;
     margin: 0 auto;
@@ -221,7 +214,7 @@
     min-height: 1.5rem;
 }
 
-/* NOTÍCIAS */
+/* Noticias */
 .noticias-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -291,4 +284,62 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* Meteorologia */
+.meteo-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-light-gray, #eee);
+}
+
+.meteo-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.meteo-texto {
+    line-height: 1.2;
+}
+
+.m-desc {
+    text-transform: capitalize;
+}
+
+.meteo-vento {
+    font-size: 0.85rem;
+    color: var(--color-gray, #666);
+}
+
+/* Estatisticas */
+.grafico-estatisticas-texto {
+    text-align: center;
+    color: var(--color-gray, #666);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Tooltip */
+.tooltip-ano {
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.tooltip-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tooltip-ponto {
+    width: 10px;
+    height: 10px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    display: inline-block;
 }

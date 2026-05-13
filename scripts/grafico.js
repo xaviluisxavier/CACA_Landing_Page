@@ -14,9 +14,8 @@ export class GraficoOportunidades {
         this.dados = dados;
     }
 
-    /**
-     * Processa os dados de oportunidades e injeta um texto de resumo no HTML.
-     * @returns {void}
+   /**
+     * Processa os dados de oportunidades e injeta um texto de resumo no HTML de forma segura.
      */
     analisarDados() {
         const anosAltaProcura = this.dados.filter(d => d.valor > 50).map(d => d.ano);
@@ -24,27 +23,27 @@ export class GraficoOportunidades {
         const statsContainer = document.getElementById('estatisticas-grafico');
         
         if (statsContainer) {
-            statsContainer.innerHTML = `
-                <p style="text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
-                    Foram geradas <strong>${total}</strong> oportunidades no total. <br>
-                    Anos de maior sucesso: ${anosAltaProcura.join(', ')}.
-                </p>
-            `;
+            statsContainer.innerHTML = ''; // Limpa a área
+            const tpl = document.getElementById('tpl-estatisticas');
+            const clone = tpl.content.cloneNode(true);
+            
+            // Preenche os dados usando textContent
+            clone.querySelector('.stat-total').textContent = total;
+            clone.querySelector('.stat-anos').textContent = anosAltaProcura.join(', ');
+            
+            statsContainer.appendChild(clone);
         }
     }
     /**
-     * Limpa a área e renderiza as barras animadas do gráfico usando D3.js baseando-se nas dimensões do ecrã.
-     * @returns {void}
+     * Limpa a área e renderiza as barras animadas do gráfico usando D3.js.
      */
     mostrarGrafico() {
-        //Seleciona a área do gráfico e limpa
         const container = document.querySelector('.grafico-placeholder');
         const grafico = d3.select('#opportunityChart');
         
         let grupoEixoX = grafico.select('.eixo-x');
         let grupoCorpo = grafico.select('.corpo-grafico');
 
-        // Garantir que os grupos de grid e eixos existem e estão por ordem
         if (grafico.select('defs').empty()) grafico.append('defs');
         if (grafico.select('.grid-lines').empty()) grafico.insert('g', '.corpo-grafico').attr('class', 'grid-lines');
 
@@ -55,11 +54,9 @@ export class GraficoOportunidades {
         grupoCorpo.selectAll("*").remove();
         grupoGrid.selectAll("*").remove();
 
-        //Calcula a largura e altura corretas
         const containerWidth = container.clientWidth;
         const containerHeight = container.clientHeight || 340;
         
-        // Aumentar margin inferior e esquerda para fôlego visual
         this.config.margin.bottom = 50;
         this.config.margin.left = 40;
         
@@ -67,57 +64,38 @@ export class GraficoOportunidades {
         const innerHeight = containerHeight - this.config.margin.top - this.config.margin.bottom;
 
         grafico.attr("width", containerWidth).attr("height", containerHeight);
-
         grupoCorpo.attr("transform", `translate(${this.config.margin.left},${this.config.margin.top})`);
         grupoEixoX.attr("transform", `translate(${this.config.margin.left},${innerHeight + this.config.margin.top})`);
         grupoGrid.attr("transform", `translate(${this.config.margin.left},${this.config.margin.top})`);
 
-        //Cria as escalas de X (anos) e Y (valores)
         const xScale = d3.scaleBand()
             .domain(this.dados.map(d => d.ano))
             .range([0, innerWidth])
             .padding(0.4);
 
         const yScale = d3.scaleLinear()
-            .domain([0, d3.max(this.dados, d => d.valor) * 1.1]) // Espaço extra de 10% no topo
+            .domain([0, d3.max(this.dados, d => d.valor) * 1.1])
             .range([innerHeight, 0]);
 
-        // Definição de Gradiente
         defs.selectAll("*").remove();
         const gradient = defs.append("linearGradient")
             .attr("id", "bar-gradient")
             .attr("x1", "0%").attr("y1", "0%")
             .attr("x2", "0%").attr("y2", "100%");
-        gradient.append("stop").attr("offset", "0%").attr("stop-color", "var(--color-primary)"); // Topo azul escuro
-        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#3CA1FF"); // Base azul claro
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", "var(--color-primary)");
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#3CA1FF");
 
-        // Desenhar eixo Y virtual
-        grupoGrid.call(d3.axisLeft(yScale)
-            .ticks(5)
-            .tickSize(-innerWidth)
-            .tickFormat(d => d)
-        );
+        grupoGrid.call(d3.axisLeft(yScale).ticks(5).tickSize(-innerWidth).tickFormat(d => d));
         grupoGrid.select(".domain").remove(); 
-        grupoGrid.selectAll(".tick line")
-            .attr("stroke", "rgba(0,0,0,0.06)")
-            .attr("stroke-dasharray", "4,4");
-        grupoGrid.selectAll(".tick text")
-            .attr("fill", "var(--color-gray)")
-            .attr("font-size", "11px")
-            .attr("font-weight", "500")
-            .attr("dx", "-5px");
+        grupoGrid.selectAll(".tick line").attr("stroke", "rgba(0,0,0,0.06)").attr("stroke-dasharray", "4,4");
+        grupoGrid.selectAll(".tick text").attr("fill", "var(--color-gray)").attr("font-size", "11px").attr("font-weight", "500").attr("dx", "-5px");
 
-        //Desenha a linha horizontal do eixo X
         grupoEixoX.call(d3.axisBottom(xScale));
         grupoEixoX.select(".domain").attr("stroke", "rgba(0,0,0,0.1)").attr("stroke-width", 2);
         grupoEixoX.selectAll(".tick line").remove();
-        grupoEixoX.selectAll(".tick text")
-            .attr("fill", "var(--color-dark-gray)")
-            .attr("font-size", "13px")
-            .attr("font-weight", "700")
-            .attr("dy", "1.2em");
+        grupoEixoX.selectAll(".tick text").attr("fill", "var(--color-dark-gray)").attr("font-size", "13px").attr("font-weight", "700").attr("dy", "1.2em");
 
-        //Cria Tooltip na página, reaproveitando se existir
+        // Cria Tooltip e injeta o Molde apenas 1 vez
         let tooltip = d3.select(".chart-tooltip");
         if (tooltip.empty()) {
             tooltip = d3.select("body").append("div")
@@ -134,9 +112,12 @@ export class GraficoOportunidades {
                 .style("box-shadow", "0 8px 24px rgba(0,56,130,0.2)")
                 .style("transition", "opacity 0.2s")
                 .style("z-index", "1000");
+
+            // Insere o HTML do template DENTRO do tooltip
+            const tpl = document.getElementById('tpl-tooltip');
+            tooltip.node().appendChild(tpl.content.cloneNode(true));
         }
 
-        //Cria e anima as Barras do Gráfico
         grupoCorpo.selectAll("rect")
             .data(this.dados)
             .enter()
@@ -144,10 +125,9 @@ export class GraficoOportunidades {
             .attr("x", d => xScale(d.ano))
             .attr("width", xScale.bandwidth())
             .attr("fill", "url(#bar-gradient)") 
-            .attr("rx", 6) // Canto arredondado no topo 
+            .attr("rx", 6)
             .attr("ry", 6)
             .style("cursor", "pointer")
-            // Ações de Hover
             .on("mouseover", function(event, d) {
                 d3.select(this)
                     .transition().duration(200)
@@ -155,15 +135,12 @@ export class GraficoOportunidades {
                     .attr("filter", "drop-shadow(0 -4px 10px rgba(0,56,130,0.2))");
                 
                 tooltip.transition().duration(200).style("opacity", 1);
-                tooltip.html(`
-                    <div style="font-weight:700; margin-bottom:4px; font-size:1rem;">${d.ano}</div>
-                    <div style="display:flex; align-items:center; gap:6px;">
-                        <span style="width:10px; height:10px; background:var(--color-secondary); border-radius:50%; display:inline-block;"></span>
-                        ${d.valor} Oportunidades
-                    </div>
-                `)
-                .style("left", (event.pageX + 15) + "px")
-                .style("top", (event.pageY - 40) + "px");
+                
+                tooltip.select('.tooltip-ano').text(d.ano);
+                tooltip.select('.tooltip-valor').text(d.valor);
+
+                tooltip.style("left", (event.pageX + 15) + "px")
+                       .style("top", (event.pageY - 40) + "px");
             })
             .on("mousemove", function(event) {
                 tooltip.style("left", (event.pageX + 15) + "px")
@@ -177,7 +154,6 @@ export class GraficoOportunidades {
                 
                 tooltip.transition().duration(300).style("opacity", 0);
             })
-            // Animação de escada
             .attr("y", innerHeight)
             .attr("height", 0)
             .transition()
@@ -187,7 +163,6 @@ export class GraficoOportunidades {
             .attr("y", d => yScale(d.valor))
             .attr("height", d => innerHeight - yScale(d.valor));
 
-        // Letreiros por cima das barras
         grupoCorpo.selectAll(".bar-label")
             .data(this.dados)
             .enter().append("text")
@@ -202,7 +177,7 @@ export class GraficoOportunidades {
             .text(d => d.valor)
             .transition()
             .duration(500)
-            .delay((d, i) => this.config.duracaoAnimacao + (i * 100)) // Espera que a barra chegue lá cima
+            .delay((d, i) => this.config.duracaoAnimacao + (i * 100))
             .attr("opacity", 1);
     }
 }

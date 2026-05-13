@@ -113,42 +113,59 @@ async function renderizarEventos() {
         eventCount.textContent = eventos.length;
 
         if (eventos.length === 0) {
-            eventsList.innerHTML = '<div class="empty-state"><p>Nenhum evento criado</p></div>';
+            eventsList.innerHTML = ''; // Limpa a lista
+            const tplEmpty = document.getElementById('tpl-empty-eventos');
+            eventsList.appendChild(tplEmpty.content.cloneNode(true));
             return;
         }
 
-        eventsList.innerHTML = eventos.map(ev => {
+        // Limpa a lista antes de adicionar
+        eventsList.innerHTML = ''; 
+        const tpl = document.getElementById('tpl-admin-evento');
+
+        eventos.forEach(ev => {
+            // Faz uma cópia do molde
+            const clone = tpl.content.cloneNode(true);
+
+            // Preenche os dados de forma segura
+            clone.querySelector('.evento-titulo').textContent = ev.titulo;
+
+            // Formata a data
             const dataFormatada = ev.data
                 ? new Date(ev.data + 'T00:00:00').toLocaleDateString('pt-PT', { day: '2-digit', month: 'short', year: 'numeric' })
                 : 'Sem data';
+            clone.querySelector('.evento-data').textContent = dataFormatada;
 
-            return `
-                <div class="event-card-admin">
-                    <div class="event-card-top">
-                        <h3>${escapeHtml(ev.titulo)}</h3>
-                    </div>
-                    <div class="event-meta">
-                        <span><i class="fi fi-rr-calendar"></i> ${dataFormatada}</span>
-                        ${ev.hora ? `<span><i class="fi fi-rr-clock"></i> ${ev.hora}</span>` : ''}
-                        <span><i class="fi fi-rr-marker"></i> ${escapeHtml(ev.local)}</span>
-                    </div>
-                    ${ev.descricao ? `<p class="event-desc">${escapeHtml(ev.descricao)}</p>` : ''}
-                    <div class="event-card-actions">
-                        <button class="btn-edit" data-id="${ev.id}"><i class="fi fi-rr-edit"></i> Editar</button>
-                        <button class="btn-delete" data-id="${ev.id}"><i class="fi fi-rr-trash"></i> Remover</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
+            // Lógica da Hora
+            const horaWrapper = clone.querySelector('.evento-hora-wrapper');
+            if (ev.hora) {
+                clone.querySelector('.evento-hora').textContent = ev.hora;
+            } else {
+                horaWrapper.remove();
+            }
 
-        eventsList.querySelectorAll('.btn-edit').forEach(btn => {
-            btn.addEventListener('click', () => iniciarEdicao(Number(btn.dataset.id)));
-        });
-        eventsList.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', () => confirmarRemocao(Number(btn.dataset.id)));
+            clone.querySelector('.evento-local').textContent = ev.local;
+
+            // Lógica da Descrição
+            const descEl = clone.querySelector('.event-desc');
+            if (ev.descricao) {
+                descEl.textContent = ev.descricao;
+            } else {
+                descEl.remove();
+            }
+
+            const btnEdit = clone.querySelector('.btn-edit');
+            const btnDelete = clone.querySelector('.btn-delete');
+
+            btnEdit.addEventListener('click', () => iniciarEdicao(ev.id));
+            btnDelete.addEventListener('click', () => confirmarRemocao(ev.id));
+
+            // Cola a cópia pronta na lista
+            eventsList.appendChild(clone);
         });
 
     } catch (err) {
+        console.error(err);
         eventsList.innerHTML = '<p>Erro ao carregar eventos.</p>';
     }
 }
@@ -156,61 +173,69 @@ async function renderizarEventos() {
 // ─── Newsletter ───────────────────────────────────────────────
 
 async function renderizarSubscritores() {
-    const subscribersList = document.getElementById('subscribersList');
-    const subscriberCount = document.getElementById('subscriberCount');
-    try {
-        const lista = await getAllRecords(STORE_NEWSLETTER);
-        subscriberCount.textContent = lista.length;
-
-        if (lista.length === 0) {
-            subscribersList.innerHTML = '<tr><td colspan="5">Nenhum subscritor</td></tr>';
-            return;
-        }
-
-        subscribersList.innerHTML = lista.map((s, i) => `
-            <tr>
-                <td>${i + 1}</td>
-                <td>${escapeHtml(s.nome)}</td>
-                <td>${escapeHtml(s.email)}</td>
-                <td>${new Date(s.dataSubscricao).toLocaleDateString('pt-PT')}</td>
-                <td>
-                    <button class="btn-delete btn-unsub" data-id="${s.id}">
-                        <i class="fi fi-rr-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        `).join('');
-
-        subscribersList.querySelectorAll('.btn-unsub').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                if (!confirm('Remover este subscritor?')) return;
-                await deleteRecord(STORE_NEWSLETTER, Number(btn.dataset.id));
-                showToast('Subscritor removido.', 'info');
-                renderizarSubscritores();
-            });
-        });
-    } catch (err) {
-        subscribersList.innerHTML = '<tr><td colspan="5">Erro ao carregar subscritores.</td></tr>';
+    const list = document.getElementById('subscribersList');
+    const countEl = document.getElementById('subscriberCount');
+    const tpl = document.getElementById('tpl-sub-row');
+    const lista = await getAllRecords(STORE_NEWSLETTER);
+    
+    if (countEl) {
+        countEl.textContent = lista.length;
     }
+    
+    list.innerHTML = '';
+
+    if (lista.length === 0) {
+        const tplEmpty = document.getElementById('tpl-empty-subscritores');
+        list.appendChild(tplEmpty.content.cloneNode(true));
+        return;
+    }
+
+    lista.forEach((s, i) => {
+        const clone = tpl.content.cloneNode(true);
+        clone.querySelector('.col-num').textContent = i + 1;
+        clone.querySelector('.col-nome').textContent = s.nome;
+        clone.querySelector('.col-email').textContent = s.email;
+        clone.querySelector('.col-data').textContent = new Date(s.dataSubscricao).toLocaleDateString('pt-PT');
+        
+        const btn = clone.querySelector('.btn-unsub');
+        btn.addEventListener('click', async () => {
+            if(confirm('Remover este subscritor?')) {
+                await deleteRecord(STORE_NEWSLETTER, s.id);
+                renderizarSubscritores();
+            }
+        });
+        
+        list.appendChild(clone);
+    });
 }
 
-// Event Listeners e Inicialização
-eventoForm.addEventListener('submit', onSubmitEvento);
-btnCancel.addEventListener('click', resetForm);
-document.getElementById('btnExportCSV')?.addEventListener('click', async () => {
-    const lista = await getAllRecords(STORE_NEWSLETTER);
-    if (lista.length === 0) return;
-    const csv = 'Nome,Email\n' + lista.map(s => `"${s.nome}","${s.email}"`).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'subscritores.csv';
-    a.click();
-});
+export function initAdminPage() {
+    // 1. Atribuir os Event Listeners
+    if (eventoForm) eventoForm.addEventListener('submit', onSubmitEvento);
+    if (btnCancel) btnCancel.addEventListener('click', resetForm);
+    
+    const btnExport = document.getElementById('btnExportCSV');
+    if (btnExport) {
+        btnExport.addEventListener('click', async () => {
+            const lista = await getAllRecords(STORE_NEWSLETTER);
+            if (lista.length === 0) return;
+            const csv = 'Nome,Email\n' + lista.map(s => `"${s.nome}","${s.email}"`).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'subscritores.csv';
+            a.click();
+        });
+    }
 
-renderizarEventos();
-renderizarSubscritores();
+    // 2. Arrancar com a renderização dos dados
+    renderizarEventos();
+    renderizarSubscritores();
+}
+
+// 3. Só chama a função quando o HTML (DOM) estiver carregado
+document.addEventListener('DOMContentLoaded', initAdminPage);
 
 // Utilitários
 function escapeHtml(str) {

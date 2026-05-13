@@ -1,4 +1,4 @@
-/* EVENTS LIST PANEL */
+/* Painel da Lista de Eventos */
 .list-panel {
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -36,7 +36,7 @@
     letter-spacing: 0.3px;
 }
 
-/* EVENT CARDS */
+/* Cartoes de Evento */
 .events-list {
     display: flex;
     flex-direction: column;
@@ -146,8 +146,7 @@
     color: var(--color-white);
 }
 
-/* ─── NEWSLETTER SUBSCRIBERS PANEL ─── */
-
+/* Painel de Subscritores */
 .newsletter-panel {
     background: var(--color-white);
     border-radius: var(--border-radius);
@@ -210,7 +209,7 @@
     border-color: var(--color-primary);
 }
 
-/* Table */
+/* Tabela */
 .subscribers-table-wrapper {
     overflow-x: auto;
     border-radius: 6px;

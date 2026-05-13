@@ -1,4 +1,4 @@
-/* EMPTY STATE */
+/* Estados Vazios */
 .empty-state {
     text-align: center;
     padding: 3.5rem 2rem;
@@ -25,7 +25,7 @@
     line-height: 1.5;
 }
 
-/* TOAST */
+/* Notificacoes Toast */
 .toast-container {
     position: fixed;
     bottom: 2rem;
@@ -52,37 +52,16 @@
     border-left: 4px solid rgba(255, 255, 255, 0.3);
 }
 
-.toast.success {
-    background: #1B5E20;
-}
-
-.toast.error {
-    background: var(--color-accent-red);
-}
-
-.toast.info {
-    background: var(--color-primary);
-}
+.toast.success { background: #1B5E20; }
+.toast.error { background: var(--color-accent-red); }
+.toast.info { background: var(--color-primary); }
 
 @keyframes slideInToast {
-    from {
-        transform: translateX(110%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    from { transform: translateX(110%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeOutToast {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-        pointer-events: none;
-    }
+    from { opacity: 1; }
+    to { opacity: 0; pointer-events: none; }
 }

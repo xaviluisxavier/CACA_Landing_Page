@@ -44,9 +44,9 @@
 
             <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
                 <ul>
-                    <li><a href="#missao">Missão</a></li>
                     <li><a href="#parceiros">Parceiros</a></li>
                     <li><a href="#oportunidades">Oportunidades</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
                     <li><a href="#noticias">Notícias</a></li>
                     <li><a href="#contactos">Contactos</a></li>
                 </ul>
@@ -385,6 +385,80 @@
         </div>
     </footer>
     <button type="button" class="btn-top" id="btn-topo" aria-label="Voltar ao topo">⬆</button>
+
+    <template id="tpl-meteo">
+        <div class="meteo-card">
+            <img class="meteo-icon" src="" alt="">
+            <div class="meteo-texto">
+                <div class="meteo-temp"><strong class="m-val"></strong>ºC - <span class="m-desc"></span></div>
+                <div class="meteo-vento">Vento: <span class="m-vento"></span> km/h</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tpl-estatisticas">
+        <p class="grafico-estatisticas-texto">
+            Foram geradas <strong class="stat-total"></strong> oportunidades no total. <br>
+            Anos de maior sucesso: <span class="stat-anos"></span>.
+        </p>
+    </template>
+
+    <template id="tpl-tooltip">
+        <div class="tooltip-ano"></div>
+        <div class="tooltip-conteudo">
+            <span class="tooltip-ponto"></span>
+            <span class="tooltip-valor"></span> Oportunidades
+        </div>
+    </template>
+
+    <template id="tpl-evento-skeleton">
+        <div class="evento-skeleton">
+            <div class="skeleton-map"></div>
+            <div class="skeleton-body">
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tpl-eventos-empty">
+        <div class="eventos-empty">Prazos de eventos vazios.</div>
+    </template>
+
+    <template id="tpl-evento-card">
+        <article class="evento-card">
+            <div class="evento-mapa-container">
+                <div class="evento-mapa"></div>
+                <div class="caca-date-badge">
+                    <div class="d-day"></div>
+                    <div class="d-month"></div>
+                </div>
+            </div>
+            <div class="evento-body">
+                <h3 class="evento-titulo"></h3>
+                <div class="evento-info">
+                    <span class="evento-hora-wrapper"><i class="fi fi-rr-clock"></i> <span class="evento-hora"></span></span>
+                    <span><i class="fi fi-rr-marker"></i> <span class="evento-local"></span></span>
+                </div>
+                <p class="evento-descricao"></p>
+                <div class="evento-meteo-wrapper">
+                    <div class="evento-meteo-loading"><div class="spinner-small"></div></div>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <template id="tpl-noticia-card">
+        <article class="noticia-card">
+            <div class="noticia-imagem"><img></div>
+            <div class="noticia-body">
+                <span class="noticia-data"></span>
+                <h3 class="noticia-titulo"></h3>
+                <a href="#" target="_blank" class="btn-ver-mais">Ler Artigo</a>
+            </div>
+        </article>
+    </template>
     <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

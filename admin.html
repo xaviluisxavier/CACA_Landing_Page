@@ -159,6 +159,51 @@
     <!-- Toast container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <template id="tpl-admin-evento">
+        <div class="event-card-admin">
+            <div class="event-card-top">
+                <h3 class="evento-titulo"></h3>
+            </div>
+            <div class="event-meta">
+                <span class="evento-data-wrapper"><i class="fi fi-rr-calendar"></i> <span class="evento-data"></span></span>
+                <span class="evento-hora-wrapper"><i class="fi fi-rr-clock"></i> <span class="evento-hora"></span></span>
+                <span class="evento-local-wrapper"><i class="fi fi-rr-marker"></i> <span class="evento-local"></span></span>
+            </div>
+            <p class="event-desc"></p>
+            <div class="event-card-actions">
+                <button class="btn-edit"><i class="fi fi-rr-edit"></i> Editar</button>
+                <button class="btn-delete"><i class="fi fi-rr-trash"></i> Remover</button>
+            </div>
+        </div>
+    </template> 
+
+    <template id="tpl-sub-row">
+        <tr>
+            <td class="col-num"></td>
+            <td class="col-nome"></td>
+            <td class="col-email"></td>
+            <td class="col-data"></td>
+            <td><button class="btn-unsub"><i class="fi fi-rr-trash"></i></button></td>
+        </tr>
+    </template>
+
+    <template id="tpl-empty-eventos">
+        <div class="empty-state">
+            <span class="empty-icon">📭</span>
+            <p>Nenhum evento criado</p>
+            <small>Use o formulário para adicionar o primeiro evento.</small>
+        </div>
+    </template>
+
+    <template id="tpl-empty-subscritores">
+        <tr>
+            <td colspan="5" class="empty-state-td">
+                <span class="empty-icon">📭</span>
+                <p>Nenhum subscritor ainda</p>
+            </td>
+        </tr>
+    </template>
+
     <script type="module" src="scripts/admin.js"></script>
 </body>
 

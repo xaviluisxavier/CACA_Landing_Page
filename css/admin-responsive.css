@@ -1,4 +1,4 @@
-/* RESPONSIVE */
+/* Media Queries */
 @media (max-width: 960px) {
     .admin-grid {
         grid-template-columns: 1fr;

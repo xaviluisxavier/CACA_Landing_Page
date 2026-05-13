@@ -1,4 +1,5 @@
-/* CONTACTOS E FORMULÁRIO */
+/* Contactos e Formulario */
+
 .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); }
 .contact-info, .contact-form-wrapper { 
     background-color: var(--color-white); 
@@ -33,7 +34,7 @@
     font-size: 1.1rem; 
     font-weight: 700; 
     color: var(--color-primary); 
-    margin-bottom: 0.25rem; /* Reduzido de 1.5rem! */
+    margin-bottom: 0.25rem;
 }
 .contact-value { 
     display: block; 
@@ -51,7 +52,7 @@
     border-radius: 8px;
     margin-top: auto;
     border: 1px solid var(--color-light-gray);
-    z-index: 1; /* Garantir que o leaflet renderiza corretamente entre os cards */
+    z-index: 1;
 }
 
 .form-mandatory-note { font-size: 0.85rem; color: var(--color-gray); margin-bottom: 1rem; text-align: right; }
